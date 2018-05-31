@@ -14,8 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import re_path as path
+from students.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'^$', students_list3, name='home'),
+    path(r'^students/add$', students_add, name='students_add'),
+    path(r'^students/(?P<sid>\d+)/edit$', students_edit, name='students_edit'),
+    path(r'^students/(?P<sid>\d+)/delete$', students_delete, name='students_delete'),
+
+    path(r'^groups$', groups_list, name='groups'),
+    path(r'^groups/add$', groups_add, name='groups_add'),
+    path(r'^groups/(?P<gid>\d+)/edit$', groups_edit, name='groups_edit'),
+    path(r'^groups/(?P<gid>\d+)/delete$', groups_delete, name='groups_delete'),
 ]
