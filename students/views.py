@@ -16,7 +16,25 @@ from django.template import RequestContext, loader
 
 
 def students_list3(request):
-	return render(request, 'students/students_list.html', {})
+	students = (
+		{'id': 1,
+		'first_name': u'Віталій',
+		'last_name': u'Подоба',
+		'ticket': 235,
+		'image': 'img/podoba3.jpg'},
+		{'id': 2,
+		'first_name': u'Корост',
+		'last_name': u'Андрій',
+		'ticket': 2123,
+		'image': 'img/me.jpeg'},
+		{'id': 3,
+		'first_name': u'Притула',
+		'last_name': u'Тарас',
+		'ticket': 5332,
+		'image': 'img/piv.png'}
+		)
+	# import pdb;pdb.set_trace()
+	return render(request, 'students/students_list.html', {'students': students})
 
 
 def students_add(request):
