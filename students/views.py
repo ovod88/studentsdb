@@ -23,10 +23,10 @@ def students_add(request):
 	return HttpResponse('<h1>Student Add Form</h1>')
 
 def students_edit(request, sid):
-	return HttpResponse('<h1>Edit Student %s</h1>' % sid)
+	return HttpResponse(f'<h1>Edit Student {sid}</h1>')
 
 def students_delete(request, sid):
-	return HttpResponse('<h1>Delete Student %s</h1>' % sid)
+	return HttpResponse(f'<h1>Delete Student {sid}</h1>')
 
 
 def groups_list(request):
@@ -36,7 +36,7 @@ def groups_add(request):
 	return HttpResponse('<h1>Group Add Form</h1>')
 
 def groups_edit(request, gid):
-	return HttpResponse('<h1>Edit Group %s</h1>' % gid)
+	return HttpResponse(f'<h1>Edit Group {gid}</h1>')
 
 def groups_delete(request, gid):
-	return HttpResponse('<h1>Delete Group %s</h1>' % gid)
+	return HttpResponse(f'<h1>Delete Group {gid}</h1>')
