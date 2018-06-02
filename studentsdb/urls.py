@@ -28,4 +28,7 @@ urlpatterns = [
     path(r'^groups/add$', groups_add, name='groups_add'),
     path(r'^groups/(?P<gid>\d+)/edit$', groups_edit, name='groups_edit'),
     path(r'^groups/(?P<gid>\d+)/delete$', groups_delete, name='groups_delete'),
+
+    path(r'^journal$', journal_list, name='journal'),
+    path(r'^journal/(?P<sid>\d+)$', journal_student, name='journal_student'),
 ]

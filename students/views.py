@@ -33,8 +33,14 @@ def students_list3(request):
 		'ticket': 5332,
 		'image': 'img/piv.png'}
 		)
+	groups = (
+		{'name': 'Мтм-21',
+		'warden': 'Віталій Подоба'},
+		{'name': 'Мтм-22',
+		'warden': 'Андрій Петров'}
+		)
 	# import pdb;pdb.set_trace()
-	return render(request, 'students/students_list.html', {'students': students})
+	return render(request, 'students/students_list.html', {'students': students, 'groups': groups})
 
 
 def students_add(request):
@@ -58,3 +64,9 @@ def groups_edit(request, gid):
 
 def groups_delete(request, gid):
 	return HttpResponse(f'<h1>Delete Group {gid}</h1>')
+
+def journal_list(request):
+	return HttpResponse(f'<h1>Journal</h1>')
+
+def journal_student(request, sid):
+	return HttpResponse(f'<h1>Journal for student {sid}</h1>')
