@@ -10,6 +10,7 @@
 
   <a href="{% url 'students_add' %}" class="btn btn-primary">Додати Студента</a>
           
+  {% if students %}
           <!-- Start Students Listing -->
     <table class="table table-hover table-striped">
       <thead>
@@ -48,7 +49,10 @@
       </tbody>
     </table>
     <!-- End Students Listing -->
-    
+  {% else %}
+    <p>Поки немає у базі.</p>
+  {% endif %}
+
     <nav>
       <ul class="pagination">
         <li><a href="#">&laquo;</a></li>

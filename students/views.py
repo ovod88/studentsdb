@@ -35,10 +35,24 @@ def students_list3(request):
 		)
 	groups = (
 		{'name': 'Мтм-21',
-		'warden': 'Віталій Подоба'},
+		'warden': {
+			'name':'Віталій Подоба',
+			'id': 1
+			}
+		},
 		{'name': 'Мтм-22',
-		'warden': 'Андрій Петров'}
-		)
+		'warden': {
+			'name':'Андрій Петров',
+			'id': 12
+			}
+		},
+		{'name': 'Мтм-23',
+		'warden': {
+			'name': 'Андрій Подоба',
+			'id': 14
+			}
+		}
+	)
 	# import pdb;pdb.set_trace()
 	return render(request, 'students/students_list.html', {'students': students, 'groups': groups})
 
@@ -54,7 +68,31 @@ def students_delete(request, sid):
 
 
 def groups_list(request):
-	return HttpResponse('<h1>Groups Listing</h1>')
+	groups = (
+		{'name': 'Мтм-21',
+		'id': 1,
+		'warden': {
+			'name':'Віталій Подоба',
+			'id': 1
+			}
+		},
+		{'name': 'Мтм-22',
+		'id': 2,
+		'warden': {
+			'name':'Андрій Петров',
+			'id': 12
+			}
+		},
+		{'name': 'Мтм-23',
+		'id': 3,
+		'warden': {
+			'name': 'Андрій Подоба',
+			'id': 14
+			}
+		}
+	)
+	# import pdb;pdb.set_trace()
+	return render(request, 'students/groups_list.html', {'groups': groups})
 
 def groups_add(request):
 	return HttpResponse('<h1>Group Add Form</h1>')
