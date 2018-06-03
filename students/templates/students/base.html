@@ -1,4 +1,7 @@
 {% load static %}
+{% url 'home' as students_list_url %}
+{% url 'groups' as groups_list_url %}
+{% url 'journal' as journal_url %}
 
 <!DOCTYPE html>
 <html lang="uk">
@@ -38,9 +41,9 @@
       <div class="row" id="sub-header"> 
         <div class="col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" {% if request.path == '/' or request.path == '/students' %} class="active" {% endif %}><a href="/">Студенти</a></li>
-            <li role="presentation"><a href="{% url 'journal' %}">Відвідування</a></li>
-            <li role="presentation" {% if request.path == '/groups' %} class="active" {% endif %}><a href="{% url 'groups' %}">Групи</a></li>
+            <li role="presentation" {% if request.path == students_list_url %} class="active" {% endif %}><a href="{% url 'home' %}">Студенти</a></li>
+            <li role="presentation" {% if journal_url in request.path %} class="active" {% endif %}><a href="{% url 'journal' %}">Відвідування</a></li>
+            <li role="presentation" {% if groups_list_url in request.path %} class="active" {% endif %}><a href="{% url 'groups' %}">Групи</a></li>
           </ul>
         </div>
       </div>
@@ -53,7 +56,7 @@
           {% comment ”Not used alert so far” %}
           <div class="alert alert-warning" role="alert">Студент успішно доданий.</div>
           {% endcomment %}
-
+          <!-- test1 {{ mama.name }} test2 -->
           <h2>{% block title %}{% endblock title %}</h2>
           {% block content %}{% endblock content %}
           
