@@ -1,0 +1,94 @@
+{% extends "students/base.html" %}
+
+{% load static %}
+
+{% block meta_title %}- Облік Відвідування{% endblock meta_title %}
+
+{% block title %}Облік Відвідування{% endblock title %}
+
+{% block content %}
+
+	{% if not students %}
+		<div class="alert alert-warning">
+	    	Поки немає жодного студента в базі. Будь-ласка,
+	    	<a href="{% url "students_add" %}">додайте</a> першого.
+		</div>
+	{% else %}
+
+		<div class="alert alert-warning">
+	    	Зміни в журнал зберігаються автоматично при кожному кліку в клітинці
+	    	таблиці.
+	    	<span id="ajax-progress-indicator">Йде збереження...</span>
+		</div>
+
+		<p id="journal-nav" class="text-center">
+	  		<a href="?month={{ prev_month }}"
+	     		title="Попередній Місяць">&larr;</a>
+	  		<!-- TODO: translate month name -->
+	  		<!-- <strong>{{ month_verbose }} {{ year }}</strong> -->
+	  		<strong>Listopad 2018</strong>
+	  		<a href="?month={{ next_month }}"
+	     		title="Наступний Місяць">&rarr;</a>
+		</p>
+
+		<table class="table table-hover table-striped table-bordered"
+	       id="students-journal">
+	    
+		    <thead>
+			    <tr>
+				    <th>#</th>
+				    <th>Студент</th>
+
+				      
+				    {% with ''|center:31 as range %}
+					    {% for _ in range %}
+						    <th class="day-header">
+						      <!-- TODO: translate day name -->
+							  {{ forloop.counter }}
+						     <!--  <br />
+						      {{ day.day }} -->
+						    </th>
+					    {% endfor %}
+				    {% endwith %}
+			    </tr>
+		 	</thead>
+		 	<tbody>
+
+		    	{% for student in students %}
+				    <tr>
+				    	<td>
+					        <!-- {% if is_paginated %}
+					          {{ page_obj.start_index|add:forloop.counter0 }}
+					        {% else %} -->
+					          {{ forloop.counter }}
+					        <!-- {% endif %} -->
+				        </td>
+
+				        <td>
+					        <a title="Редагувати" target="_blank"
+					           href="{% url "students_edit" student.id %}">
+					          {{ student.name }}
+					        </a>
+				        </td>
+
+				        {% with ''|center:31 as range %}
+				      	    {% for _ in range %}
+				      	    
+						        <td class="day-box">
+						        	<input type="checkbox" data-student-id="{{ student.id }}"
+						               data-date="{{ day.date }}" data-url="{{ student.update_url }}"
+						               value="1"{% if day.present %} checked="checked" {% endif %} />
+						        </td>
+
+					        {% endfor %}
+			      	    {% endwith %}
+				    </tr>
+
+				{% endfor %}
+
+		  	</tbody>
+		</table>
+
+	{% endif %}
+
+{% endblock content %}
