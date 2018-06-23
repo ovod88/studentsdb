@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import re_path as path
+from django.conf.urls.static import static
 from students.views.students import *
 from students.views.groups import *
 from students.views.journal import *
+
+from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,4 +37,7 @@ urlpatterns = [
 
     path(r'^journal$', journal_list, name='journal'),
     path(r'^journal/(?P<sid>\d+)$', journal_student, name='journal_student'),
-]
+] 
+
+if DEBUG:
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
