@@ -22,8 +22,16 @@ def students_list3(request):
 	# 	'ticket': 5332,
 	# 	'image': 'img/piv.png'}
 	# 	)
-	students=Student.objects.all()
+	students = Student.objects.all()
 	
+	order = request.GET.get('order_by','')
+
+	if order in ('first_name', 'last_name', 'ticket'):
+		students = students.order_by(order)
+
+		if request.GET.get('reverse', '') == '1':
+			students = students.reverse()
+
 	groups = (
 		{'name': 'Мтм-21',
 		'warden': {
