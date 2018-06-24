@@ -2,6 +2,16 @@ from django.db import models
 
 # Create your models here.
 
+class TicketIntManager(models.Manager):
+	def all_with_ticket_sorted(self, reverse):
+		students = self.get_queryset()
+
+		def ticket_sorting(student):
+			return int(student.ticket)
+
+		return sorted(students, key=ticket_sorting, reverse=reverse)
+		
+
 
 
 
@@ -47,4 +57,18 @@ class Student(models.Model):
 		verbose_name=u"Додаткові нотатки")
 
 	def __str__(self):
-		return "{},{}".format(self.first_name, self.last_name)
+		return "{},{},{}".format(self.first_name, self.last_name, self.ticket)
+
+	#JUST TO TEST TICKET SORTING BY CLASSMETHOD
+	@classmethod
+	def ticket_int(cls):
+		return [int(s.ticket) for s in cls.students.all()]
+
+	def get_ticket_int(self):
+		return int(self.ticket)
+
+	#JUST TO TEST CUSTOM DEFAULT MANAGER NAME
+	# students=models.Manager()
+
+	#JUST TASTE CUSTOM MANAGER WITH TICKET INT CONVERSION
+	students = TicketIntManager()

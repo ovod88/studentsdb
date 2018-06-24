@@ -22,15 +22,29 @@ def students_list3(request):
 	# 	'ticket': 5332,
 	# 	'image': 'img/piv.png'}
 	# 	)
-	students = Student.objects.all()
+	# students = Student.objects.all()
 	
+	# students = Student.students.all()
+
+	students = Student.students.all()
+
 	order = request.GET.get('order_by','')
 
-	if order in ('first_name', 'last_name', 'ticket'):
+	# def ticket_sorting(student):
+	# 	return int(student.ticket)
+
+	if order in ('first_name', 'last_name'):
 		students = students.order_by(order)
 
 		if request.GET.get('reverse', '') == '1':
 			students = students.reverse()
+
+		# if order == 'ticket':
+		# 	students = sorted(students, key=ticket_sorting, reverse=int(request.GET.get('reverse', '0')))
+
+	#JUST FOR TESTING. DO NOT DO SORTINTG IN PYTHON ON PRODUCTION!!!USE CORRECT TYPE FIELDS
+	if order == 'ticket':
+		students = Student.students.all_with_ticket_sorted(int(request.GET.get('reverse', '0')))
 
 	groups = (
 		{'name': 'Мтм-21',
