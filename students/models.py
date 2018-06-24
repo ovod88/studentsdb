@@ -11,10 +11,6 @@ class TicketIntManager(models.Manager):
 
 		return sorted(students, key=ticket_sorting, reverse=reverse)
 		
-
-
-
-
 class Student(models.Model):
 
 	class Meta(object):

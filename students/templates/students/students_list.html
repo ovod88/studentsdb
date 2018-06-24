@@ -19,8 +19,8 @@
             <th>#</th>
             <th>Фото</th>
             <th>
-              <a href="{% url "home" %}?order_by=last_name{% if request.GET.order_by == 'last_name' and request.GET.reverse != '1' %}&amp;reverse=1{% endif %}">Прізвище
-                {% if request.GET.order_by == 'last_name' and request.GET.reverse != '1' %}
+              <a href="{% url "home" %}?order_by=last_name{% if request.GET.order_by == 'last_name' and request.GET.reverse != '1' or not request.GET %}&amp;reverse=1{% endif %}">Прізвище
+                {% if request.GET.order_by == 'last_name' and request.GET.reverse != '1' or not request.GET %}
                   &uarr;
                 {% elif request.GET.order_by == 'last_name' and request.GET.reverse == '1' %}
                   &darr;

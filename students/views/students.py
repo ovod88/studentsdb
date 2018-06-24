@@ -41,10 +41,13 @@ def students_list3(request):
 
 		# if order == 'ticket':
 		# 	students = sorted(students, key=ticket_sorting, reverse=int(request.GET.get('reverse', '0')))
-
+	
 	#JUST FOR TESTING. DO NOT DO SORTINTG IN PYTHON ON PRODUCTION!!!USE CORRECT TYPE FIELDS
 	if order == 'ticket':
 		students = Student.students.all_with_ticket_sorted(int(request.GET.get('reverse', '0')))
+
+	if not request.GET:
+		students = students.order_by('last_name')
 
 	groups = (
 		{'name': 'Мтм-21',
