@@ -2,14 +2,45 @@ from django.db import models
 
 # Create your models here.
 
+#ONLY TO TEST THE CASE THEN DB FIELD HAS WRONG DATATYPE
 class TicketIntManager(models.Manager):
 	def all_with_ticket_sorted(self, reverse):
+
+		reverse_boolean = True
+
+		if int(reverse) == 0:
+			reverse_boolean = False
+
 		students = self.get_queryset()
 
 		def ticket_sorting(student):
 			return int(student.ticket)
 
-		return sorted(students, key=ticket_sorting, reverse=reverse)
+		list_students = sorted(students, key=ticket_sorting, reverse=reverse_boolean)
+		list_ids = [student.id for student in list_students]
+
+		clauses = ' '.join(['WHEN id=%s THEN %s' % (pk, i) for i, pk in enumerate(list_ids)])
+		ordering = 'CASE %s END' % clauses
+
+		"""
+			SELECT *
+			FROM students_student
+			ORDER BY
+  				CASE
+    				WHEN id=4 THEN 0
+    				WHEN id=5 THEN 1
+    				WHEN id=6 THEN 2
+    				WHEN id=8 THEN 3
+    				WHEN id=7 THEN 4
+    				.
+    				.
+  				END;
+		"""
+		queryset = students.filter(id__in=list_ids).extra(
+           							select={'ordering': ordering}, order_by=('ordering',))
+
+
+		return queryset
 		
 class Student(models.Model):
 
@@ -53,7 +84,7 @@ class Student(models.Model):
 		verbose_name=u"Додаткові нотатки")
 
 	def __str__(self):
-		return "{},{},{}".format(self.first_name, self.last_name, self.ticket)
+		return "{},{},{},{}".format(self.first_name, self.last_name, self.ticket, self.id)
 
 	#JUST TO TEST TICKET SORTING BY CLASSMETHOD
 	@classmethod

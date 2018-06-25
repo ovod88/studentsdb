@@ -30,6 +30,8 @@ def students_list3(request):
 	students = Student.students.get_queryset().order_by('id')
 
 	order = request.GET.get('order_by','')
+	page = request.GET.get('page')
+	reverse = request.GET.get('reverse', '')
 
 	# def ticket_sorting(student):
 	# 	return int(student.ticket)
@@ -37,7 +39,7 @@ def students_list3(request):
 	if order in ('first_name', 'last_name'):
 		students = students.order_by(order)
 
-		if request.GET.get('reverse', '') == '1':
+		if reverse == '1':
 			students = students.reverse()
 
 		# if order == 'ticket':
@@ -45,13 +47,19 @@ def students_list3(request):
 	
 	#JUST FOR TESTING. DO NOT DO SORTINTG IN PYTHON ON PRODUCTION!!!USE CORRECT TYPE FIELDS
 	if order == 'ticket':
-		students = Student.students.all_with_ticket_sorted(int(request.GET.get('reverse', '0')))
+		if reverse == '':
+			students = Student.students.all_with_ticket_sorted(0)
+		else:
+			students = Student.students.all_with_ticket_sorted(int(request.GET.get('reverse', '0')))
 
-	if not request.GET:
+	# print('-----HERE------')
+	# print(students)
+
+	if not request.GET or ((page is not None or page != '') and not order and not reverse):
+		# print(type(students))
 		students = students.order_by('last_name')
 
 	paginator = Paginator(students, 3)
-	page = request.GET.get('page')
 	try:
 		students = paginator.page(page)
 	except PageNotAnInteger:
