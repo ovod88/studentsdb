@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..models import Student
+from ..MyPaginator import MyPaginator
 
 def students_list3(request):
 	# students = (
@@ -59,7 +60,8 @@ def students_list3(request):
 		# print(type(students))
 		students = students.order_by('last_name')
 
-	paginator = Paginator(students, 3)
+	paginator = MyPaginator(students, 3)
+	# paginator = Paginator(students, 3)
 	try:
 		students = paginator.page(page)
 	except PageNotAnInteger:
