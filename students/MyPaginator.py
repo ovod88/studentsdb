@@ -3,6 +3,9 @@ class EmptyPage(Exception):
 	def __init__(self, message):
 		super().__init__(message)
 
+class PageNotAnInteger(Exception):
+	def __init__(self, message):
+		super().__init__(message)
 
 class MyPaginator():
 	def __init__(self, objects, entries_per_page):
@@ -15,6 +18,10 @@ class MyPaginator():
 		def __init__(self, index, paginatorObj):
 			self.index = index
 			self.paginatorObj = paginatorObj
+			entries_per_page = self.paginatorObj.entries_per_page
+			self.start_index = (self.index-1)*entries_per_page
+			self.end_index = min(self.index*entries_per_page, self.paginatorObj.count)
+			self.current_index = self.start_index
 
 		def __str__(self):
 			return 'Page {} of {}'.format(self.index, self.paginatorObj.num_pages)
@@ -24,11 +31,17 @@ class MyPaginator():
 
 		@property
 		def object_list(self):
-			entries_per_page = self.paginatorObj.entries_per_page
-			start_index = (self.index-1)*entries_per_page
-			end_index = min(self.index*entries_per_page, self.paginatorObj.count)
+			return self.paginatorObj.objects[self.start_index:self.end_index]
 
-			return self.paginatorObj.objects[start_index:end_index]
+		def __getitem__(self):
+			return self.paginatorObj.objects[self.current_index]
+
+		def __next__(self):
+			if self.current_index == self.end_index:
+				raise StopIteration
+			else:
+				self.current_index += 1
+				return self.paginatorObj.objects[current_index]
 
 		def has_next(self):
 			return self.index + 1 <= self.paginatorObj.num_pages
@@ -79,6 +92,11 @@ class MyPaginator():
 		return range(1, self.num_pages + 1)
 
 	def page(self, index):
+		try:
+			index = int(index)
+		except TypeError:
+			raise PageNotAnInteger('Wrong page index')
+
 		if index == 0:
 			raise EmptyPage('No page with 0 index')
 		elif index > self.num_pages:

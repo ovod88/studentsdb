@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..models import Student
-from ..MyPaginator import MyPaginator
+from ..MyPaginator import MyPaginator, PageNotAnInteger, EmptyPage
 
 def students_list3(request):
 	# students = (
@@ -72,9 +72,11 @@ def students_list3(request):
 		# last page of results.
 		students = paginator.page(paginator.num_pages)
 
-
-
-
+	print('@@@@@@@@@@@@@@@@')
+	for student in students:
+		print(student)
+	print('@@@@@@@@@@@@@@@@')
+	
 	groups = (
 		{'name': 'Мтм-21',
 		'warden': {
