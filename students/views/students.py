@@ -60,6 +60,7 @@ def students_list3(request):
 		# print(type(students))
 		students = students.order_by('last_name')
 
+	#MY OWN REALISATION OF PAGINATOR
 	paginator = MyPaginator(students, 3)
 	# paginator = Paginator(students, 3)
 	try:
@@ -71,11 +72,6 @@ def students_list3(request):
 		# If page is out of range (e.g. 9999), deliver
 		# last page of results.
 		students = paginator.page(paginator.num_pages)
-
-	print('@@@@@@@@@@@@@@@@')
-	for student in students:
-		print(student)
-	print('@@@@@@@@@@@@@@@@')
 	
 	groups = (
 		{'name': 'Мтм-21',

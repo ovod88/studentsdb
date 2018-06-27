@@ -33,8 +33,8 @@ class MyPaginator():
 		def object_list(self):
 			return self.paginatorObj.objects[self.start_index:self.end_index]
 
-		def __getitem__(self):
-			return self.paginatorObj.objects[self.current_index]
+		def __getitem__(self, index):
+			return self.object_list[index]
 
 		def __next__(self):
 			if self.current_index == self.end_index:
@@ -43,14 +43,24 @@ class MyPaginator():
 				self.current_index += 1
 				return self.paginatorObj.objects[current_index]
 
+		@property
+		def number(self):
+			return self.index
+		
 		def has_next(self):
 			return self.index + 1 <= self.paginatorObj.num_pages
 
 		def has_previous(self):
 			return self.index - 1 > 0
 
+		@property
 		def has_other_pages(self):
-			return self.index == self.paginatorObj.num_pages
+			return self.paginatorObj.num_pages > 1
+
+		@property
+		def paginator(self):
+			return self.paginatorObj
+		
 
 		def next_page_number(self):
 			if self.index == self.paginatorObj.num_pages:
