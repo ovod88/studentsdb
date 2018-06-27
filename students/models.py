@@ -94,6 +94,17 @@ class Student(models.Model):
 	def get_ticket_int(self):
 		return int(self.ticket)
 
+	def as_dict(self):
+		return {
+			"id" 		 : "%d" % self.id,
+			"first_name" : self.first_name if self.first_name else "",
+			"last_name": self.last_name if self.last_name else "",
+			"middle_name": self.middle_name if self.middle_name else "",
+			"birthday"   : self.birthday.strftime("%Y-%m-%d"),
+			"photo"      : str(self.photo) if self.photo else "",
+			"notes"     : self.notes if self.notes else ""
+		}
+
 	#JUST TO TEST CUSTOM DEFAULT MANAGER NAME
 	# students=models.Manager()
 

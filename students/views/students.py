@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template import RequestContext, loader
-# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..models import Student
-from ..MyPaginator import MyPaginator, PageNotAnInteger, EmptyPage
+# from ..MyPaginator import MyPaginator, PageNotAnInteger, EmptyPage
 
+import json
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 def students_list3(request):
 	# students = (
 	# 	{'id': 1,
@@ -61,17 +66,39 @@ def students_list3(request):
 		students = students.order_by('last_name')
 
 	#MY OWN REALISATION OF PAGINATOR
-	paginator = MyPaginator(students, 3)
-	# paginator = Paginator(students, 3)
-	try:
-		students = paginator.page(page)
-	except PageNotAnInteger:
-		# If page is not an integer, deliver first page.
-		students = paginator.page(1)
-	except EmptyPage:
-		# If page is out of range (e.g. 9999), deliver
-		# last page of results.
-		students = paginator.page(paginator.num_pages)
+	# paginator = MyPaginator(students, 3)
+	paginator = Paginator(students, 3)
+
+
+	# print(request.GET)
+	# print(request.POST)
+
+	if request.method == 'GET':
+		# print('HELLO GET')
+		try:
+			students = paginator.page(page)
+		except PageNotAnInteger:
+			# If page is not an integer, deliver first page.
+			students = paginator.page(1)
+		except EmptyPage:
+			# If page is out of range (e.g. 9999), deliver
+			# last page of results.
+			students = paginator.page(paginator.num_pages)
+
+	if request.method == 'POST':
+		# print('HELLO POST')
+		# print(request.POST.get('load_more', False))
+		# print(request.POST.get('ajax_page'))
+		load_more = request.POST.get('load_more', False)
+		ajax_page = int(request.POST.get('ajax_page'))
+		if load_more and ajax_page <= paginator.num_pages:
+			students = paginator.page(ajax_page)
+		else:
+			students = {}
+
+		students_page = list(map(lambda student: student.as_dict(), students))
+
+		return JsonResponse({'students': students_page})
 	
 	groups = (
 		{'name': 'Мтм-21',

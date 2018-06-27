@@ -86,3 +86,24 @@
   {% endif %}
 
 {% endblock content %}
+
+{% block extra_js %}
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js">
+  </script>
+  <script src="{{ PORTAL_URL }}{% static 'js/main.js' %}"></script>
+  <script type="text/html" id='student_tmpl'>
+    <% for ( var i = 0; i < students.length; i++ ) { %>
+      <tr>
+        <td><%= i %></td>
+        <td>
+            <% if(students[i].photo) { %>
+              <img class="img-circle" src="<%= students[i].photo %>" height="30" width="30" />
+            <% } else { %>
+              <img class="img-circle" src="{% static "img/default-user.png" %}" height="30"                                                                width="30" />
+            <% } %>
+        </td>
+        <td><a href="{% url 'students_edit' 0 %}"><%= students[i].last_name %></td>
+      </tr>
+    <% } %>
+  </script>
+{% endblock extra_js %}
