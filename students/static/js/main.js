@@ -1,6 +1,7 @@
 $(function(){
 	let ajax_page = 1;
 	$button = $('.load_more_button');
+	$student_template = $(student_tmpl);
 
 	$button.on('click', function (e) {
 
@@ -15,14 +16,22 @@ $(function(){
 
                 	let length = data.students.length;
 
+
                     if(length > 0) {
 
-                    		console.log(data.students);
+                    	for(let i = 0; i < length; i++) {
 
+                    		student = data.students[i];
+                			student_html = _.template($student_template.html()) ({'student': student});
 
-                    		students = _.template($(student_tmpl).html()) (data);
+                			student_html = student_html.replace(/\/students\/(\d+)\/(\w+)/g, 
+                									'/students/' + student.id + '/$2');
+                			student_html = student_html.replace(/\/journal\/(\d+)/g, 
+                									'/journal/' + student.id);
 
-                    		$('.table > tbody').append(students);
+                			$(student_html).appendTo($('.table > tbody')).show('slow');
+
+                		}
 
                     } else {
 

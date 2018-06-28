@@ -92,18 +92,31 @@
   </script>
   <script src="{{ PORTAL_URL }}{% static 'js/main.js' %}"></script>
   <script type="text/html" id='student_tmpl'>
-    <% for ( var i = 0; i < students.length; i++ ) { %>
-      <tr>
-        <td><%= i %></td>
+      <tr style="display: none;">
+        <td><%= student.id %></td>
         <td>
-            <% if(students[i].photo) { %>
-              <img class="img-circle" src="<%= students[i].photo %>" height="30" width="30" />
+            <% if(student.photo) { %>
+              <img class="img-circle" src="/media/<%= student.photo %>" height="30" width="30" />
             <% } else { %>
               <img class="img-circle" src="{% static "img/default-user.png" %}" height="30"                                                                width="30" />
             <% } %>
         </td>
-        <td><a href="{% url 'students_edit' 0 %}"><%= students[i].last_name %></td>
+        <td><a href="{% url 'students_edit' 0 %}"><%= student.last_name %></td>
+          <td><a href="{% url 'students_edit' 0%}"><%= student.first_name %></td>
+          <td><%= student.ticket %></td>
+          <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle"
+                      data-toggle="dropdown">Дія
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{% url 'students_edit' 0%}">Редагувати</a></li>
+                <li><a href="{% url 'journal_student' 0%}">Відвідування</a></li>
+                <li><a href="{% url 'students_delete' 0%}">Видалити</a></li>
+              </ul>
+            </div>
+          </td>
       </tr>
-    <% } %>
   </script>
 {% endblock extra_js %}

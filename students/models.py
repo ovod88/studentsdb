@@ -102,6 +102,7 @@ class Student(models.Model):
 			"middle_name": self.middle_name if self.middle_name else "",
 			"birthday"   : self.birthday.strftime("%Y-%m-%d"),
 			"photo"      : str(self.photo) if self.photo else "",
+			"ticket": self.ticket if self.ticket else "",
 			"notes"     : self.notes if self.notes else ""
 		}
 
