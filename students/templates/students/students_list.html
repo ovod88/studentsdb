@@ -93,7 +93,7 @@
   <script src="{{ PORTAL_URL }}{% static 'js/main.js' %}"></script>
   <script type="text/html" id='student_tmpl'>
       <tr style="display: none;">
-        <td><%= student.id %></td>
+        <td><%= row_num %></td>
         <td>
             <% if(student.photo) { %>
               <img class="img-circle" src="/media/<%= student.photo %>" height="30" width="30" />
