@@ -1,6 +1,9 @@
+
+/* THIS SCRIPT IS MIXED FOR TWO CASES - ONE - FOR BUTTON load more AND SECOND FOR SCROLL EVENT*/
 $(function(){
 	let ajax_page = 1,
 		$button = $('.load_more_button'),
+		row_height = $('.table > tbody tr').first().height(),
 		$student_template = $(student_tmpl),
 		row_count = $('.table > tbody tr').length,
 		row_num = row_count,
@@ -9,10 +12,47 @@ $(function(){
 
 	$button.on('click', function (e) {
 
-		ajax_page++;
 		e.preventDefault();
+		send_post(post_url);
+
+	});
+	let i = 1;
+	// while(row_height * row_num <= document.body.offsetHeight) {
+
+	// while(i < 4) {
+	// 	i++;
+	// 	send_post(post_url);
+	// 	console.log('-------------------------------');
+	// 	console.log(row_num);
+	// console.log(document.body.offsetHeight);
+	// 	console.log('-------------------------------');
+	// };
+
+
+	$(window).on('scroll', function(e) {
+
+		console.log('EVENT');
+		if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+
+			send_post(post_url);
+
+		}
+
+	});
+
+	if(window.innerHeight > document.body.offsetHeight) {
+
+		send_post(post_url);
+
+	}
+
+	// });
+
+	function send_post(url) {
+
+		ajax_page++;
 		$.ajax({	
-					url      : post_url,
+					url      : url,
                     method   : "POST",
                     data     : {"load_more": true, "ajax_page": ajax_page},
                     dataType : "json"
@@ -25,7 +65,8 @@ $(function(){
 
                     	for(let i = 0; i < length; i++) {
 
-                    		row_num ++;
+                    		row_num++;
+                    		// console.log('NUMBER ->' + row_num);
                     		student = data.students[i];
                 			student_html = _.template($student_template.html()) ({'student': student, 
                 																'row_num': row_num});
@@ -45,8 +86,15 @@ $(function(){
 
                     	$button.hide()
                     	$button.off('click');
+                    	$(window).off('scroll');
                     
                     }
+
+                    if(window.innerHeight > document.body.offsetHeight) {
+
+						send_post(post_url);
+
+					}
 
                 },
                 function (errorXHR) {
@@ -55,5 +103,6 @@ $(function(){
 
                 });
 
-	});
+	}
+
 });

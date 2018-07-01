@@ -1,5 +1,5 @@
 
-{% if students.has_other_pages %}
+{% if students.has_other_pages and False %}
 	{% with order_by=request.GET.order_by reverse=request.GET.reverse %}
 		<nav>
 		    <ul class="pagination">
@@ -18,7 +18,7 @@
 	{% endwith %}
 {% endif %}
 
-{% if students.has_other_pages %}
+{% if students.has_other_pages and False %}
 	<button class="load_more_button">load more</button>
 {% endif %}
 

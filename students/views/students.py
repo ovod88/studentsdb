@@ -94,9 +94,14 @@ def students_list3(request):
 		# print(request.POST.get('load_more', False))
 		# print(request.POST.get('ajax_page'))
 		load_more = request.POST.get('load_more', False)
-		ajax_page = int(request.POST.get('ajax_page'))
-		if load_more and ajax_page <= paginator.num_pages:
-			students = paginator.page(ajax_page)
+		ajax_page = request.POST.get('ajax_page')
+		if ajax_page and load_more:
+
+			ajax_page = int(ajax_page)
+			if ajax_page <= paginator.num_pages:
+				students = paginator.page(ajax_page)
+			else:
+				students = {}
 		else:
 			students = {}
 
