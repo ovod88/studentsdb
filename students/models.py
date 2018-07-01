@@ -98,12 +98,12 @@ class Student(models.Model):
 		return {
 			"id" 		 : "%d" % self.id,
 			"first_name" : self.first_name if self.first_name else "",
-			"last_name": self.last_name if self.last_name else "",
+			"last_name"  : self.last_name if self.last_name else "",
 			"middle_name": self.middle_name if self.middle_name else "",
 			"birthday"   : self.birthday.strftime("%Y-%m-%d"),
 			"photo"      : str(self.photo) if self.photo else "",
-			"ticket": self.ticket if self.ticket else "",
-			"notes"     : self.notes if self.notes else ""
+			"ticket"     : self.ticket if self.ticket else "",
+			"notes"      : self.notes if self.notes else ""
 		}
 
 	#JUST TO TEST CUSTOM DEFAULT MANAGER NAME

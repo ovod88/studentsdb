@@ -3,14 +3,16 @@ $(function(){
 		$button = $('.load_more_button'),
 		$student_template = $(student_tmpl),
 		row_count = $('.table > tbody tr').length,
-		row_num = row_count;
+		row_num = row_count,
+		full_url = window.location.href,
+		post_url = full_url.substring(full_url.lastIndexOf('/'), full_url.length);
 
 	$button.on('click', function (e) {
 
 		ajax_page++;
 		e.preventDefault();
 		$.ajax({	
-					url      : "/",
+					url      : post_url,
                     method   : "POST",
                     data     : {"load_more": true, "ajax_page": ajax_page},
                     dataType : "json"
@@ -42,6 +44,7 @@ $(function(){
                     if(row_count > length || length == 0)  {
 
                     	$button.hide()
+                    	$button.off('click');
                     
                     }
 

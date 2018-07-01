@@ -53,6 +53,7 @@ def students_list3(request):
 	
 	#JUST FOR TESTING. DO NOT DO SORTINTG IN PYTHON ON PRODUCTION!!!USE CORRECT TYPE FIELDS
 	if order == 'ticket':
+		# print('CALLED ORDER BY TICKET')
 		if reverse == '':
 			students = Student.students.all_with_ticket_sorted(0)
 		else:
@@ -61,7 +62,9 @@ def students_list3(request):
 	# print('-----HERE------')
 	# print(students)
 
-	if not request.GET or ((page is not None or page != '') and not order and not reverse):
+	if (not request.GET or ((page is not None or page != '') and not order and not reverse)) and \
+		not request.POST:
+		# print('CALLED DEFAULT ORDER')
 		# print(type(students))
 		students = students.order_by('last_name')
 
@@ -87,6 +90,7 @@ def students_list3(request):
 
 	if request.method == 'POST':
 		# print('HELLO POST')
+		# print(order, reverse, page)
 		# print(request.POST.get('load_more', False))
 		# print(request.POST.get('ajax_page'))
 		load_more = request.POST.get('load_more', False)
