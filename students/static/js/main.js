@@ -10,28 +10,18 @@ $(function(){
 		full_url = window.location.href,
 		post_url = full_url.substring(full_url.lastIndexOf('/'), full_url.length);
 
+		console.log(post_url);
+
 	$button.on('click', function (e) {
 
 		e.preventDefault();
 		send_post(post_url);
 
 	});
-	let i = 1;
-	// while(row_height * row_num <= document.body.offsetHeight) {
-
-	// while(i < 4) {
-	// 	i++;
-	// 	send_post(post_url);
-	// 	console.log('-------------------------------');
-	// 	console.log(row_num);
-	// console.log(document.body.offsetHeight);
-	// 	console.log('-------------------------------');
-	// };
-
 
 	$(window).on('scroll', function(e) {
 
-		console.log('EVENT');
+		// console.log('EVENT');
 		if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 
 			send_post(post_url);
@@ -45,8 +35,6 @@ $(function(){
 		send_post(post_url);
 
 	}
-
-	// });
 
 	function send_post(url) {
 

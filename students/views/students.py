@@ -62,9 +62,9 @@ def students_list3(request):
 	# print('-----HERE------')
 	# print(students)
 
-	if (not request.GET or ((page is not None or page != '') and not order and not reverse)) and \
-		not request.POST:
-		# print('CALLED DEFAULT ORDER')
+	if (not request.GET or ((page is not None or page != '') and not order and not reverse)) or \
+		(request.method == 'POST' and not request.POST):
+		print('CALLED DEFAULT ORDER')
 		# print(type(students))
 		students = students.order_by('last_name')
 
