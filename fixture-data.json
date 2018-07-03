@@ -1,0 +1,336 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$XMsNVNABKeGK$kshIjTTv0LzGiNUES7eTw7ud5Jhu1Zh6pMHZg/feEgE=",
+        "last_login": "2018-07-03T10:14:35.139Z",
+        "is_superuser": true,
+        "username": "ovod88",
+        "first_name": "",
+        "last_name": "",
+        "email": "ovod88@bigmir.net",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2018-06-23T12:11:55.663Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "students.student",
+    "pk": 1,
+    "fields": {
+        "first_name": "Oleg",
+        "last_name": "Khrystenko",
+        "middle_name": "",
+        "birthday": "2018-06-22",
+        "photo": "",
+        "ticket": "111",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 3,
+    "fields": {
+        "first_name": "Roman2",
+        "last_name": "Demo",
+        "middle_name": "",
+        "birthday": "2018-06-23",
+        "photo": "me_GFWB6qe.jpeg",
+        "ticket": "911",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 4,
+    "fields": {
+        "first_name": "Lina",
+        "last_name": "Khrystenko",
+        "middle_name": "Grygorovna",
+        "birthday": "1988-05-10",
+        "photo": "",
+        "ticket": "2",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 5,
+    "fields": {
+        "first_name": "Petro",
+        "last_name": "Tarasenko",
+        "middle_name": "",
+        "birthday": "1988-01-02",
+        "photo": "piv.png",
+        "ticket": "23",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 6,
+    "fields": {
+        "first_name": "Anatoliy",
+        "last_name": "Derkach",
+        "middle_name": "",
+        "birthday": "1987-12-12",
+        "photo": "podoba3.jpg",
+        "ticket": "34",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 7,
+    "fields": {
+        "first_name": "Anat",
+        "last_name": "Kramnich",
+        "middle_name": "",
+        "birthday": "1987-11-12",
+        "photo": "",
+        "ticket": "77",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 8,
+    "fields": {
+        "first_name": "Allana",
+        "last_name": "Kamysh",
+        "middle_name": "",
+        "birthday": "1986-01-12",
+        "photo": "",
+        "ticket": "42",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 9,
+    "fields": {
+        "first_name": "Tata",
+        "last_name": "Amnig",
+        "middle_name": "",
+        "birthday": "1990-04-04",
+        "photo": "",
+        "ticket": "98",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 10,
+    "fields": {
+        "first_name": "Karina",
+        "last_name": "Atabulina",
+        "middle_name": "",
+        "birthday": "1990-08-11",
+        "photo": "",
+        "ticket": "55",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 11,
+    "fields": {
+        "first_name": "Anton",
+        "last_name": "Huet",
+        "middle_name": "",
+        "birthday": "1991-11-11",
+        "photo": "",
+        "ticket": "69",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 12,
+    "fields": {
+        "first_name": "Pavlo",
+        "last_name": "Chaban",
+        "middle_name": "",
+        "birthday": "1986-03-02",
+        "photo": "",
+        "ticket": "123",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 13,
+    "fields": {
+        "first_name": "Dima",
+        "last_name": "Kuplinov",
+        "middle_name": "",
+        "birthday": "1992-05-05",
+        "photo": "",
+        "ticket": "345",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 14,
+    "fields": {
+        "first_name": "Tamara",
+        "last_name": "Daineko",
+        "middle_name": "",
+        "birthday": "1977-01-28",
+        "photo": "",
+        "ticket": "321",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 15,
+    "fields": {
+        "first_name": "Olexiy",
+        "last_name": "Atlant",
+        "middle_name": "",
+        "birthday": "1988-08-08",
+        "photo": "",
+        "ticket": "49",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 16,
+    "fields": {
+        "first_name": "Teo",
+        "last_name": "Stefanof",
+        "middle_name": "",
+        "birthday": "1988-03-24",
+        "photo": "",
+        "ticket": "8",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 17,
+    "fields": {
+        "first_name": "Alina",
+        "last_name": "Uliotova",
+        "middle_name": "",
+        "birthday": "1990-01-02",
+        "photo": "",
+        "ticket": "13",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 18,
+    "fields": {
+        "first_name": "Sava",
+        "last_name": "Stena",
+        "middle_name": "",
+        "birthday": "1990-02-02",
+        "photo": "",
+        "ticket": "444",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 19,
+    "fields": {
+        "first_name": "Andrey",
+        "last_name": "Bazovkin",
+        "middle_name": "",
+        "birthday": "1998-04-04",
+        "photo": "",
+        "ticket": "61",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 20,
+    "fields": {
+        "first_name": "Michal",
+        "last_name": "Szramowski",
+        "middle_name": "",
+        "birthday": "1992-11-12",
+        "photo": "",
+        "ticket": "73",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 21,
+    "fields": {
+        "first_name": "Stepan",
+        "last_name": "Kravchenko",
+        "middle_name": "",
+        "birthday": null,
+        "photo": "",
+        "ticket": "4",
+        "notes": "",
+        "student_group": 6
+    }
+},
+{
+    "model": "students.group",
+    "pk": 3,
+    "fields": {
+        "title": "MTM-11",
+        "leader": 4,
+        "notes": ""
+    }
+},
+{
+    "model": "students.group",
+    "pk": 4,
+    "fields": {
+        "title": "MTM-12",
+        "leader": 3,
+        "notes": ""
+    }
+},
+{
+    "model": "students.group",
+    "pk": 5,
+    "fields": {
+        "title": "MTM-13",
+        "leader": 11,
+        "notes": ""
+    }
+},
+{
+    "model": "students.group",
+    "pk": 6,
+    "fields": {
+        "title": "MTM-14",
+        "leader": null,
+        "notes": ""
+    }
+}
+]
