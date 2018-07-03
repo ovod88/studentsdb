@@ -28,9 +28,11 @@
           <strong>Група:</strong>
           <select>
             <option value="">Усі Студенти</option>
-            {% for group in groups %}
-            <option value="">{{ group.name }}, {{ group.warden.name }}</option>
-            {% endfor %}
+            {% if groups_all %}
+              {% for group in groups_all %}
+                <option value="">{{ group }}</option>
+              {% endfor %}
+            {% endif%}
           </select>
         </div>
       </div>

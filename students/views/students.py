@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.template import RequestContext, loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from ..models import Student
+from ..models import Student, Group
 # from ..MyPaginator import MyPaginator, PageNotAnInteger, EmptyPage
 
 import json
@@ -64,7 +64,7 @@ def students_list3(request):
 
 	if (not request.GET or ((page is not None or page != '') and not order and not reverse)) or \
 		(request.method == 'POST' and not request.POST):
-		print('CALLED DEFAULT ORDER')
+		# print('CALLED DEFAULT ORDER')
 		# print(type(students))
 		students = students.order_by('last_name')
 
@@ -109,28 +109,9 @@ def students_list3(request):
 
 		return JsonResponse({'students': students_page})
 	
-	groups = (
-		{'name': 'Мтм-21',
-		'warden': {
-			'name':'Віталій Подоба',
-			'id': 1
-			}
-		},
-		{'name': 'Мтм-22',
-		'warden': {
-			'name':'Андрій Петров',
-			'id': 12
-			}
-		},
-		{'name': 'Мтм-23',
-		'warden': {
-			'name': 'Андрій Подоба',
-			'id': 14
-			}
-		}
-	)
+	groups = Group.objects.all()
 	# import pdb;pdb.set_trace()
-	return render(request, 'students/students_list.html', {'students': students, 'groups': groups})
+	return render(request, 'students/students_list.html', {'students': students, 'groups_all': groups})
 
 
 def students_add(request):

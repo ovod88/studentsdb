@@ -83,8 +83,16 @@ class Student(models.Model):
 		blank=True,
 		verbose_name=u"Додаткові нотатки")
 
+	student_group = models.ForeignKey("Group",
+		verbose_name=u"Група",
+		blank=False,
+		null=True,
+		on_delete=models.PROTECT)#It wont allow group to be deleted while there is at least one student
+								#pointing to it
+
 	def __str__(self):
-		return "{},{},{},{}".format(self.first_name, self.last_name, self.ticket, self.id)
+		return "{},{},{},{} in group {}".format(self.first_name, self.last_name, 
+										self.ticket, self.id, self.student_group)
 
 	#JUST TO TEST TICKET SORTING BY CLASSMETHOD
 	@classmethod
@@ -96,14 +104,15 @@ class Student(models.Model):
 
 	def as_dict(self):
 		return {
-			"id" 		 : "%d" % self.id,
-			"first_name" : self.first_name if self.first_name else "",
-			"last_name"  : self.last_name if self.last_name else "",
-			"middle_name": self.middle_name if self.middle_name else "",
-			"birthday"   : self.birthday.strftime("%Y-%m-%d"),
-			"photo"      : str(self.photo) if self.photo else "",
-			"ticket"     : self.ticket if self.ticket else "",
-			"notes"      : self.notes if self.notes else ""
+			"id" 		 	: "%d" % self.id,
+			"first_name" 	: self.first_name if self.first_name else "",
+			"last_name"  	: self.last_name if self.last_name else "",
+			"middle_name"	: self.middle_name if self.middle_name else "",
+			"birthday"   	: self.birthday.strftime("%Y-%m-%d") if self.birthday else "",
+			"photo"      	: str(self.photo) if self.photo else "",
+			"ticket"     	: self.ticket if self.ticket else "",
+			"notes"      	: self.notes if self.notes else "",
+			"student_group" : self.student_group.title if self.student_group else ""
 		}
 
 	#JUST TO TEST CUSTOM DEFAULT MANAGER NAME
@@ -123,11 +132,12 @@ class Group(models.Model):
 		blank=False,
 		verbose_name=u"Назва")
 	
-	leader = models.OneToOneField("Student",
+	leader = models.OneToOneField("Student",# OneToOne relation between two tables
 		verbose_name=u"Староста",
 		blank=True,
 		null=True,
-		on_delete=models.SET_NULL)
+		on_delete=models.SET_NULL)#If Student (leader) is deleted, this filed is set to NULL
+									#but Student entry is allowed to be deleted
 
 	notes = models.TextField(
 		blank=True,
@@ -138,3 +148,11 @@ class Group(models.Model):
 			return "{} ({} {})".format(self.title, self.leader.first_name,self.leader.last_name)
 		else:
 			return "{}".format(self.title,)
+
+	def as_dict(self):
+		return {
+			"id" 	 : "%d" % self.id,
+			"title"  : self.title if self.title else "",
+			"leader" : self.leader if self.leader else "",
+			"notes"  : self.notes if self.notes else ""
+		}
