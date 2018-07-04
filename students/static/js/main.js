@@ -3,43 +3,44 @@
 $(function(){
 	let ajax_page = 1,
 		$button = $('.load_more_button'),
-		row_height = $('.table > tbody tr').first().height(),
+		$student_table = $('.table'),
+		row_height = $student_table.find('tbody tr').first().height(),
 		$student_template = $(student_tmpl),
-		row_count = $('.table > tbody tr').length,
+		row_count = $student_table.find('tbody tr').length,
 		row_num = row_count,
 		full_url = window.location.href,
 		post_url = full_url.substring(full_url.lastIndexOf('/'), full_url.length);
 
-		console.log(post_url);
+	if($student_table.length) {
+		$button.on('click', function (e) {
 
-	$button.on('click', function (e) {
+			e.preventDefault();
+			send_post(post_url);
 
-		e.preventDefault();
-		send_post(post_url);
+		});
 
-	});
+		$(window).on('scroll', scrollEventHadler);
 
-	$(window).on('scroll', function(e) {
-
-		// console.log('EVENT');
-		if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+		if(window.innerHeight > document.body.offsetHeight) {
 
 			send_post(post_url);
 
 		}
 
-	});
+		function scrollEventHadler(e) {
 
-	if(window.innerHeight > document.body.offsetHeight) {
+			if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 
-		send_post(post_url);
+				send_post(post_url);
 
-	}
+			}
 
-	function send_post(url) {
+		}
 
-		ajax_page++;
-		$.ajax({	
+		function send_post(url) {
+
+			ajax_page++;
+			$.ajax({	
 					url      : url,
                     method   : "POST",
                     data     : {"load_more": true, "ajax_page": ajax_page},
@@ -47,7 +48,6 @@ $(function(){
                 }).then(function (data){
 
                 	let length = data.students.length;
-
 
                     if(length > 0) {
 
@@ -91,6 +91,7 @@ $(function(){
 
                 });
 
+		}
 	}
-
+	
 });
