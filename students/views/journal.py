@@ -35,7 +35,8 @@ def journal_list(request):
 
 	def countDateDict(date):
 		newDate = {}
-		newDate['month'] = months[date['month'] - 1]
+		newDate['month_name'] = months[date['month'] - 1]
+		newDate['month'] = date['month']
 		newDate['year'] = date['year']
 
 		if date['month'] == 12:
