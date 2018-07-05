@@ -5,12 +5,19 @@ from django.template import RequestContext, loader
 from datetime import datetime
 from calendar import monthrange
 
+from ..models.students import Student
+
 
 def journal_list(request):
 
 	months = ['Styczen', 'Luty', 'Marzec', 'Kwieczen', 'Mai', 
 				'Czerwiec', 'Lipiec', 'Sierpien', 'Wrzeszen', 'Padrziernik', 'Listopad', 'Grudzien']
 	following_month = request.GET.get('month','')
+
+
+	students = (Student.students.get_queryset().order_by('id')
+								.values_list('id', 'first_name', 'last_name',  named=True))
+
 
 	def countDateDict(date):
 		newDate = {}
@@ -54,10 +61,15 @@ def journal_list(request):
 
 	days_in_month = monthrange(cur_year, cur_month)[1]
 
-	return render(request, 'students/journal.html', {'students': [{'name':'Віталій Подоба',
-			'id': 1},{'name':'Андрій Петров',
-			'id': 12},{'name': 'Андрій Подоба',
-			'id': 14}], 'date': date, 'monthrange': range(days_in_month)})
+	print(days_in_month)
+
+	return render(request, 'students/journal.html', 
+			{'students': students, 'date': date, 'monthrange': range(days_in_month)})
+
+	# return render(request, 'students/journal.html', {'students': [{'name':'Віталій Подоба',
+	# 		'id': 1},{'name':'Андрій Петров',
+	# 		'id': 12},{'name': 'Андрій Подоба',
+	# 		'id': 14}], 'date': date, 'monthrange': range(days_in_month)})
 
 def journal_student(request, sid):
 	return HttpResponse(f'<h1>Journal for student {sid}</h1>')

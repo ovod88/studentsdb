@@ -61,7 +61,7 @@
 				        <td>
 					        <a title="Редагувати" target="_blank"
 					           href="{% url "students_edit" student.id %}">
-					          {{ student.name }}
+					          {{ student.first_name }}, {{ student.last_name }}
 					        </a>
 				        </td>
 				      	    {% for _ in monthrange %}
