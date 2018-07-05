@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 
 from datetime import datetime
+from calendar import monthrange
 
 
 def journal_list(request):
@@ -34,24 +35,29 @@ def journal_list(request):
 
 	if following_month:
 		(cur_month, cur_year) = following_month.split('_')
+		cur_month = int(cur_month)
+		cur_year = int(cur_year)
 
 		date = countDateDict({
-			'month' : int(cur_month),
-			'year' : int(cur_year)
+			'month' : cur_month,
+			'year' : cur_year
 			})
 
 	else:
 		today = datetime.today()
+		cur_month = today.month
+		cur_year = today.year
 		date = countDateDict({
-				'month': today.month,
-				'year' : today.year
+				'month': cur_month,
+				'year' : cur_year
 			})
 
+	days_in_month = monthrange(cur_year, cur_month)[1]
 
 	return render(request, 'students/journal.html', {'students': [{'name':'Віталій Подоба',
 			'id': 1},{'name':'Андрій Петров',
 			'id': 12},{'name': 'Андрій Подоба',
-			'id': 14}], 'date': date})
+			'id': 14}], 'date': date, 'monthrange': range(days_in_month)})
 
 def journal_student(request, sid):
 	return HttpResponse(f'<h1>Journal for student {sid}</h1>')

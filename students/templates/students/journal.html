@@ -19,7 +19,7 @@
 	    	таблиці.
 	    	<span id="ajax-progress-indicator">Йде збереження...</span>
 		</div>
-		
+
 		<p id="journal-nav" class="text-center">
 	  		<a href="?month={{ date.prev_month }}"
 	     		title="Попередній Місяць">&larr;</a>
@@ -37,8 +37,7 @@
 			    <tr>
 				    <th>#</th>
 				    <th>Студент</th>   
-				    {% with range=''|center:31 %}
-					    {% for _ in range %}
+					    {% for _ in monthrange %}
 						    <th class="day-header">
 						      <!-- TODO: translate day name -->
 							  {{ forloop.counter }}
@@ -46,7 +45,6 @@
 						      {{ day.day }} -->
 						    </th>
 					    {% endfor %}
-				    {% endwith %}
 			    </tr>
 		 	</thead>
 		 	<tbody>
@@ -66,9 +64,7 @@
 					          {{ student.name }}
 					        </a>
 				        </td>
-
-				        {% with range=''|center:31 %}
-				      	    {% for _ in range %}
+				      	    {% for _ in monthrange %}
 						        <td class="day-box">
 						        	<input type="checkbox" data-student-id="{{ student.id }}"
 						               data-date="{{ day.date }}" data-url="{{ student.update_url }}"
@@ -76,7 +72,6 @@
 						        </td>
 
 					        {% endfor %}
-			      	    {% endwith %}
 				    </tr>
 
 				{% endfor %}
