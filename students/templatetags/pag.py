@@ -7,6 +7,7 @@ register = template.Library()
 
 @register.inclusion_tag('../templates/students/pagination.html')
 def render_pagination(objects):
+
 	if isinstance(objects[0], Student):
 		return {
 			"objects"          : objects,

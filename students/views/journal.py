@@ -1,18 +1,24 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template import RequestContext, loader
 
 from datetime import datetime
 from calendar import monthrange
 
 from ..models.students import Student
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def journal_list(request):
 
 	months = ['Styczen', 'Luty', 'Marzec', 'Kwieczen', 'Mai', 
 				'Czerwiec', 'Lipiec', 'Sierpien', 'Wrzeszen', 'Padrziernik', 'Listopad', 'Grudzien']
+
 	following_month = request.GET.get('month','')
+	page = request.GET.get('page')
 
 
 	students = (Student.students.get_queryset().order_by('id')
@@ -61,7 +67,37 @@ def journal_list(request):
 
 	days_in_month = monthrange(cur_year, cur_month)[1]
 
-	print(days_in_month)
+	# print(days_in_month)
+
+	paginator = Paginator(students, 3)
+
+	if request.method == 'GET':
+		try:
+			students = paginator.page(page)
+		except PageNotAnInteger:
+			students = paginator.page(1)
+		except EmptyPage:
+			students = paginator.page(paginator.num_pages)
+	if request.method == 'POST':
+		load_more = request.POST.get('load_more', False)
+		ajax_page = request.POST.get('ajax_page')
+		if ajax_page and load_more:
+
+			ajax_page = int(ajax_page)
+			if ajax_page <= paginator.num_pages:
+				students = paginator.page(ajax_page)
+			else:
+				students = []
+		else:
+			students = []
+
+		students_page = list(map(lambda student: {
+								"id" 			: "%d" % student.id,
+								"first_name" 	: student.first_name if student.first_name else "",
+								"last_name"  	: student.last_name if student.last_name else ""
+							}, students))
+
+		return JsonResponse({'students': students_page})
 
 	return render(request, 'students/journal.html', 
 			{'students': students, 'date': date, 'monthrange': range(days_in_month)})

@@ -64,14 +64,13 @@
 					          {{ student.first_name }}, {{ student.last_name }}
 					        </a>
 				        </td>
-				      	    {% for _ in monthrange %}
-						        <td class="day-box">
-						        	<input type="checkbox" data-student-id="{{ student.id }}"
-						               data-date="{{ day.date }}" data-url="{{ student.update_url }}"
-						               value="1"{% if day.present %} checked="checked" {% endif %} />
-						        </td>
-
-					        {% endfor %}
+			      	    {% for _ in monthrange %}
+					        <td class="day-box">
+					        	<input type="checkbox" data-student-id="{{ student.id }}"
+					               data-date="{{ day.date }}" data-url="{{ student.update_url }}"
+					               value="1"{% if day.present %} checked="checked" {% endif %} />
+					        </td>
+				        {% endfor %}
 				    </tr>
 
 				{% endfor %}
@@ -81,4 +80,32 @@
 
 	{% endif %}
 
+	{% if students.has_other_pages and journal_url in request.path %}
+		<button class="load_more_button">load more</button>
+	{% endif %}
+
 {% endblock content %}
+
+{% block extra_js %}
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js">
+  </script>
+  <script src="{{ PORTAL_URL }}{% static 'js/journal/main.js' %}"></script>
+  <script type="text/html" id='student_tmpl'>
+      <tr style="display: none;">
+        <td><%= row_num %></td>
+        <td>
+	        <a title="Редагувати" target="_blank"
+	           href="{% url "students_edit" 0 %}">
+	          <%= student.first_name %>, <%= student.last_name %>
+	        </a>
+		</td>
+        {% for _ in monthrange %}
+	        <td class="day-box">
+	        	<input type="checkbox" data-student-id="<%= student.id %>"
+	               data-date="{{ day.date }}" data-url="<%= student.update_url %>"
+	               value="1"{% if day.present %} checked="checked" {% endif %} />
+	        </td>
+        {% endfor %}
+      </tr>
+  </script>
+{% endblock extra_js %}
