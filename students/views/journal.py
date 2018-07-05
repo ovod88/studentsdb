@@ -7,6 +7,7 @@ from datetime import datetime
 from calendar import monthrange
 
 from ..models.students import Student
+from ..models.groups import Group
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.decorators.csrf import csrf_exempt
@@ -18,12 +19,19 @@ def journal_list(request):
 				'Czerwiec', 'Lipiec', 'Sierpien', 'Wrzeszen', 'Padrziernik', 'Listopad', 'Grudzien']
 
 	following_month = request.GET.get('month','')
+	order = request.GET.get('order_by','')
 	page = request.GET.get('page')
+	reverse = request.GET.get('reverse', '')
 
-
-	students = (Student.students.get_queryset().order_by('id')
+	if order in ('last_name',):
+		students = (Student.students.get_queryset().order_by('last_name')
 								.values_list('id', 'first_name', 'last_name',  named=True))
 
+		if reverse == '1':
+			students = students.reverse()
+	else:
+		students = (Student.students.get_queryset().order_by('id')
+								.values_list('id', 'first_name', 'last_name',  named=True))
 
 	def countDateDict(date):
 		newDate = {}
@@ -99,8 +107,10 @@ def journal_list(request):
 
 		return JsonResponse({'students': students_page})
 
+	groups_string = list(map(lambda group: str(group), Group.objects.all()))
+
 	return render(request, 'students/journal.html', 
-			{'students': students, 'date': date, 'monthrange': range(days_in_month)})
+			{'students': students, 'date': date, 'monthrange': range(days_in_month), 'groups_all': groups_string})
 
 	# return render(request, 'students/journal.html', {'students': [{'name':'Віталій Подоба',
 	# 		'id': 1},{'name':'Андрій Петров',
