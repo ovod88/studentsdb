@@ -4,7 +4,8 @@ from django.http import JsonResponse
 from django.template import RequestContext, loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from ..models import Student, Group
+from ..models.students import Student
+from ..models.groups import Group
 # from ..MyPaginator import MyPaginator, PageNotAnInteger, EmptyPage
 
 import json

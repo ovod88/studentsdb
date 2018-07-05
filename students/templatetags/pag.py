@@ -1,5 +1,6 @@
 from django import template
-from ..models import Student, Group
+from ..models.students import Student
+from ..models.groups import Group
  
 register = template.Library()
 
