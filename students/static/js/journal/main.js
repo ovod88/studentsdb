@@ -10,8 +10,7 @@ $(function(){
 		full_url = window.location.href,
 		post_url = full_url.substring(full_url.lastIndexOf('/'), full_url.length),
         $daybox = $('.day-box > input'),
-        $alert_message = $('.alert'),
-        timer = 0;
+        $alert_message = $('.alert');
 
 	if($student_table.length) {
 		$button.on('click', function (e) {
@@ -81,27 +80,15 @@ $(function(){
 
     $daybox.change(function() {
 
-        if(timer) {
+            // $alert_message.stop(false, true).animate({
+            //     opacity: 1
+            // }, 400).delay(5000)
+            //        .animate({
+            //     opacity: 0
+            // }, 400);
 
-            clearTimeout(timer);
+            
 
-        } else {
-
-            $alert_message.show('slow');
-            timer = setTimeout(hideMessage, 10000);
-
-        }
-
-        // $alert_message.stop(true, false).slideDown('slow').delay(10000).slideUp('slow');
-        if(this.checked) {
-
-            // alert('checked');
-        
-        } else {
-
-            // alert('unchecked');
-
-        }
     });
 	
 });

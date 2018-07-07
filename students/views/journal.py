@@ -8,6 +8,7 @@ from calendar import monthrange
 
 from ..models.students import Student
 from ..models.groups import Group
+from ..models.journals import Journal
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.decorators.csrf import csrf_exempt
@@ -24,14 +25,12 @@ def journal_list(request):
 	reverse = request.GET.get('reverse', '')
 
 	if order in ('last_name',):
-		students = (Student.students.get_queryset().order_by('last_name')
-								.values_list('id', 'first_name', 'last_name',  named=True))
+		students = (Student.students.get_queryset().order_by('last_name'))
 
 		if reverse == '1':
 			students = students.reverse()
 	else:
-		students = (Student.students.get_queryset().order_by('id')
-								.values_list('id', 'first_name', 'last_name',  named=True))
+		students = (Student.students.get_queryset().order_by('id'))
 
 	def countDateDict(date):
 		newDate = {}
@@ -54,6 +53,17 @@ def journal_list(request):
 		# print('----------------')
 
 		return newDate 
+
+	def addWhenStudentIsPresent(students):
+		for student in students:
+			# days = (Journal.objects.all().filter(student=student, 
+			# 									   date__year=cur_year, date__month=cur_month)
+			# 								.dates('date', 'day'))
+			# present_days = list(map(lambda date: date.day, days))
+			# student.days(present_days)
+			days = student.journal_set.filter(date__year=cur_year, date__month=cur_month).dates('date','day')
+			student.days = list(map(lambda date: date.day, days))
+
 
 	if following_month:
 		(cur_month, cur_year) = following_month.split('_')
@@ -78,6 +88,11 @@ def journal_list(request):
 
 	# print(days_in_month)
 
+	addWhenStudentIsPresent(students)
+
+	# for student in students:
+	# 	print(student.days)
+
 	paginator = Paginator(students, 3)
 
 	if request.method == 'GET':
@@ -87,6 +102,18 @@ def journal_list(request):
 			students = paginator.page(1)
 		except EmptyPage:
 			students = paginator.page(paginator.num_pages)
+
+		groups_string = list(map(lambda group: str(group), Group.objects.all()))
+		
+		return render(request, 'students/journal.html', 
+			{
+				'students'   : students, 
+				'date'       : date, 
+				'monthrange' : range(1, days_in_month + 1), 
+				'groups_all' : groups_string
+			})
+
+
 	if request.method == 'POST':
 		load_more = request.POST.get('load_more', False)
 		ajax_page = request.POST.get('ajax_page')
@@ -103,15 +130,11 @@ def journal_list(request):
 		students_page = list(map(lambda student: {
 								"id" 			: "%d" % student.id,
 								"first_name" 	: student.first_name if student.first_name else "",
-								"last_name"  	: student.last_name if student.last_name else ""
+								"last_name"  	: student.last_name if student.last_name else "",
+								"days"          : student.days if student.days else []
 							}, students))
 
 		return JsonResponse({'students': students_page})
-
-	groups_string = list(map(lambda group: str(group), Group.objects.all()))
-
-	return render(request, 'students/journal.html', 
-			{'students': students, 'date': date, 'monthrange': range(days_in_month), 'groups_all': groups_string})
 
 	# return render(request, 'students/journal.html', {'students': [{'name':'Віталій Подоба',
 	# 		'id': 1},{'name':'Андрій Петров',
