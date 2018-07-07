@@ -107,11 +107,11 @@
 	          <%= student.first_name %>, <%= student.last_name %>
 	        </a>
 		</td>
-        {% for _ in monthrange %}
+        {% for day in monthrange %}
 	        <td class="day-box">
 	        	<input type="checkbox" data-student-id="<%= student.id %>"
-	               data-date="{{ day.date }}" data-url="<%= student.update_url %>"
-	               value="1"{% if day.present %} checked="checked" {% endif %} />
+	               data-date="{{ day }}-{{ date.month}}-{{ date.year }}" data-url="<%= student.update_url %>"
+	               value="1"<% if(student.days.includes({{ day }})) { %> checked="checked" <% } %> />
 	        </td>
         {% endfor %}
       </tr>

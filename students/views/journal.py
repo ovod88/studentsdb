@@ -134,7 +134,7 @@ def journal_list(request):
 								"days"          : student.days if student.days else []
 							}, students))
 
-		return JsonResponse({'students': students_page})
+		return JsonResponse({'students': students_page, 'date': date})
 
 	# return render(request, 'students/journal.html', {'students': [{'name':'Віталій Подоба',
 	# 		'id': 1},{'name':'Андрій Петров',
