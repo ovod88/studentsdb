@@ -9,7 +9,6 @@ $(function(){
 		row_num = row_count,
 		full_url = window.location.href,
 		post_url = full_url.substring(full_url.lastIndexOf('/'), full_url.length),
-        $daybox = $('.day-box > input'),
         $alert_message = $('.alert'),
         $ajax_message_indicator = $alert_message.find('#ajax-progress-indicator'),
         $ajax_message_indicator_error = $alert_message.find('#ajax-progress-indicator-error'),
@@ -51,8 +50,8 @@ $(function(){
 
                 			student_html = student_html.replace(/\/students\/(\d+)\/(\w+)/g, 
                 									'/students/' + student.id + '/$2');
-                			// student_html = student_html.replace(/\/journal\/(\d+)/g, 
-                			// 						'/journal/' + student.id);
+                			student_html = student_html.replace(/\/journal\/(\d+)/g, 
+                									'/journal/' + student.id);
 
                 			$(student_html).appendTo($('.table > tbody')).show('slow');
 
@@ -98,7 +97,6 @@ $(function(){
 
         } else if(method == 'DELETE') {
 
-            console.log('CALLED HERE' + date);
             ajax_settings = {
                 url      : url,
                 type     : "DELETE",
@@ -205,16 +203,12 @@ $(function(){
 
     }
 
-    $daybox.change(function() {
+    $('body').on('change', '.day-box > input', function() {
 
             let $this = $(this),
                 $date = $this.data('date'),
-                $url = $this.data('url');
+                $url = $this.data('url');  
 
-            // $ajax_message_indicator_error.finish();
-            // $ajax_message_indicator.finish();
-            // $ajax_message_indicator_nok.finish();
-            // $ajax_message_indicator_ok.finish();
             $ajax_message_indicator_error.fadeOut();
 
             if($alert_message.css('opacity') == 0) {
@@ -236,7 +230,7 @@ $(function(){
                 updateDaystatus($url, 'POST', $date);
 
             } else {
-                
+
                 updateDaystatus($url, 'DELETE', $date);
 
             };        
