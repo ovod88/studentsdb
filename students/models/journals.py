@@ -23,3 +23,8 @@ class Journal(models.Model):
 		return "{} - {},{} from {}".format(self.date, self.student.first_name, 
 										self.student.last_name, 
 										self.student.student_group.title)
+
+	def __repr__(self):
+		return "{} - {},{} from {}".format(self.date, self.student.first_name, 
+										self.student.last_name, 
+										self.student.student_group.title)

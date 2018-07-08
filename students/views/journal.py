@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse, QueryDict
 from django.template import RequestContext, loader
 
 from datetime import datetime
 from calendar import monthrange
+
+import json
 
 from ..models.students import Student
 from ..models.groups import Group
@@ -56,16 +57,12 @@ def journal_list(request):
 
 	def addWhenStudentIsPresent(students):
 		for student in students:
-			# days = (Journal.objects.all().filter(student=student, 
-			# 									   date__year=cur_year, date__month=cur_month)
-			# 								.dates('date', 'day'))
-			# present_days = list(map(lambda date: date.day, days))
-			# student.days(present_days)
+
 			days = student.journal_set.filter(date__year=cur_year, date__month=cur_month).dates('date','day')
 			student.days = list(map(lambda date: date.day, days))
 
-
 	if following_month:
+		
 		(cur_month, cur_year) = following_month.split('_')
 		cur_month = int(cur_month)
 		cur_year = int(cur_year)
@@ -144,9 +141,26 @@ def journal_list(request):
 @csrf_exempt
 def journal_student(request, sid):
 	if request.method == 'POST':
-		print('POST came ' + sid)
+
+		date_string = request.POST.get('date')
+		date = datetime.strptime(date_string, '%d-%m-%Y')
+		journal = Journal(student=Student.students.get(pk=sid), date=date)
+		
+		try:
+			journal.save()
+		except Exception as e:
+			return JsonResponse({'status': 'nok'})
 
 	if  request.method == 'DELETE':
-		print('DELETE came ' + sid)
+
+		delete_params = QueryDict(request.body)
+		date_string = delete_params.dict()['date']
+		date = datetime.strptime(date_string, '%d-%m-%Y')
+		journal = Journal.objects.filter(student=Student.students.get(pk=sid), date=date)
+		
+		try:
+			journal.delete()
+		except Exception as e:
+			return JsonResponse({'status': 'nok'})
 
 	return JsonResponse({'status': 'ok'})

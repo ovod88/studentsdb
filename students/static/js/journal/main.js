@@ -98,6 +98,7 @@ $(function(){
 
         } else if(method == 'DELETE') {
 
+            console.log('CALLED HERE' + date);
             ajax_settings = {
                 url      : url,
                 type     : "DELETE",
@@ -136,10 +137,24 @@ $(function(){
             },
                 function (errorXHR) {
 
-                    stopPulsateMessage();
-                    $ajax_message_indicator_error.show('slow');
+                    if(ajax_response_reaction_timeout) {
 
-                });
+                        clearTimeout(ajax_response_reaction_timeout);
+
+                    }
+
+
+                    ajax_response_reaction_timeout = setTimeout(function() {
+
+                        stopPulsateMessage();
+                        $ajax_message_indicator.fadeOut();
+                        $ajax_message_indicator_error.text('Error returned with code ' + errorXHR.status).fadeIn('slow');
+
+                    }, 1500);
+
+                }
+                
+            );
 
     }
 
@@ -196,10 +211,11 @@ $(function(){
                 $date = $this.data('date'),
                 $url = $this.data('url');
 
-            $ajax_message_indicator_error.finish();
-            $ajax_message_indicator.finish();
-            $ajax_message_indicator_nok.finish();
-            $ajax_message_indicator_ok.finish();
+            // $ajax_message_indicator_error.finish();
+            // $ajax_message_indicator.finish();
+            // $ajax_message_indicator_nok.finish();
+            // $ajax_message_indicator_ok.finish();
+            $ajax_message_indicator_error.fadeOut();
 
             if($alert_message.css('opacity') == 0) {
 
@@ -220,7 +236,7 @@ $(function(){
                 updateDaystatus($url, 'POST', $date);
 
             } else {
-
+                
                 updateDaystatus($url, 'DELETE', $date);
 
             };        
