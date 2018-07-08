@@ -3,6 +3,12 @@
 	color: green;
 }
 
+#ajax-progress-indicator-ok {
+	display: none;
+	color: green;
+}
+
 #ajax-progress-indicator-error {
+	display: none;
 	color: red;
 }

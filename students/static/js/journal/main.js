@@ -13,6 +13,7 @@ $(function(){
         $alert_message = $('.alert'),
         $ajax_message_indicator = $alert_message.find('#ajax-progress-indicator'),
         $ajax_message_indicator_error = $alert_message.find('#ajax-progress-indicator-error'),
+        $ajax_message_indicator_ok = $alert_message.find('#ajax-progress-indicator-ok'),
         pulsateInterval;
 
 	if($student_table.length) {
@@ -97,7 +98,7 @@ $(function(){
 
             ajax_settings = {
                 url      : url,
-                type   : "DELETE",
+                type     : "DELETE",
                 data     : {"date" : date},
                 dataType : "json"
             }
@@ -108,14 +109,21 @@ $(function(){
 
                     if(data.status == 'ok') {
 
-                        $alert_message.stop(false, true)
-                                      .animate({
-                                                    opacity: 0
-                                                }, 400, function() {
+                        setTimeout(function() { 
+                            $ajax_message_indicator.hide(2000, function() {
 
-                                                    stopPulsateMessage($ajax_message_indicator);
+                                stopPulsateMessage(this);
+                                $ajax_message_indicator_ok.show('slow', function() {
 
-                                                });
+                                    $alert_message.stop(false, true).delay(5000)
+                                              .animate({
+                                                        opacity: 0
+                                                    }, 1000);
+
+                                });
+
+                            });
+                        }, 2000);
 
                     }
 
@@ -123,9 +131,7 @@ $(function(){
                 function (errorXHR) {
 
                     stopPulsateMessage($ajax_message_indicator);
-                    $ajax_message_indicator_error.animate({
-                                                    opacity: 1
-                                                }, 400);
+                    $ajax_message_indicator_error.show('slow');
 
                 });
 
@@ -177,7 +183,7 @@ $(function(){
                                 }, 200, function() {
 
                                     startPulsateSaveMessage($ajax_message_indicator);
-                                    // updateDaystatus($url, 'POST', $date);
+                                    updateDaystatus($url, 'POST', $date);
 
                                 });
 
@@ -190,7 +196,7 @@ $(function(){
                                 }, 200, function() {
 
                                     startPulsateSaveMessage($ajax_message_indicator);
-                                    // updateDaystatus($url, 'POST', $date);
+                                    updateDaystatus($url, 'DELETE', $date);
 
                                 });
 

@@ -141,8 +141,12 @@ def journal_list(request):
 	# 		'id': 12},{'name': 'Андрій Подоба',
 	# 		'id': 14}], 'date': date, 'monthrange': range(days_in_month)})
 
+@csrf_exempt
 def journal_student(request, sid):
 	if request.method == 'POST':
-		print('POST came' + sid)
+		print('POST came ' + sid)
 
-		return JsonResponse({'status': 'ok'})
+	if  request.method == 'DELETE':
+		print('DELETE came ' + sid)
+
+	return JsonResponse({'status': 'ok'})

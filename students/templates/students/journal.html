@@ -24,7 +24,8 @@
 	    	Зміни в журнал зберігаються автоматично при кожному кліку в клітинці
 	    	таблиці.
 	    	<span id="ajax-progress-indicator">Йде збереження...</span>
-	    	<span id="ajax-progress-indicator-error" style="opacity: 0">Error returned from server</span>
+	    	<span id="ajax-progress-indicator-ok">Saved...</span>
+	    	<span id="ajax-progress-indicator-error">Error returned from server</span>
 		</div>
 		{% with order_by=request.GET.order_by reverse=request.GET.reverse %}
 			<p id="journal-nav" class="text-center">
