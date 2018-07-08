@@ -1,5 +1,10 @@
-#ajax-progress-indicator {
+.alert {
 	opacity: 0;
+}
+
+
+#ajax-progress-indicator {
+	display: inline-block;
 	color: green;
 }
 

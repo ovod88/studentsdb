@@ -109,20 +109,26 @@ $(function(){
 
                     if(data.status == 'ok') {
 
-                        setTimeout(function() { 
-                            $ajax_message_indicator.hide(2000, function() {
+                        setTimeout(function() {
 
-                                stopPulsateMessage(this);
-                                $ajax_message_indicator_ok.show('slow', function() {
+                            stopPulsateMessage();
+                            $ajax_message_indicator.fadeOut(1000, function() {
 
-                                    $alert_message.stop(false, true).delay(5000)
+                                $ajax_message_indicator_ok.fadeIn(1000, function() {
+
+                                    $alert_message.stop(false, true).delay(1000)
                                               .animate({
                                                         opacity: 0
-                                                    }, 1000);
+                                                    }, 1000, function() {
+
+                                                        $ajax_message_indicator_ok.fadeOut();
+
+                                                    });
 
                                 });
 
                             });
+
                         }, 2000);
 
                     }
@@ -141,17 +147,13 @@ $(function(){
 
         pulsateInterval = setInterval(function() {
 
-            if (elem.css('opacity') == 0) {
+            if (elem.is(':visible')) {
 
-                elem.stop(false, true).animate({
-                                opacity: 1
-                            }, 400)
+                elem.stop(false, true).fadeOut(400);
 
             } else {
 
-                elem.stop(false, true).animate({
-                                opacity: 0
-                            }, 400)
+                elem.stop(false, true).fadeIn(400);
 
             }   
 
@@ -159,7 +161,7 @@ $(function(){
 
     }
 
-    function stopPulsateMessage(el) {
+    function stopPulsateMessage() {
 
         clearInterval(pulsateInterval);
 
@@ -171,8 +173,8 @@ $(function(){
                 $date = $this.data('date'),
                 $url = $this.data('url');
 
-            console.log($date);
-            console.log($url);
+            // console.log($date);
+            // console.log($url);
 
             if($this.is(':checked')) {
 
@@ -180,7 +182,7 @@ $(function(){
                 $alert_message.stop(false, true)
                               .animate({
                                     opacity: 1
-                                }, 200, function() {
+                                }, 400, function() {
 
                                     startPulsateSaveMessage($ajax_message_indicator);
                                     updateDaystatus($url, 'POST', $date);
@@ -193,7 +195,7 @@ $(function(){
                 $alert_message.stop(false, true)
                               .animate({
                                     opacity: 1
-                                }, 200, function() {
+                                }, 400, function() {
 
                                     startPulsateSaveMessage($ajax_message_indicator);
                                     updateDaystatus($url, 'DELETE', $date);
