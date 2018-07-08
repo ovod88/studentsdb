@@ -14,7 +14,9 @@ $(function(){
         $ajax_message_indicator = $alert_message.find('#ajax-progress-indicator'),
         $ajax_message_indicator_error = $alert_message.find('#ajax-progress-indicator-error'),
         $ajax_message_indicator_ok = $alert_message.find('#ajax-progress-indicator-ok'),
-        pulsateInterval;
+        $ajax_message_indicator_nok = $alert_message.find('#ajax-progress-indicator-nok'),
+        pulsateInterval,
+        ajax_response_reaction_timeout = null;
 
 	if($student_table.length) {
 		$button.on('click', function (e) {
@@ -107,39 +109,60 @@ $(function(){
 
         $.ajax(ajax_settings).then(function (data){
 
-                    if(data.status == 'ok') {
+                if(ajax_response_reaction_timeout) {
 
-                        setTimeout(function() {
+                    clearTimeout(ajax_response_reaction_timeout);
 
-                            stopPulsateMessage();
-                            $ajax_message_indicator.fadeOut(1000, function() {
+                }
 
-                                $ajax_message_indicator_ok.fadeIn(1000, function() {
+                if(data.status == 'ok') {
 
-                                    $alert_message.stop(false, true).delay(1000)
-                                              .animate({
-                                                        opacity: 0
-                                                    }, 1000, function() {
+                    ajax_response_reaction_timeout = setTimeout(function() {
+                    
+                        startIndicatorMessageTimeout($ajax_message_indicator_ok)
 
-                                                        $ajax_message_indicator_ok.fadeOut();
+                    }, 1500);
 
-                                                    });
+                } else {
 
-                                });
+                    ajax_response_reaction_timeout = setTimeout(function() {
+                    
+                        startIndicatorMessageTimeout($ajax_message_indicator_nok)
 
-                            });
+                    }, 1500);
 
-                        }, 2000);
+                }
 
-                    }
-
-                },
+            },
                 function (errorXHR) {
 
-                    stopPulsateMessage($ajax_message_indicator);
+                    stopPulsateMessage();
                     $ajax_message_indicator_error.show('slow');
 
                 });
+
+    }
+
+    function startIndicatorMessageTimeout(elem) {
+
+        stopPulsateMessage();
+
+        $ajax_message_indicator.fadeOut(300, function() {
+
+            elem.fadeIn(300, function() {
+
+                $alert_message.delay(200)
+                          .animate({
+                                    opacity: 0
+                                }, 300, function() {
+
+                                    elem.fadeOut();
+
+                                });
+
+            });
+
+        });
 
     }
 
@@ -149,15 +172,15 @@ $(function(){
 
             if (elem.is(':visible')) {
 
-                elem.stop(false, true).fadeOut(400);
+                elem.fadeOut(300);
 
             } else {
 
-                elem.stop(false, true).fadeIn(400);
+                elem.fadeIn(300);
 
             }   
 
-        }, 500);
+        }, 300);
 
     }
 
@@ -173,46 +196,34 @@ $(function(){
                 $date = $this.data('date'),
                 $url = $this.data('url');
 
-            // console.log($date);
-            // console.log($url);
+            $ajax_message_indicator_error.finish();
+            $ajax_message_indicator.finish();
+            $ajax_message_indicator_nok.finish();
+            $ajax_message_indicator_ok.finish();
 
-            if($this.is(':checked')) {
+            if($alert_message.css('opacity') == 0) {
 
-                console.log('CHECKED');
-                $alert_message.stop(false, true)
-                              .animate({
-                                    opacity: 1
-                                }, 400, function() {
+                $alert_message.animate({opacity: 1}, 400, function() {
 
-                                    startPulsateSaveMessage($ajax_message_indicator);
-                                    updateDaystatus($url, 'POST', $date);
+                    startPulsateSaveMessage($ajax_message_indicator);
 
-                                });
+                }); 
 
             } else {
 
-                console.log('UNCHECKED');
-                $alert_message.stop(false, true)
-                              .animate({
-                                    opacity: 1
-                                }, 400, function() {
-
-                                    startPulsateSaveMessage($ajax_message_indicator);
-                                    updateDaystatus($url, 'DELETE', $date);
-
-                                });
-
+                clearTimeout(ajax_response_reaction_timeout);
 
             }
 
-            // $alert_message.stop(false, true).animate({
-            //     opacity: 1
-            // }, 400).delay(5000)
-            //        .animate({
-            //     opacity: 0
-            // }, 400);
+            if($this.is(':checked')) {
 
-            
+                updateDaystatus($url, 'POST', $date);
+
+            } else {
+
+                updateDaystatus($url, 'DELETE', $date);
+
+            };        
 
     });
 	

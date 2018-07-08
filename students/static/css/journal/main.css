@@ -4,7 +4,7 @@
 
 
 #ajax-progress-indicator {
-	display: inline-block;
+	display: none;
 	color: green;
 }
 
@@ -13,7 +13,7 @@
 	color: green;
 }
 
-#ajax-progress-indicator-error {
+#ajax-progress-indicator-nok, #ajax-progress-indicator-error {
 	display: none;
 	color: red;
 }
