@@ -142,4 +142,7 @@ def journal_list(request):
 	# 		'id': 14}], 'date': date, 'monthrange': range(days_in_month)})
 
 def journal_student(request, sid):
-	return HttpResponse(f'<h1>Journal for student {sid}</h1>')
+	if request.method == 'POST':
+		print('POST came' + sid)
+
+		return JsonResponse({'status': 'ok'})

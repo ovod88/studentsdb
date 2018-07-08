@@ -1,0 +1,8 @@
+#ajax-progress-indicator {
+	opacity: 0;
+	color: green;
+}
+
+#ajax-progress-indicator-error {
+	color: red;
+}

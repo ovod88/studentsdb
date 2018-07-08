@@ -10,7 +10,10 @@ $(function(){
 		full_url = window.location.href,
 		post_url = full_url.substring(full_url.lastIndexOf('/'), full_url.length),
         $daybox = $('.day-box > input'),
-        $alert_message = $('.alert');
+        $alert_message = $('.alert'),
+        $ajax_message_indicator = $alert_message.find('#ajax-progress-indicator'),
+        $ajax_message_indicator_error = $alert_message.find('#ajax-progress-indicator-error'),
+        pulsateInterval;
 
 	if($student_table.length) {
 		$button.on('click', function (e) {
@@ -78,7 +81,121 @@ $(function(){
 
     }
 
+    function updateDaystatus(url, method, date) {
+        let ajax_settings = {};
+
+        if(method == 'POST') {
+
+            ajax_settings = {
+                url      : url,
+                method   : "POST",
+                data     : {"date" : date},
+                dataType : "json"
+            }
+
+        } else if(method == 'DELETE') {
+
+            ajax_settings = {
+                url      : url,
+                type   : "DELETE",
+                data     : {"date" : date},
+                dataType : "json"
+            }
+
+        }
+
+        $.ajax(ajax_settings).then(function (data){
+
+                    if(data.status == 'ok') {
+
+                        $alert_message.stop(false, true)
+                                      .animate({
+                                                    opacity: 0
+                                                }, 400, function() {
+
+                                                    stopPulsateMessage($ajax_message_indicator);
+
+                                                });
+
+                    }
+
+                },
+                function (errorXHR) {
+
+                    stopPulsateMessage($ajax_message_indicator);
+                    $ajax_message_indicator_error.animate({
+                                                    opacity: 1
+                                                }, 400);
+
+                });
+
+    }
+
+    function startPulsateSaveMessage(elem) {
+
+        pulsateInterval = setInterval(function() {
+
+            if (elem.css('opacity') == 0) {
+
+                elem.stop(false, true).animate({
+                                opacity: 1
+                            }, 400)
+
+            } else {
+
+                elem.stop(false, true).animate({
+                                opacity: 0
+                            }, 400)
+
+            }   
+
+        }, 500);
+
+    }
+
+    function stopPulsateMessage(el) {
+
+        clearInterval(pulsateInterval);
+
+    }
+
     $daybox.change(function() {
+
+            let $this = $(this),
+                $date = $this.data('date'),
+                $url = $this.data('url');
+
+            console.log($date);
+            console.log($url);
+
+            if($this.is(':checked')) {
+
+                console.log('CHECKED');
+                $alert_message.stop(false, true)
+                              .animate({
+                                    opacity: 1
+                                }, 200, function() {
+
+                                    startPulsateSaveMessage($ajax_message_indicator);
+                                    // updateDaystatus($url, 'POST', $date);
+
+                                });
+
+            } else {
+
+                console.log('UNCHECKED');
+                $alert_message.stop(false, true)
+                              .animate({
+                                    opacity: 1
+                                }, 200, function() {
+
+                                    startPulsateSaveMessage($ajax_message_indicator);
+                                    // updateDaystatus($url, 'POST', $date);
+
+                                });
+
+
+            }
 
             // $alert_message.stop(false, true).animate({
             //     opacity: 1
