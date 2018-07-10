@@ -19,6 +19,8 @@ from django.conf.urls.static import static
 from students.views.students import *
 from students.views.groups import *
 from students.views.journal import *
+from students.views.examins import *
+from students.views.professors import *
 
 from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
 
@@ -37,6 +39,14 @@ urlpatterns = [
 
     path(r'^journal$', journal_list, name='journal'),
     path(r'^journal/(?P<sid>\d+)$', journal_student, name='journal_student'),
+
+    path(r'^examins$', examins_list, name='examins'),
+    path(r'^examins/(?P<eid>\d+)/edit$', examins_edit, name='examins_edit'),
+    path(r'^examins/add$', examins_add, name='examins_add'),
+    path(r'^examins/(?P<eid>\d+)/delete$', examins_delete, name='examins_delete'),
+
+    path(r'^professors$', professors_list, name='professors'),
+    path(r'^professors/(?P<pid>\d+)/edit$', professors_edit, name='professors_edit'),
 ] 
 
 if DEBUG:

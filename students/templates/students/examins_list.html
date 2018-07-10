@@ -1,0 +1,56 @@
+{% extends "students/base.html" %}
+{% load static %}
+
+{% block meta_title %}- Екзаміни{% endblock meta_title %}
+
+{% block title %}База Екзаміни{% endblock title %}
+
+{% block content %}
+
+	<a href="{% url 'examins_add' %}" class="btn btn-primary">Додати Екзамін</a>
+
+	{% if examins %}
+	    <table class="table table-hover table-striped">
+			<thead>
+	          <tr>
+	            <th>#</th>
+	            <th>Назва</th>
+	            <th>Дата</th>
+	            <th>
+	              <a href="{% url "professors" %}">Викладач</a>
+	            </th>
+	            <th>
+	              <a href="{% url "groups" %}">Група</a>
+	            </th>
+	            <th>Дії</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	        	{% for examin in examins %}
+			        <tr>
+			          <td>{{ forloop.counter }}</td>
+			          <td><a href="{% url 'examins_edit' examin.id%}">{{ examin.title }}</a></td>
+			          <td>{{ examin.date }}</td>
+			          <td><a href="{% url 'professors_edit' examin.examin_professor.id%}">{{ examin.examin_professor }}</a></td>
+			          <td><a href="{% url 'groups_edit' examin.examin_group.id%}">{{ examin.examin_group }}</a></td>
+			          <td>
+			            <div class="btn-group">
+			              <button type="button" class="btn btn-default dropdown-toggle"
+			                      data-toggle="dropdown">Дія
+			                <span class="caret"></span>
+			              </button>
+			              <ul class="dropdown-menu" role="menu">
+			                <li><a href="{% url 'examins_edit' examin.id%}">Редагувати</a></li>
+			                <li><a href="{% url 'examins_delete' examin.id%}">Видалити</a></li>
+			              </ul>
+			            </div>
+			          </td>
+			        </tr>
+	        	{% endfor %}
+	      </tbody>
+      </table>
+	{% else %}
+    	<p>Поки немає у базі.</p>
+  	{% endif %}
+
+{% endblock content %}
