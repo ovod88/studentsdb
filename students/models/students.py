@@ -88,6 +88,11 @@ class Student(models.Model):
 		on_delete=models.PROTECT)#It wont allow group to be deleted while there is at least one student
 								#pointing to it
 
+	student_examin = models.ManyToManyField("Examin",
+		verbose_name=u"Екзамін",
+		blank="False",
+		through="ExaminResult")
+
 	def __str__(self):
 		return "{},{},{},{} in group {}".format(self.first_name, self.last_name, 
 										self.ticket, self.id, self.student_group)
