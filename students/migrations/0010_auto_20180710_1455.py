@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import students.models.examin_results
+import students.models.examins_results
 
 
 class Migration(migrations.Migration):
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             name='ExaminResult',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('grade', students.models.examin_results.PositiveSmallIntegerFieldLimit()),
+                ('grade', students.models.examins_results.PositiveSmallIntegerFieldLimit()),
                 ('examin', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='students.Examin', verbose_name='Екзамін')),
                 ('student', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='students.Student', verbose_name='Студент')),
             ],

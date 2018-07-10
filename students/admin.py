@@ -4,7 +4,7 @@ from .models.groups import Group
 from .models.journals import Journal
 from .models.professors import Professor
 from .models.examins import Examin
-from .models.examin_results import ExaminResult
+from .models.examins_results import ExaminResult
 from django import forms
 
 
