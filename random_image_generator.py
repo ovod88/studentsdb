@@ -1,7 +1,8 @@
 import os, numpy, time
 from PIL import Image
+from studentsdb.settings import MEDIA_ROOT
  
-def create_and_save_image(path, filename, width = 30, height = 30, num_of_images = 1):
+def create_and_save_image(path=MEDIA_ROOT, filename='default.png', width = 30, height = 30, num_of_images = 1):
     width = int(width)
     height = int(height)
     num_of_images = int(num_of_images)

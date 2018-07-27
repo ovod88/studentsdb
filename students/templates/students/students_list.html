@@ -7,9 +7,10 @@
 {% block title %}База Студентів{% endblock title %}
 
 {% block content %}
-
+  
+  {% csrf_token %}
   <a href="{% url 'students_add' %}" class="btn btn-primary">Додати Студента</a>
-          
+
   {% if students %}
           <!-- Start Students Listing -->
     <table class="table table-hover table-striped">

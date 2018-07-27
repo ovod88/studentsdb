@@ -13,6 +13,8 @@ def groups_list(request):
 
 	# import pdb;pdb.set_trace()
 
+	groups_all = Group.objects.all()
+
 	if order in ('title', 'leader'):
 		if order == 'leader':
 			groups = groups_all.order_by("leader__last_name")

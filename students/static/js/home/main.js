@@ -43,7 +43,9 @@ $(function(){
 			$.ajax({	
 					url      : url,
                     method   : "POST",
-                    data     : {"load_more": true, "ajax_page": ajax_page},
+                    data     : {"load_more": true, "ajax_page": ajax_page,
+                				'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                				},
                     dataType : "json"
                 }).then(function (data){
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.http import JsonResponse
 from django.template import RequestContext, loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -11,7 +12,6 @@ from ..models.groups import Group
 import json
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
 def students_list3(request):
 	# students = (
 	# 	{'id': 1,
@@ -114,7 +114,66 @@ def students_list3(request):
 	return render(request, 'students/students_list.html', {'students': students})
 
 def students_add(request):
-	return render(request, 'students/students_add.html', {})
+	groups = Group.objects.order_by('id')
+
+	if request.method == 'POST':
+		if request.POST.get('add_button') is not None:
+			#TODO VALIDATION HERE
+			errors = {}
+
+			data = {'middle_name': request.POST.get('middle_name'),
+					'notes': request.POST.get('notes')}
+
+			first_name = request.POST.get('first_name', '').strip()
+			if not first_name:
+				errors['first_name'] = u"Ім’я є обов’язковим"
+			else:
+				data['first_name'] = first_name
+
+			last_name = request.POST.get('last_name', '').strip()
+			if not last_name:
+				errors['last_name'] = u"Прізвище є обов’язковим"
+			else:
+				data['last_name'] = last_name
+			
+			birthday = request.POST.get('birthday', '').strip()
+			if not birthday:
+				errors['birthday'] = u"Дата народження є обов’язковою"
+			else:
+				data['birthday'] = birthday
+
+			ticket = request.POST.get('ticket', '').strip()
+			if not ticket:
+				errors['ticket'] = u"Номер білета є обов’язковим"
+			else:
+				data['ticket'] = ticket
+
+			student_group = request.POST.get('student_group', '').strip()
+			if not student_group:
+				errors['student_group'] = u"Оберіть групу для студента"
+			else:
+				data['student_group'] = Group.objects.get(pk=student_group)
+
+			photo = request.FILES.get('photo')
+			if photo:
+				data['photo'] = photo		
+
+			if not errors:
+
+				student = Student(**data)
+				student.save()
+
+				return HttpResponseRedirect(reverse('home'))
+			else:
+				return render(request, 'students/students_add.html', {
+					'errors' : errors,
+					'groups' : groups
+				})
+		elif request.POST.get('cancel_button') is not None:
+			# redirect to home page on cancel button
+			return HttpResponseRedirect(reverse('home'))
+	
+	return render(request, 'students/students_add.html', {'groups' : groups})
 
 def students_edit(request, sid):
 	return HttpResponse(f'<h1>Edit Student {sid}</h1>')

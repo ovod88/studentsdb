@@ -13,7 +13,8 @@
 {% endblock extra_css %}
 
 {% block content %}
-
+	
+	{% csrf_token %}
 	{% if not students %}
 		<div class="alert alert-warning">
 	    	Поки немає жодного студента в базі. Будь-ласка,

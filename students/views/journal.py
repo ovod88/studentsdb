@@ -14,7 +14,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
 def journal_list(request):
 
 	months = ['Styczen', 'Luty', 'Marzec', 'Kwieczen', 'Mai', 
@@ -135,7 +134,6 @@ def journal_list(request):
 	# 		'id': 12},{'name': 'Андрій Подоба',
 	# 		'id': 14}], 'date': date, 'monthrange': range(days_in_month)})
 
-@csrf_exempt
 def journal_student(request, sid):
 	if request.method == 'POST':
 
