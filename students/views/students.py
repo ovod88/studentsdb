@@ -9,6 +9,7 @@ from datetime import datetime
 
 from ..models.students import Student
 from ..models.groups import Group
+from PIL import Image
 # from ..MyPaginator import MyPaginator, PageNotAnInteger, EmptyPage
 
 import json
@@ -166,8 +167,23 @@ def students_add(request):
 					data['student_group'] = groups[0]
 
 			photo = request.FILES.get('photo')
+
 			if photo:
-				data['photo'] = photo		
+
+				VALID_IMAGE_EXTENSIONS = [
+	    			".jpg",
+	    			".jpeg",
+	    			".png",
+	    			".gif",
+				]
+
+				if any([str(photo).endswith(e) for e in VALID_IMAGE_EXTENSIONS]):
+					try:
+						im=Image.open(photo)
+					except IOError as e:
+						errors['photo'] = 'Not a valid image format'
+					else:
+						data['photo'] = photo		
 
 			if not errors:
 
