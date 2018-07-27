@@ -7,9 +7,7 @@ from ..models.groups import Group
 
 def professors_list(request):
 
-	groups_all = Group.objects.get_queryset().order_by('id')
-
-	return render(request, 'students/professors_list.html', {'groups_all': groups_all})
+	return render(request, 'students/professors_list.html', {})
 
 # def examins_add(request):
 # 	return HttpResponse('<h1>Examin Add Form</h1>')

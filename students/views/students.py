@@ -110,13 +110,11 @@ def students_list3(request):
 
 		return JsonResponse({'students': students_page})
 	
-	groups_string = list(map(lambda group: str(group), Group.objects.all()))
 	# import pdb;pdb.set_trace()
-	return render(request, 'students/students_list.html', {'students': students, 'groups_all': groups_string})
-
+	return render(request, 'students/students_list.html', {'students': students})
 
 def students_add(request):
-	return HttpResponse('<h1>Student Add Form</h1>')
+	return render(request, 'students/students_add.html', {})
 
 def students_edit(request, sid):
 	return HttpResponse(f'<h1>Edit Student {sid}</h1>')

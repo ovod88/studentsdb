@@ -11,7 +11,6 @@ def groups_list(request):
 	page = request.GET.get('page')
 	reverse = request.GET.get('reverse', '')
 
-	groups_all = Group.objects.get_queryset().order_by('id')
 	# import pdb;pdb.set_trace()
 
 	if order in ('title', 'leader'):
@@ -26,7 +25,7 @@ def groups_list(request):
 	if not request.GET or (not order and not reverse):
 		# print('CALLED DEFAULT ORDER')
 		# print(type(students))
-		groups = groups_all.order_by("title")
+		groups = Group.objects.order_by("title")
 
 	paginator = Paginator(groups, 3)
 
@@ -38,7 +37,7 @@ def groups_list(request):
 		groups = paginator.page(paginator.num_pages)
 
 
-	return render(request, 'students/groups_list.html', {'groups': groups, 'groups_all': groups_all})
+	return render(request, 'students/groups_list.html', {'groups': groups})
 
 def groups_add(request):
 	return HttpResponse('<h1>Group Add Form</h1>')

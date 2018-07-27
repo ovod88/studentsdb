@@ -8,10 +8,9 @@ from ..models.examins import Examin
 
 def examins_list(request):
 
-	groups_all = Group.objects.get_queryset().order_by('id')
 	examins = Examin.objects.get_queryset().order_by('id')
 
-	return render(request, 'students/examins_list.html', {'examins': examins, 'groups_all': groups_all})
+	return render(request, 'students/examins_list.html', {'examins': examins})
 
 def examins_add(request):
 	return HttpResponse('<h1>Examin Add Form</h1>')

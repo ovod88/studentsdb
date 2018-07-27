@@ -99,15 +99,12 @@ def journal_list(request):
 			students = paginator.page(1)
 		except EmptyPage:
 			students = paginator.page(paginator.num_pages)
-
-		groups_string = list(map(lambda group: str(group), Group.objects.all()))
 		
 		return render(request, 'students/journal.html', 
 			{
 				'students'   : students, 
 				'date'       : date, 
 				'monthrange' : range(1, days_in_month + 1), 
-				'groups_all' : groups_string
 			})
 
 
