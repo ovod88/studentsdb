@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.template import RequestContext, loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import datetime
+
 
 from ..models.students import Student
 from ..models.groups import Group
@@ -140,7 +142,12 @@ def students_add(request):
 			if not birthday:
 				errors['birthday'] = u"Дата народження є обов’язковою"
 			else:
-				data['birthday'] = birthday
+				try:
+					datetime.strptime(birthday, '%Y-%m-%d')
+				except Exception:
+					errors['birthday'] = u"Введіть коректний формат дати (напр. 1984-39 12-30)"
+				else:
+					data['birthday'] = birthday
 
 			ticket = request.POST.get('ticket', '').strip()
 			if not ticket:
@@ -152,7 +159,11 @@ def students_add(request):
 			if not student_group:
 				errors['student_group'] = u"Оберіть групу для студента"
 			else:
-				data['student_group'] = Group.objects.get(pk=student_group)
+				groups = Group.objects.filter(pk=student_group)
+				if len(groups) != 1:
+					errors['student_group'] = u"Оберіть коректну групу"
+				else:
+					data['student_group'] = groups[0]
 
 			photo = request.FILES.get('photo')
 			if photo:
