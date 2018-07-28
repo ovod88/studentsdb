@@ -162,7 +162,7 @@ def students_add(request):
 				errors['student_group'] = u"Оберіть групу для студента"
 			else:
 				groups_selected = Group.objects.filter(pk=student_group)
-				if len(groups) != 1:
+				if len(groups_selected) != 1:
 					errors['student_group'] = u"Оберіть коректну групу"
 				else:
 					data['student_group'] = groups_selected[0]
@@ -194,7 +194,7 @@ def students_add(request):
 				student = Student(**data)
 				student.save()
 
-				return HttpResponseRedirect(reverse('home'))
+				return HttpResponseRedirect(u'%s?status_message=Студента %s успішно додано!' % (reverse('home'), student))
 			else:
 				return render(request, 'students/students_add.html', {
 					'errors' : errors,
@@ -202,7 +202,7 @@ def students_add(request):
 				})
 		elif request.POST.get('cancel_button') is not None:
 			# redirect to home page on cancel button
-			return HttpResponseRedirect(reverse('home'))
+			return HttpResponseRedirect(u'%s?status_message=Додавання студента скасовано!' % reverse('home'))
 	
 	return render(request, 'students/students_add.html', {'groups' : groups})
 
