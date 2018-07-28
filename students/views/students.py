@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.template import RequestContext, loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
+import os
 
 
 from ..models.students import Student
@@ -177,16 +178,19 @@ def students_add(request):
 	    			".gif",
 				]
 
-				if any([str(photo).endswith(e) for e in VALID_IMAGE_EXTENSIONS]):
+				if not any([str(photo).lower().endswith(e) for e in VALID_IMAGE_EXTENSIONS]):
+					errors['photo'] = 'Not a valid image extension (supported jpg, jpeg, png, gif)'
+				elif photo._size > 2097152:
+					errors['photo'] = 'Please upload image smaller than 2mB'
+				else:
 					try:
-						im=Image.open(photo)
+						im=Image.open(photo).verify()
 					except IOError as e:
-						errors['photo'] = 'Not a valid image format'
+						errors['photo'] = 'Not a valid image file'
 					else:
-						data['photo'] = photo		
+						data['photo'] = photo			
 
 			if not errors:
-
 				student = Student(**data)
 				student.save()
 
