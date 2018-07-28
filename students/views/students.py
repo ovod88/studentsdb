@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from django.template import RequestContext, loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
+from django.contrib import messages
+from django.contrib.messages import get_messages
 import os
 
 
@@ -15,6 +17,11 @@ from PIL import Image
 
 import json
 from django.views.decorators.csrf import csrf_exempt
+
+def clear_messages(request):
+	storage = get_messages(request)
+	for message in storage:#removing all messages
+		pass
 
 def students_list3(request):
 	# students = (
@@ -194,15 +201,30 @@ def students_add(request):
 				student = Student(**data)
 				student.save()
 
-				return HttpResponseRedirect(u'%s?status_message=Студента %s успішно додано!' % (reverse('home'), student))
+				clear_messages(request)
+
+				messages.success(request, 'Студента %s успішно додано' % student)
+
+				return HttpResponseRedirect(reverse('home'))
+				# return HttpResponseRedirect(u'%s?status_message=Студента %s успішно додано!' % (reverse('home'), student))
+			
 			else:
+				clear_messages(request)
+
+				messages.error(request, 'Будь-ласка, виправте наступні помилки')
+
 				return render(request, 'students/students_add.html', {
 					'errors' : errors,
 					'groups' : groups
 				})
 		elif request.POST.get('cancel_button') is not None:
 			# redirect to home page on cancel button
-			return HttpResponseRedirect(u'%s?status_message=Додавання студента скасовано!' % reverse('home'))
+			clear_messages(request)
+
+			messages.info(request, 'Додавання студента скасовано!')
+
+			return HttpResponseRedirect(reverse('home'))
+			# return HttpResponseRedirect(u'%s?status_message=Додавання студента скасовано!' % reverse('home'))
 	
 	return render(request, 'students/students_add.html', {'groups' : groups})
 
