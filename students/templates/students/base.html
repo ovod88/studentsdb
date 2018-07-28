@@ -5,6 +5,7 @@
 {% url 'journal' as journal_url %}
 {% url 'examins' as examins_url %}
 {% url 'examins_results_list' as examins_results_url %}
+{% url 'contact_admin' as contact_admin_url %}
 
 <!DOCTYPE html>
 <html lang="uk">
@@ -45,11 +46,23 @@
       <div class="row" id="sub-header"> 
         <div class="col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" {% if request.path == students_list_url %} class="active" {% endif %}><a href="{% url 'home' %}">Студенти</a></li>
-            <li role="presentation" {% if journal_url in request.path %} class="active" {% endif %}><a href="{% url 'journal' %}">Відвідування</a></li>
-            <li role="presentation" {% if groups_list_url in request.path %} class="active" {% endif %}><a href="{% url 'groups' %}">Групи</a></li>
-            <li role="presentation" {% if examins_url == request.path %} class="active" {% endif %}><a href="{% url 'examins' %}">Екзаміни</a></li>
-            <li role="presentation" {% if examins_results_url in request.path %} class="active" {% endif %}><a href="{% url 'examins_results_list' %}">Результати екзамінів</a></li>
+            <li role="presentation" {% if request.path == students_list_url %} class="active" {% endif %}>
+              <a href="{% url 'home' %}">Студенти</a>
+            </li>
+            <li role="presentation" {% if journal_url in request.path %} class="active" {% endif %}>
+              <a href="{% url 'journal' %}">Відвідування</a>
+            </li>
+            <li role="presentation" {% if groups_list_url in request.path %} class="active" {% endif %}>
+              <a href="{% url 'groups' %}">Групи</a>
+            </li>
+            <li role="presentation" {% if examins_url == request.path %} class="active" {% endif %}>
+              <a href="{% url 'examins' %}">Екзаміни</a>
+            </li>
+            <li role="presentation" {% if examins_results_url in request.path %} class="active" {% endif %}>  <a href="{% url 'examins_results_list' %}">Результати екзамінів</a>
+            </li>
+            <li role=”presentation” {% if contact_admin_url in request.path %} class=”active”{% endif %}>
+              <a href="{% url 'contact_admin' %}">Контакт</a>
+            </li>
           </ul>
         </div>
       </div>

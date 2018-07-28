@@ -14,6 +14,14 @@ import os
 from .db import DATABASES
 from django.contrib.messages import constants as messages
 
+ADMIN_EMAIL = 'admin@studentsdb.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'upworkem@gmail.com'
+EMAIL_HOST_PASSWORD = '0RYD9IC1P4dDLimctL8Y'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',

@@ -22,6 +22,7 @@ from students.views.journal import *
 from students.views.examins import *
 from students.views.professors import *
 from students.views.examins_results import *
+from students.views.contact_admin import *
 
 from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
 
@@ -52,7 +53,9 @@ urlpatterns = [
     path(r'^examins_results$', examins_results_list, name='examins_results_list'),
     path(r'^examins_results/add$', examins_results_add, name='examins_results_add'),
     path(r'^examins_results/(?P<erid>\d+)/edit$', examins_results_edit, name='examins_results_edit'),
-    path(r'^examins_results/(?P<erid>\d+)/delete$', examins_results_delete, name='examins_results_delete')
+    path(r'^examins_results/(?P<erid>\d+)/delete$', examins_results_delete, name='examins_results_delete'),
+
+    path(r'^contact_admin$', contact_admin, name='contact_admin')
 ] 
 
 if DEBUG:
