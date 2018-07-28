@@ -44,12 +44,12 @@
 		<div>
 			<label for='student_group'>Група*</label>
 			<select name='student_group' id='student_group'>
-				<option value='{{ request.POST.student_group }}'>Виберіть групу</option>
+				<option value=''>Виберіть групу</option>
 				{% if groups %}
               		{% for group in groups %}
-                		<option value="{{ group.id }}">{{ group }}</option>
+                		<option value="{{ group.id }}" {% if group.id == request.POST.student_group|add:0 %}selected{% endif %}>{{ group }}</option>
               		{% endfor %}
-            	{% endif%}
+            	{% endif%} 
 			</select>
 			<span class=”help-block”>{{ errors.student_group }}</span>
 		</div>

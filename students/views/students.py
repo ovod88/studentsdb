@@ -161,11 +161,11 @@ def students_add(request):
 			if not student_group:
 				errors['student_group'] = u"Оберіть групу для студента"
 			else:
-				groups = Group.objects.filter(pk=student_group)
+				groups_selected = Group.objects.filter(pk=student_group)
 				if len(groups) != 1:
 					errors['student_group'] = u"Оберіть коректну групу"
 				else:
-					data['student_group'] = groups[0]
+					data['student_group'] = groups_selected[0]
 
 			photo = request.FILES.get('photo')
 
