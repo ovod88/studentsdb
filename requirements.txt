@@ -3,3 +3,4 @@ Django==1.7.5; python_version < '3.0'
 Pillow
 MySQL-python; python_version < '3.0' 
 mysqlclient; python_version >= '3.0'  
+django-crispy-forms==1.7.2

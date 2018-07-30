@@ -1,17 +1,10 @@
 {% extends "students/base.html" %}
 
 {% load static %}
-{% load crispy_forms_tags %}
 
 {% block meta_title %}Зв’язок із Адміністратором{% endblock meta_title %}
 
 {% block title %}Зв’язок із Адміністратором{% endblock title %}
-
-{% block extra_css %}
-	
-	<link rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/contact_admin/main.css' %}">
-
-{% endblock extra_css %}
 
 {% block status_message %}
 	{% if form.errors %}
@@ -24,12 +17,15 @@
 
 {% block content %}
 	
-	{% crispy form %}
-
-	<!-- <form action="{% url "contact_admin" %}" method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="Надіслати" name="send_button" />
-	</form> -->
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
 
 {% endblock content %}

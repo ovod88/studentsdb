@@ -22,6 +22,8 @@ EMAIL_HOST_PASSWORD = '0RYD9IC1P4dDLimctL8Y'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
+MANAGERS=(('Vova Khrystenko', 'ovod88@bigmir.net'), ('Lina Khrystenko','upworkem@gmail.com'))
+
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'students'
 ]
 
@@ -68,6 +71,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'studentsdb.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 TEMPLATES = [
     {

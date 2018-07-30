@@ -26,11 +26,13 @@ from students.views.contact_admin import *
 
 from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
 
+from django.views.generic import TemplateView
+from students.views.contact_admin_forms import ContactFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'^$', students_list3, name='home'),
-    path(r'^students/add$', students_add, name='students_add'),
+    path(r'^students/add$', students_add, name='students_add'),#COMPLETELY MANUAL FORM
     path(r'^students/(?P<sid>\d+)/edit$', students_edit, name='students_edit'),
     path(r'^students/(?P<sid>\d+)/delete$', students_delete, name='students_delete'),
 
@@ -55,7 +57,11 @@ urlpatterns = [
     path(r'^examins_results/(?P<erid>\d+)/edit$', examins_results_edit, name='examins_results_edit'),
     path(r'^examins_results/(?P<erid>\d+)/delete$', examins_results_delete, name='examins_results_delete'),
 
-    path(r'^contact_admin$', contact_admin, name='contact_admin')
+    path(r'^contact_admin$', contact_admin, name='contact_admin'),#FORM USING DJANGO FORMS
+
+    path(r'^contact_admin_forms$', ContactFormView.as_view(), name='contact_admin_forms'),#FORM USING DJANGO CONTACT FORM
+    path(r'^contact_admin_forms/sent/$', TemplateView.as_view(template_name='contact_admin_forms/contact_form_sent.html'),
+                            name='contact_admin_forms_sent'),
 ] 
 
 if DEBUG:
