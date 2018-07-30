@@ -21,6 +21,7 @@ from students.views.groups import *
 from students.views.journal import *
 from students.views.examins import *
 from students.views.professors import *
+from students.views.studentList import *
 from students.views.examins_results import *
 from students.views.contact_admin import *
 
@@ -35,6 +36,8 @@ urlpatterns = [
     path(r'^students/add$', students_add, name='students_add'),#COMPLETELY MANUAL FORM
     path(r'^students/(?P<sid>\d+)/edit$', students_edit, name='students_edit'),
     path(r'^students/(?P<sid>\d+)/delete$', students_delete, name='students_delete'),
+
+    path(r'^students$', StudentList.as_view(), name='home_view'),
 
     path(r'^groups$', groups_list, name='groups'),
     path(r'^groups/add$', groups_add, name='groups_add'),
