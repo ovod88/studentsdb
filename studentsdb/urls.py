@@ -34,7 +34,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'^$', students_list3, name='home'),
     path(r'^students/add$', students_add, name='students_add'),#COMPLETELY MANUAL FORM
-    path(r'^students/(?P<sid>\d+)/edit$', students_edit, name='students_edit'),
+    path(r'^students/(?P<pk>\d+)/edit$', StudentUpdateView.as_view(), name='students_edit'),
     path(r'^students/(?P<sid>\d+)/delete$', students_delete, name='students_delete'),
 
     path(r'^students$', StudentList.as_view(), name='home_view'),

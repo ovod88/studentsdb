@@ -90,7 +90,7 @@ class Student(models.Model):
 
 	student_examin = models.ManyToManyField("Examin",
 		verbose_name=u"Екзамін",
-		blank="False",
+		blank=False,
 		through="ExaminResult")
 
 	def __str__(self):
