@@ -8,7 +8,7 @@ from datetime import datetime
 from django.contrib import messages
 from django.contrib.messages import get_messages
 from django.views.generic import UpdateView
-from django.forms import ModelForm
+from django.forms import *
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from crispy_forms.bootstrap import FormActions
@@ -240,12 +240,11 @@ def students_add(request):
 class StudentUpdateForm(ModelForm):
 	class Meta:
 		model = Student
-		fields = ['first_name', 'first_name', 'middle_name', 'birthday', 'photo', 
-				'ticket', 'notes', 'student_group']
+		exclude=['student_examin']
 	
 	def __init__(self, *args, **kwargs):
 		super(StudentUpdateForm, self).__init__(*args, **kwargs)
-		
+
 		self.helper = FormHelper(self)
 
 		# set form tag attributes
@@ -259,10 +258,9 @@ class StudentUpdateForm(ModelForm):
 		self.helper.label_class = 'col-sm-2 control-label'
 		self.helper.field_class = 'col-sm-10'
 		# add buttons
-		self.helper.layout[-1] = FormActions(
-			Submit('add_button', u'Зберегти', css_class="btn btn-primary"),
-			Submit('cancel_button', u'Скасувати', css_class="btn btn-link"),)
 
+		self.helper.add_input(Submit('add_button', u'Зберегти', css_class="btn btn-primary"))
+		self.helper.add_input(Submit('cancel_button', u'Скасувати', css_class="btn btn-link"))
 
 
 class StudentUpdateView(UpdateView):
