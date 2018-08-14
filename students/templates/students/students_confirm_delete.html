@@ -8,6 +8,7 @@
 		{% csrf_token %}
 		<p>Ви дійсно хочете видалити студента "{{ object }}"?</p>
 		<input type="submit" value="Так" name="delete_button" class="btn btn-danger" />
+		<input type="submit" name="cancel_button" class="btn btn-link" value='Скасувати'>
 		<br /><br />
 	</form>
 {% endblock content %}

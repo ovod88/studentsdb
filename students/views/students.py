@@ -290,8 +290,6 @@ class StudentCreateView(CreateView):
 			return super(StudentCreateView, self).post(request, *args, **kwargs)
 		
 
-
-
 class StudentUpdateView(UpdateView):
 	model=Student
 	template_name='students/student_edit.html'
@@ -327,3 +325,13 @@ class StudentDeleteView(DeleteView):
 
 		messages.info(self.request, 'Студента успішно видалено!')
 		return reverse('home')
+
+	def post(self, request, *args, **kwargs):
+		if request.POST.get('cancel_button'):
+			clear_messages(request)
+
+			messages.info(request, 'Видалення студента відмінено!')
+
+			return HttpResponseRedirect(reverse('home'))
+		else:
+			return super(StudentDeleteView, self).post(request, *args, **kwargs)
