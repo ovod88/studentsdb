@@ -37,6 +37,7 @@ urlpatterns = [
     path(r'^students/add$', StudentCreateView.as_view(), name='students_add'),#CBV solution
     path(r'^students/(?P<pk>\d+)/edit$', StudentUpdateView.as_view(), name='students_edit'),
     path(r'^students/(?P<pk>\d+)/delete$', StudentDeleteView.as_view(), name='students_delete'),
+    path(r'^students/delete$', StudentDeleteMultipleView.as_view(), name='students_multi_delete'),
 
     path(r'^students$', StudentList.as_view(), name='home_view'),
 

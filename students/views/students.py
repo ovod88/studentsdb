@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
 from django.contrib import messages
 from django.contrib.messages import get_messages
-from django.views.generic import UpdateView, DeleteView, CreateView
+from django.views.generic import UpdateView, DeleteView, CreateView, FormView
 from django.forms import *
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
@@ -288,7 +288,6 @@ class StudentCreateView(CreateView):
 			return HttpResponseRedirect(reverse('home'))
 		else:
 			return super(StudentCreateView, self).post(request, *args, **kwargs)
-		
 
 class StudentUpdateView(UpdateView):
 	model=Student
@@ -319,6 +318,7 @@ class StudentUpdateView(UpdateView):
 class StudentDeleteView(DeleteView):
 	model = Student
 	template_name = 'students/students_confirm_delete.html'
+	context_object_name = 'student'
 
 	def get_success_url(self):
 		clear_messages(self.request)
@@ -335,3 +335,42 @@ class StudentDeleteView(DeleteView):
 			return HttpResponseRedirect(reverse('home'))
 		else:
 			return super(StudentDeleteView, self).post(request, *args, **kwargs)
+
+class StudentDeleteMultipleView(DeleteView):
+	model = Student
+	template_name = 'students/students_confirm_many_delete.html'
+	context_object_name = 'list_of_students'
+
+
+	def get_queryset(self):
+		qs = super().get_queryset()
+		list_id_of_students = self.request.GET.getlist('selected_students')
+		# print(self.request.GET.getlist('selected_students'))
+		# print(qs.filter(id__in=list_id_of_students))
+
+		return qs.filter(id__in=list_id_of_students)
+
+	def get_object(self, queryset=None):
+		obj = self.get_queryset()
+		
+		return obj
+
+	def delete(self, request, *args, **kwargs):
+	    if self.request.POST.get('delete_button') is not None:
+	        list_id_of_students = request.POST.getlist('selected_students')
+	        # print(request.POST)
+	        self.model.students.filter(id__in=list_id_of_students).delete()
+
+	    #import pdb; pdb.set_trace();
+	    return HttpResponseRedirect(self.get_success_url())
+
+	def get_success_url(self):
+	    #import pdb; pdb.set_trace()
+	    clear_messages(self.request)
+
+	    if self.request.POST.get('cancel_button') is not None:
+	    	messages.warning(self.request, 'Видалення студентів відмінено!')
+	    if self.request.POST.get('delete_button') is not None:
+	    	messages.success(self.request, 'Студентів успішно видалено!')
+
+	    return reverse('home')
