@@ -24,6 +24,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 
 def clear_messages(request):
+	# list(messages.get_messages(request))#DOES THE SAME
 	storage = get_messages(request)
 	for message in storage:#removing all messages
 		pass
