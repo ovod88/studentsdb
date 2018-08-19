@@ -267,6 +267,16 @@ class StudentUpdateForm(ModelForm):
 		self.helper.add_input(Submit('cancel_button', u'Скасувати', css_class="btn btn-link",
 										formnovalidate='formnovalidate'))
 
+	def clean_student_group(self):
+		"""Check if student is leader in any group.
+			If yes, then ensure it’s the same as selected group."""
+		# get group where current student is a leader
+		groups = Group.objects.filter(leader=self.instance)
+		if len(groups) > 0 and self.cleaned_data['student_group'] != groups[0]:
+			raise ValidationError(u'Студент є старостою іншої групи.', code='invalid')
+
+		return self.cleaned_data['student_group']
+
 class StudentCreateView(CreateView):
 	model=Student
 	template_name='students/student_edit.html'
@@ -304,6 +314,7 @@ class StudentUpdateView(UpdateView):
 		return reverse('home')
 
 	def post(self, request, *args, **kwargs):
+		# print(kwargs)
 		if request.POST.get('cancel_button'):
 			clear_messages(request)
 

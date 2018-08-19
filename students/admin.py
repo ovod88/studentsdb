@@ -70,8 +70,11 @@ class GroupFormAdmin(forms.ModelForm):
 		# print(self.instance.leader)
 		leader = self.cleaned_data['leader']
 		# print(self.cleaned_data['leader'])
-		if  leader is not None and leader not in students_in_group:
-			raise forms.ValidationError(u'Student belongs to different group', code='invalid')
+
+		# if  leader is not None and leader not in students_in_group:
+		# 	raise forms.ValidationError(u'Student belongs to different group', code='invalid')
+		if leader is not None and leader.student_group != self.instance:
+			raise forms.ValidationError(u'Student belongs to differenT group', code='invalid')
 
 		return self.cleaned_data['leader']
 
