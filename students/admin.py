@@ -9,7 +9,6 @@ from django import forms
 from django.urls import reverse
 
 
-
 class ExaminResultForm(forms.ModelForm):
 	class Meta:
 		model=ExaminResult
@@ -25,10 +24,8 @@ class ExaminResultForm(forms.ModelForm):
 
 		return data
 
-
 class ExaminResultAdmin(admin.ModelAdmin):
 	form = ExaminResultForm
-
 
 class StudentFormAdmin(forms.ModelForm):
 	
@@ -66,9 +63,26 @@ class StudentAdmin(admin.ModelAdmin):
 	def view_on_site(self, obj):
 		return reverse('students_edit', kwargs={'pk': obj.id})
 
+class GroupFormAdmin(forms.ModelForm):
+	def clean_leader(self):
+		students_in_group = Student.students.filter(student_group=self.instance)
+		# print(students)
+		# print(self.instance.leader)
+		leader = self.cleaned_data['leader']
+		# print(self.cleaned_data['leader'])
+		if  leader is not None and leader not in students_in_group:
+			raise forms.ValidationError(u'Student belongs to different group', code='invalid')
+
+		return self.cleaned_data['leader']
+
+
+class GroupAdmin(admin.ModelAdmin):
+	form = GroupFormAdmin
+
+
 # Register your models here.
 admin.site.register(Student, StudentAdmin)
-admin.site.register(Group)
+admin.site.register(Group, GroupAdmin)
 admin.site.register(Professor)
 admin.site.register(Examin)
 admin.site.register(ExaminResult, ExaminResultAdmin)
