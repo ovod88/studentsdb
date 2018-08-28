@@ -245,11 +245,13 @@ class StudentUpdateForm(ModelForm):
 	
 	def __init__(self, *args, **kwargs):
 		super(StudentUpdateForm, self).__init__(*args, **kwargs)
+		# import pdb;pdb.set_trace()
 
 		self.helper = FormHelper(self)
 
 		# set form tag attributes
 		if hasattr(kwargs['instance'], 'id'):
+			# self.helper.form_action = reverse_lazy('students_edit', kwargs['instance'].id)
 			self.helper.form_action = reverse('students_edit', kwargs={'pk': kwargs['instance'].id})
 		else:
 			self.helper.form_action = reverse('students_add')

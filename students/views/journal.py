@@ -136,6 +136,7 @@ def journal_list(request):
 
 def journal_student(request, sid):
 	if request.method == 'POST':
+		# print('DELETE HAS COME HERE')
 
 		date_string = request.POST.get('date')
 		date = datetime.strptime(date_string, '%d-%m-%Y')
@@ -147,8 +148,11 @@ def journal_student(request, sid):
 			return JsonResponse({'status': 'nok'})
 
 	if  request.method == 'DELETE':
+		# print('DELETE HAS COME')
 
 		delete_params = QueryDict(request.body)
+		# import pdb;pdb.set_trace()
+
 		date_string = delete_params.dict()['date']
 		date = datetime.strptime(date_string, '%d-%m-%Y')
 		journal = Journal.objects.filter(student=Student.students.get(pk=sid), date=date)

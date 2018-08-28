@@ -95,17 +95,26 @@ $(function(){
             ajax_settings = {
                 url      : url,
                 method   : "POST",
-                data     : {"date" : date},
+                data     : {
+                            "date" : date,
+                            'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                            },
                 dataType : "json"
             }
 
         } else if(method == 'DELETE') {
 
             ajax_settings = {
-                url      : url,
-                type     : "DELETE",
-                data     : {"date" : date},
-                dataType : "json"
+                url         : url,
+                type        : "DELETE",
+                data        : {
+                                "date" : date
+                            },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", $('input[name="csrfmiddlewaretoken"]').val());
+                }
+                // contentType : "application/json",
+                // dataType    : "json"
             }
 
         }
