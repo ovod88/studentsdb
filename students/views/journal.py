@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse, QueryDict
 from django.template import RequestContext, loader
 
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 from calendar import monthrange
 
 import json
@@ -35,18 +36,16 @@ def journal_list(request):
 	def countDateDict(date):
 		newDate = {}
 		newDate['month_name'] = months[date['month'] - 1]
+
+		cur_date = datetime(year=date['year'], month=date['month'], day=1)
+		next_date = cur_date + relativedelta(months=1)
+		prev_date = cur_date - relativedelta(months=1)
+		# print(next_date)
+
 		newDate['month'] = date['month']
 		newDate['year'] = date['year']
-
-		if date['month'] == 12:
-			newDate['next_month'] = str(1) + '_' + str(date['year'] + 1)
-			newDate['prev_month'] = str(date['month'] - 1) + '_' + str(date['year'])
-		elif date['month'] == 1:
-			newDate['next_month'] = str(date['month'] + 1) + '_' + str(date['year'])
-			newDate['prev_month'] = str(12) + '_' + str(date['year'] - 1)
-		else:
-			newDate['next_month'] = str(date['month'] + 1) + '_' + str(date['year'])
-			newDate['prev_month'] = str(date['month'] - 1) + '_' + str(date['year'])
+		newDate['next_month'] = str(next_date.month) + '_' + str(next_date.year)
+		newDate['prev_month'] = str(prev_date.month) + '_' + str(prev_date.year)
 
 		# print('Created new date')
 		# print(newDate)
