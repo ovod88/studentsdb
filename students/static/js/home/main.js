@@ -80,11 +80,13 @@ $(function(){
                     
                     }
 
-                    if(window.innerHeight > document.body.offsetHeight) {
+                    if(length != 0) {
+                    	if(window.innerHeight > document.body.offsetHeight) {
 
-						send_post(post_url);
+							send_post(post_url);
 
-					}
+						}
+                    }
 
                 },
                 function (errorXHR) {
