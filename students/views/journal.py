@@ -15,7 +15,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.decorators.csrf import csrf_exempt
 
-def journal_list(request):
+def journal_list(request, sid = None):
 
 	months = ['Styczen', 'Luty', 'Marzec', 'Kwieczen', 'Mai', 
 				'Czerwiec', 'Lipiec', 'Sierpien', 'Wrzeszen', 'Padrziernik', 'Listopad', 'Grudzien']
@@ -30,6 +30,8 @@ def journal_list(request):
 
 		if reverse == '1':
 			students = students.reverse()
+	elif sid:
+		students = Student.students.filter(pk=sid)
 	else:
 		students = (Student.students.get_queryset().order_by('id'))
 
@@ -90,7 +92,7 @@ def journal_list(request):
 
 	paginator = Paginator(students, 3)
 
-	if request.method == 'GET':
+	if request.method == 'GET' and not sid:
 		try:
 			students = paginator.page(page)
 		except PageNotAnInteger:
@@ -98,6 +100,15 @@ def journal_list(request):
 		except EmptyPage:
 			students = paginator.page(paginator.num_pages)
 		
+		return render(request, 'students/journal.html', 
+			{
+				'students'   : students, 
+				'date'       : date, 
+				'monthrange' : range(1, days_in_month + 1), 
+			})
+	elif request.method == 'GET' and sid:
+		# students = Student.students.filter(pk=sid)
+
 		return render(request, 'students/journal.html', 
 			{
 				'students'   : students, 
@@ -134,6 +145,9 @@ def journal_list(request):
 	# 		'id': 14}], 'date': date, 'monthrange': range(days_in_month)})
 
 def journal_student(request, sid):
+	if request.method == 'GET':#THIS IS A BAD SOLUTION. CHECK BOOK INSTEAD!!! IT IS WITH TEMPLATEVIEW
+		return journal_list(request, sid)
+
 	if request.method == 'POST':
 		# print('DELETE HAS COME HERE')
 
