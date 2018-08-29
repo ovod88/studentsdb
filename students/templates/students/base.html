@@ -32,9 +32,9 @@
           <strong>Група:</strong>
           <select>
             <option value="">Усі Студенти</option>
-            {% if groups_all %}
-              {% for group in groups_all %}
-                <option value="">{{ group }}</option>
+            {% if GROUPS_ALL %}
+              {% for group in GROUPS_ALL %}
+                <option value="{{ group.id }}" {% if group.selected %}selected{% endif %}>{{ group.str }}</option>
               {% endfor %}
             {% endif%}
           </select>
@@ -119,7 +119,32 @@
 
     <!-- Javascripts Inclusion -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#group-selector select').change(function(event){
+
+          var group_id = $(this).val();
+          group_id = group_id.replace(/\s/g, '')
+          
+          if (group_id) {
+
+            Cookies.set('current_group', group_id, {'path': '/', 'expires': 365});
+
+          } else {
+
+            Cookies.remove('current_group', {'path': '/'});
+
+          }
+
+          location.reload(true);
+
+        });
+
+      });
+
+    </script>
     {% block extra_js %}{% endblock extra_js %}
   </body>
 </html>

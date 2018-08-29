@@ -83,6 +83,7 @@ TEMPLATES = [
             'context_processors': [
                 'students.templates.mama.testing',
                 'studentsdb.custom_context_processor.students_proc',
+                'students.groups_context.groups_context_processor',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

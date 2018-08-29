@@ -6,6 +6,8 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
 
+from ..utils import get_current_group
+
 import json
 
 from ..models.students import Student
@@ -25,15 +27,20 @@ def journal_list(request, sid = None):
 	page = request.GET.get('page')
 	reverse = request.GET.get('reverse', '')
 
-	if order in ('last_name',):
-		students = (Student.students.get_queryset().order_by('last_name'))
+	current_group = get_current_group(request)
 
-		if reverse == '1':
-			students = students.reverse()
-	elif sid:
-		students = Student.students.filter(pk=sid)
+	if current_group and not sid:
+		students = Student.students.filter(student_group=current_group)
 	else:
-		students = (Student.students.get_queryset().order_by('id'))
+		if order in ('last_name',):
+			students = (Student.students.get_queryset().order_by('last_name'))
+
+			if reverse == '1':
+				students = students.reverse()
+		elif sid:
+			students = Student.students.filter(pk=sid)
+		else:
+			students = (Student.students.get_queryset().order_by('id'))
 
 	def countDateDict(date):
 		newDate = {}

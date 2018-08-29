@@ -20,6 +20,8 @@ from ..models.groups import Group
 from PIL import Image
 # from ..MyPaginator import MyPaginator, PageNotAnInteger, EmptyPage
 
+from ..utils import get_current_group
+
 import json
 from django.views.decorators.csrf import csrf_exempt
 
@@ -51,7 +53,15 @@ def students_list3(request):
 	
 	# students = Student.students.all()
 
-	students = Student.students.get_queryset().order_by('id')
+	current_group = get_current_group(request)
+	
+	if current_group:
+
+		students = Student.students.filter(student_group=current_group)
+
+	else:
+
+		students = Student.students.get_queryset().order_by('id')
 
 	order = request.GET.get('order_by','')
 	page = request.GET.get('page')
