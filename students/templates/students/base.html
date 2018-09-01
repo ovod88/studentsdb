@@ -123,6 +123,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.uk.min.js"></script>
     <script type="text/javascript">
       $(function(){
         $('#group-selector select').change(function(event){
@@ -150,7 +151,8 @@
 
           $input_date.datepicker({
             format: 'yyyy-mm-dd',
-            autoclose: true
+            autoclose: true,
+            language: 'uk'
           }).focus();
 
         });
