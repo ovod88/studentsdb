@@ -143,10 +143,17 @@
           location.reload(true);
         });
 
-        $('input.dateinput').datepicker({
-            'format': 'dd.mm.yyyy',
+        var $date_input_bt = $('button.dateinput'),
+            $input_date = $('.input-group input');
+
+        $date_input_bt.on('click', function() {
+
+          $input_date.datepicker({
+            format: 'yyyy-mm-dd',
             autoclose: true
-          });
+          }).focus();
+
+        });
 
       });
 

@@ -10,7 +10,7 @@ from django.contrib.messages import get_messages
 from django.views.generic import UpdateView, DeleteView, CreateView, FormView
 from django.forms import *
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+from crispy_forms.layout import Submit, Field,Layout, Div, HTML
 from crispy_forms.bootstrap import FormActions
 import os
 
@@ -273,7 +273,21 @@ class StudentUpdateForm(ModelForm):
 		self.helper.html5_required = True
 		self.helper.label_class = 'col-sm-2 control-label'
 		self.helper.field_class = 'col-sm-10'
-		# add buttons
+
+
+		# self.helper.layout = Layout(
+  #           Field('first_name'),
+  #           Field('last_name'),
+  #           Field('middle_name'),
+  #           Field('birthday', template="students/datepicker.html"),
+  #           Field('photo'),
+  #           Field('ticket'),
+  #           Field('notes'),
+  #           Field('student_group')
+  #       )
+
+		self.helper[3] = Field('birthday', template='students/datepicker.html')
+		# self.helper["birthday"].wrap(Field, HTML("<span class='glyphicon glyphicon-calendar'></span>"))
 
 		self.helper.add_input(Submit('add_button', u'Зберегти', css_class="btn btn-primary"))
 		self.helper.add_input(Submit('cancel_button', u'Скасувати', css_class="btn btn-link",
