@@ -92,6 +92,20 @@
           <h2>{% block title %}{% endblock title %}</h2>
           {% block content %}{% endblock content %}
           
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel"><!-- --></h4>
+                </div>
+                <div class="modal-body"><!-- --></div>
+                <div class="modal-footer"><!-- --></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- End Content Columns -->
@@ -120,46 +134,12 @@
 
     <!-- Javascripts Inclusion -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.uk.min.js"></script>
-    <script type="text/javascript">
-      $(function(){
-        $('#group-selector select').change(function(event){
-
-          var group_id = $(this).val();
-          group_id = group_id.replace(/\s/g, '')
-          
-          if (group_id) {
-
-            Cookies.set('current_group', group_id, {'path': '/', 'expires': 365});
-
-          } else {
-
-            Cookies.remove('current_group', {'path': '/'});
-
-          }
-
-          location.reload(true);
-        });
-
-        var $date_input_bt = $('button.dateinput'),
-            $input_date = $('.input-group input');
-
-        $date_input_bt.on('click', function() {
-
-          $input_date.datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            language: 'uk'
-          }).focus();
-
-        });
-
-      });
-
-    </script>
+    <script src="{{ PORTAL_URL }}{% static 'js/main.js' %}"></script>
     {% block extra_js %}{% endblock extra_js %}
   </body>
 </html>
