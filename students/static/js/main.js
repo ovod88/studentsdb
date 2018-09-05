@@ -48,6 +48,8 @@ function initEditStudentForm(form, modal) {
 
   });
 
+  var $url = form.attr('action');
+
   form.ajaxForm({
     dataType : 'html',
     error    : function(){
@@ -63,7 +65,7 @@ function initEditStudentForm(form, modal) {
     
       modal.find('.modal-body').html(html.find('.alert'));
 
-      // console.log(newform);
+      // console.log(html);
 
       if ( !newform.hasClass('delete-students') && newform.length > 0) {
         
@@ -73,7 +75,35 @@ function initEditStudentForm(form, modal) {
 
       } else {
 
-        setTimeout(function(){location.reload(true);}, 2000);
+        // var $students_received = html.find('table');
+        // console.log(html.find('#content-columns'));
+        // $('#content-columns').replaceWith(html.find('#content-columns'));
+
+
+
+        // $students_received.each(function(index) {
+
+        //   $student_link = $(this).find('.student-edit-form-link').first().attr('href');
+
+        //   // console.log($url);
+
+        //   if( $student_link == $url ) {
+
+        //     $($students_onpage[index]).html($(this).html());
+        //     return false;
+
+        //   }
+
+        // });
+
+
+        setTimeout(function(){ 
+          
+          location.reload(true);
+          // modal.modal('hide');
+
+        }, 2000);
+        // initEditStudentPage();
 
       }
 

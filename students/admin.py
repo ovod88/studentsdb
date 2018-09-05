@@ -85,6 +85,7 @@ class GroupAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Student, StudentAdmin)
+admin.site.register(Journal)
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Professor)
 admin.site.register(Examin)

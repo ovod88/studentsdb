@@ -67,6 +67,7 @@ $(function(){
                 									'/journal/' + student.id);
 
                 			$(student_html).appendTo($('.table > tbody')).show('slow');
+                            initEditStudentPage();
 
                 		}
 
