@@ -40,6 +40,16 @@ function initDatePicker() {
 function initEditStudentForm(form, modal) {
 
   initDatePicker();
+  var $waiter = $('.waiter'),
+      $waiter_to_modal = $waiter.clone().removeAttr('style'),
+      $inputs = form.find('input'),
+      $select = form.find('select'),
+      $textarea = form.find('textarea'),
+      $modal_title = modal.find('.modal-title'),
+      $modal_body = modal.find('.modal-body'),
+      $modal_footer = modal.find('.modal-footer');
+
+  $waiter_to_modal.appendTo(modal.find('.modal-body'));
 
   form.find('input[name="cancel_button"]').click(function(event){
 
@@ -52,60 +62,66 @@ function initEditStudentForm(form, modal) {
 
   form.ajaxForm({
     dataType : 'html',
-    error    : function(){
+    beforeSend: function( xhr ) {
+      
+      $waiter_to_modal.animate({
+        opacity: 1
+      }, 100);
+      $inputs.prop('disabled', true);
+      $select.prop('disabled', true);
+      $textarea.prop('disabled', true);
+    },
+    error : function(){
 
-      alert('Помилка на сервері. Спробуйте будь-ласка пізніше.');
-      return;
+      setTimeout(function() {
+
+        $waiter_to_modal.animate({
+          opacity: 0
+        }, 100, function() {
+
+          $inputs.prop('disabled', false);
+          $select.prop('disabled', false);
+          $textarea.prop('disabled', false);
+          $modal_footer.html('<p class="alert-danger">Помилка i на сервері. Спробуйте будь-ласка пізніше.</p>');
+          
+          setTimeout(function() {
+            $modal_footer.html('');
+          }, 3000);
+
+        });
+
+      }, 4000);
 
     },
     success  : function(data, status, xhr) {
 
-      var html = $(data), 
-          newform = html.find('#content-column form');
+      setTimeout(function() {
+
+        var html = $(data), 
+        newform = html.find('#content-column form');
     
-      modal.find('.modal-body').html(html.find('.alert'));
+        $modal_body.html(html.find('.alert'));
+        $modal_footer.html('');
 
-      // console.log(html);
+        // console.log(html);
 
-      if ( !newform.hasClass('delete-students') && newform.length > 0) {
-        
-        modal.find('.modal-body').append(newform);
-
-        initEditStudentForm(newform, modal);
-
-      } else {
-
-        // var $students_received = html.find('table');
-        // console.log(html.find('#content-columns'));
-        // $('#content-columns').replaceWith(html.find('#content-columns'));
-
-
-
-        // $students_received.each(function(index) {
-
-        //   $student_link = $(this).find('.student-edit-form-link').first().attr('href');
-
-        //   // console.log($url);
-
-        //   if( $student_link == $url ) {
-
-        //     $($students_onpage[index]).html($(this).html());
-        //     return false;
-
-        //   }
-
-        // });
-
-
-        setTimeout(function(){ 
+        if ( !newform.hasClass('delete-students') && newform.length > 0) {
           
-          location.reload(true);
-          // modal.modal('hide');
+          $modal_body.append(newform);
 
-        }, 2000);
-        // initEditStudentPage();
+          initEditStudentForm(newform, modal);
 
-      }
+        } else {
+
+          setTimeout(function(){
+            
+            location.reload(true);
+
+          }, 2000);
+
+        }
+
+      }, 3000);
 
     }
 
@@ -119,7 +135,8 @@ function initEditStudentPage(event) {
   $('a.student-edit-form-link').click(function(event){
     event.preventDefault();
     var $link = $(this),
-        $loader_wrapper = $('.loader-wrapper');
+        $loader_wrapper = $('.loader-wrapper'),
+        modal = $('#myModal'); 
 
     $loader_wrapper.fadeIn('slow'); 
 
@@ -131,18 +148,19 @@ function initEditStudentPage(event) {
           dataType : "html"
         }).then(function(data, status, xhr) {
 
-          $loader_wrapper.fadeOut('slow'); 
+          $loader_wrapper.fadeOut('slow');
+          var html = $(data), 
+              form_html = html.find('#content-column form'); 
 
           if (status != 'success') {
             
-            alert('Помилка на сервері. Спробуйте будь-ласка пізніше.');
-            return;
+            $loader_wrapper.fadeOut(100, function() {
+
+              modal.find('.modal-title').html('<p>Помилка notOK на сервері. Спробуйте будь-ласка пізніше.</p>');
+              return;
+            }); 
 
           }
-
-          var modal = $('#myModal'), 
-              html = $(data), 
-              form_html = html.find('#content-column form');
           
           // console.log(data);
 
@@ -157,9 +175,20 @@ function initEditStudentPage(event) {
             'show': true
           });
 
-        }, function() {
+        }, function(xhr, status, error) {
 
-          alert('Помилка на сервері. Спробуйте будь-ласка пізніше.');
+          $loader_wrapper.fadeOut(100, function() {
+
+            modal.find('.modal-body').html('<p class="alert-danger">Помилка error на сервері. Спробуйте будь-ласка пізніше.</p>');
+            modal.find('.modal-footer').html('');
+            modal.find('.modal-title').html('');
+            modal.modal({
+              'keyboard': false,
+              'backdrop': false,
+              'show': true
+            });
+
+          }); 
 
         });
 
