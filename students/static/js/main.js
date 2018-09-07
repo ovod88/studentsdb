@@ -118,43 +118,52 @@ function initEditStudentPage(event) {
 
   $('a.student-edit-form-link').click(function(event){
     event.preventDefault();
-    var $link = $(this);
+    var $link = $(this),
+        $loader_wrapper = $('.loader-wrapper');
 
-    $.ajax({
-      url      : $link.attr('href'),
-      method   : "GET",
-      dataType : "html"
-    }).then(function(data, status, xhr) {
+    $loader_wrapper.fadeIn('slow'); 
 
-      if (status != 'success') {
-        
-        alert('Помилка на сервері. Спробуйте будь-ласка пізніше.');
-        return;
+    setTimeout(function() {
 
-      }
+        $.ajax({
+          url      : $link.attr('href'),
+          method   : "GET",
+          dataType : "html"
+        }).then(function(data, status, xhr) {
 
-      var modal = $('#myModal'), 
-          html = $(data), 
-          form_html = html.find('#content-column form');
-      
-      // console.log(data);
+          $loader_wrapper.fadeOut('slow'); 
 
-      modal.find('.modal-title').html(html.find('#content-column h2').text());
-      modal.find('.modal-body').html(form_html);
+          if (status != 'success') {
+            
+            alert('Помилка на сервері. Спробуйте будь-ласка пізніше.');
+            return;
 
-      initEditStudentForm(form_html, modal);
+          }
 
-      modal.modal({
-        'keyboard': false,
-        'backdrop': false,
-        'show': true
-      });
+          var modal = $('#myModal'), 
+              html = $(data), 
+              form_html = html.find('#content-column form');
+          
+          // console.log(data);
 
-    }, function() {
+          modal.find('.modal-title').html(html.find('#content-column h2').text());
+          modal.find('.modal-body').html(form_html);
 
-      alert('Помилка на сервері. Спробуйте будь-ласка пізніше.');
+          initEditStudentForm(form_html, modal);
 
-    });
+          modal.modal({
+            'keyboard': false,
+            'backdrop': false,
+            'show': true
+          });
+
+        }, function() {
+
+          alert('Помилка на сервері. Спробуйте будь-ласка пізніше.');
+
+        });
+
+    }, 3000);
 
   });
 

@@ -6,6 +6,10 @@
 
 {% block title %}База Студентів{% endblock title %}
 
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/home/main.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
   
   {% csrf_token %}
@@ -95,6 +99,25 @@
   {% else %}
     <p>Поки немає у базі.</p>
   {% endif %}
+
+  <div class="loader-wrapper">
+      <div class="centered">
+        <div class="loader-block">
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-text">
+            Loading
+          </div>
+        </div>
+      </div>
+  </div>
 
 {% endblock content %}
 
