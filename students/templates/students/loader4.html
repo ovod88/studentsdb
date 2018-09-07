@@ -12,16 +12,20 @@
 				z-index: 1000;
 				background-color: white;
 				opacity: 0.9;
+				vertical-align: middle;
+			}
+
+			.centered {
+			  	position: absolute;
+			  	left: 50%;
+			  	top: 50%;
+			  	transform: translate(-50%, -50%);
 			}
 
 			.loader-block {
-				position: relative;
 				text-align: center;
-				left: 50%;
-				top: 50%;
 				width: 150px;
 				height: 45px;
-				transform: translate(-50%, -50%);
 			}
 			.loader-line {
 			  	width: 4px;
@@ -42,103 +46,45 @@
 			.loader-line:nth-child(7) { animation-delay: 700ms; }
 			.loader-line:nth-child(8) { animation-delay: 800ms; }
 
-			@keyframes opacity { 
-				0% { 
-				   opacity: 1;
-				   /*height: 15px;*/
-				}
-				50% { 
-				   opacity: 0;
-				   /*height: 12px;*/
-				   transform: scale(1.1);
-				}
-				100% { 
-				   opacity: 1;
-				   /*height: 15px;*/
-				}  
-			}
-/*			.loader {
-				width: 12px;
-				height: 12px;
-				background-color: #fd8e0c;
-				animation-name: loader;
-      			animation-timing-function: ease-in-out;
-      			animation-duration: 3s;
-      			animation-iteration-count: infinite;
-      			-webkit-animation-name: loader;
-      			-webkit-animation-timing-function: ease-in-out;
-      			-webkit-animation-duration: 3s;
-      			-webkit-animation-iteration-count: infinite;
-    			position: absolute;
-			}*/
 
-/*			.loader:first-child {
-				-webkit-animation-delay: 0.5s;
-				animation-delay: 0.5s;
-			}
-
-			.loader:nth-child(2) {
-      			-webkit-animation-delay: 0.4s;
-      			animation-delay: 0.4s;
-      		}
-
-      		.loader:nth-child(3) {
-      			-webkit-animation-delay: 0.3s;
-      			animation-delay: 0.3s;
-      		}
-
-      		.loader:nth-child(4) {
-      			-webkit-animation-delay: 0.2s;
-      			animation-delay: 0.2s;
-      		}
-
-      		.loader:nth-child(5) {
-      			-webkit-animation-delay: 0.1s;
-      			animation-delay: 0.1s;
-      		}
-
-      		.loader:nth-child(6) {
-      			-webkit-animation-delay: 0s;
-      			animation-delay: 0s;
-      		}*/
-
-      		.loader-text {
-      			position: absolute;
+			.loader-text {
       			text-transform: uppercase;
       			font-weight: bold;
-			    bottom: 0;
-			    left: 0;
-			    right: 0;
 			    text-align: center;
-			    margin: auto;
+			    margin: 10px auto;
 			    color: #222;
 			    animation: bounce 2s ease-in-out infinite;
       		}
 
-/*      		.loader-text span {
-      			display: inline-block;
-      			font-size: 24px;
-      		}
+      		.progress-bar {
+				display: block;
+				margin: 0 auto;
+			}
 
-      		.loader-text span:first-child {
-      			margin-left: 5px;
-      		}
+			.progress-bar__circle {
+				transform: rotate(-90deg);
+				transform-origin: 50% 50%;
+				transition: stroke-dashoffset 0.35s;
+			}
 
-      		.loader-text span:nth-child(1) {
-			    -webkit-animation: bounce 1s ease-in-out infinite;
-			    animation: bounce 1s ease-in-out infinite;
-		  	}
-		    
-		    .loader-text span:nth-child(2) {
-		        -webkit-animation: bounce 1s ease-in-out 0.3s infinite;
-		        animation: bounce 1s ease-in-out 0.3s infinite;
-		    }
-		    
-		    .loader-text span:nth-child(3) {
-		        -webkit-animation: bounce 1s ease-in-out 0.5s infinite;
-		        animation: bounce 1s ease-in-out 0.5s infinite;
-		  	}*/
-  
+
+			.loaded {
+				opacity: 0;
+				transition: all 2s ease-out;
+				z-index: -1;
+			}
+			@keyframes opacity { 
+				0% { 
+				   opacity: 1;
+				}
+				50% { 
+				   opacity: 0;
+				   transform: scale(1.1);
+				}
+				100% { 
+				   opacity: 1;
+				}  
+			}
   
 			@keyframes bounce {
 			  0%, 100% {
@@ -147,13 +93,6 @@
 			  50% {
 			  	opacity: 0;
 			  }
-			}
-
-
-			.loaded {
-				opacity: 0;
-				transition: all 2s ease-out;
-				z-index: -1;
 			}
 
 			@keyframes loader {
@@ -183,24 +122,59 @@
 	</head>
 	<body>
 		<div class="loader-wrapper">
-			<div class="loader-block">
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-line"></div>
-				<div class="loader-text">
-					Loading
+			<div class="centered">
+				<svg class="progress-bar" height="60" width="60">
+	  				<circle class="progress-bar__circle" stroke-width="2"
+	  					stroke="#fd8e0c"
+					    fill="transparent"
+					    r="26"
+					    cx="30"
+					    cy="30"/>
+					<text x="50%" y="50%" text-anchor="middle" font-size="15px" fill="#fd8e0c" dy=".3em">15%</text>
+				</svg>
+				<div class="loader-block">
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-line"></div>
+					<div class="loader-text">
+						Loading
+					</div>
 				</div>
 			</div>
+			<input value="35" type="number" step="5" min="0" max="100" placeholder="progress">
 		</div>
 		<p class="content">
 			<a href="#">Hello</a>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fermentum eros vitae ullamcorper pulvinar. Phasellus mattis tellus eget nisi aliquam tincidunt. Fusce tempus, odio vel vestibulum iaculis, lorem est tincidunt arcu, a pulvinar nunc ex id massa. Integer dictum ullamcorper magna quis volutpat. Pellentesque non sem nisl. Maecenas lobortis massa quis massa consequat rhoncus. Nulla mattis erat pulvinar felis volutpat egestas. Aliquam enim dui, semper sed felis nec, fermentum fringilla risus. Donec viverra enim eget laoreet aliquet. Proin eu volutpat turpis. Nullam a rutrum dui, ut efficitur ligula. Nam venenatis magna et nisi tempus, et dapibus velit faucibus. Vestibulum porttitor pharetra enim vel accumsan. Ut urna lacus, sagittis eu malesuada vel, rhoncus sed leo. 
 		</p>
+		<script type="text/javascript">
+			var circle = document.querySelector('circle'),
+				radius = circle.r.baseVal.value,
+				circumference = radius * 2 * Math.PI;
+
+			circle.style.strokeDasharray = `${circumference} ${circumference}`;
+			circle.style.strokeDashoffset = `${circumference}`;
+
+			function setProgress(percent) {
+			  const offset = circumference - percent / 100 * circumference;
+			  circle.style.strokeDashoffset = offset;
+			}
+
+			const input = document.querySelector('input');
+			setProgress(input.value);
+
+			input.addEventListener('change', function(e) {
+			  if (input.value < 101 && input.value > -1) {
+			    setProgress(input.value);
+			  }  
+			})
+
+		</script>
 	</body>
 </html>
