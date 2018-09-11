@@ -15,9 +15,9 @@
     <meta name="description" value="Система Обліку Студентів Навчального Закладу" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css">
+    <link class="common" rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link class="common" rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/main.css' %}">
+    <link class="common" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css">
     {% block extra_css %}{% endblock extra_css %}
   </head>
   <body>
@@ -46,11 +46,11 @@
       <!-- Start subheader -->
       <div class="row" id="sub-header"> 
         <div class="col-xs-12">
-          <ul class="nav nav-tabs" role="tablist">
+          <ul class="nav nav-tabs main-nav" role="tablist">
             <li role="presentation" {% if request.path == students_list_url %} class="active" {% endif %}>
               <a href="{% url 'home' %}">Студенти</a>
             </li>
-            <li role="presentation" {% if journal_url in request.path %} class="active" {% endif %}>
+            <li role="presentation" id="journal" {% if journal_url in request.path %} class="active" {% endif %}>
               <a href="{% url 'journal' %}">Відвідування</a>
             </li>
             <li role="presentation" {% if groups_list_url in request.path %} class="active" {% endif %}>
@@ -158,13 +158,15 @@
     <!-- End Container -->
 
     <!-- Javascripts Inclusion -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.uk.min.js"></script>
-    <script src="{{ PORTAL_URL }}{% static 'js/main.js' %}"></script>
-    {% block extra_js %}{% endblock extra_js %}
+    <div id="scripts">
+      <script class="common-script" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+      <script class="common-script" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+      <script class="common-script" src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+      <script class="common-script" src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      <script class="common-script" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+      <script class="common-script" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.uk.min.js"></script>
+      <script class="common-script" src="{{ PORTAL_URL }}{% static 'js/main.js' %}"></script>
+      {% block extra_js %}{% endblock extra_js %}
+    </div>
   </body>
 </html>

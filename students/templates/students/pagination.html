@@ -1,6 +1,6 @@
 {% if students.has_other_pages and False %}
 	{% with order_by=request.GET.order_by reverse=request.GET.reverse %}
-		<nav>
+		<nav class="pagination-nav">
 		    <ul class="pagination">
 		      <li>
 		      	<a href="{% url "home" %}?page=1&amp;order_by={% if not request.GET %}last_name{% else %}{{ order_by }}{%endif%}&amp;reverse={{ reverse }}">&laquo;
@@ -23,7 +23,7 @@
 
 {% if groups.has_other_pages and False%}
 	{% with order_by=request.GET.order_by reverse=request.GET.reverse %}
-		<nav>
+		<nav class="pagination-nav">
 		    <ul class="pagination">
 		      <li>
 		      	<a href="{% url "groups" %}?page=1&amp;order_by={% if not request.GET %}title{% else %}{{ order_by }}{%endif%}&amp;reverse={{ reverse }}">&laquo;
@@ -42,7 +42,7 @@
 
 {% if objects.has_other_pages %}
 	{% with order_by=request.GET.order_by reverse=request.GET.reverse %}
-		<nav>
+		<nav class="pagination-nav">
 			<ul class="pagination">
 				<li>
 					<a href="{% url first_page %}?page=1&amp;order_by={% if not request.GET %}{{ default_order_by }}{% else %}{{ order_by }}{%endif%}&amp;reverse={{ reverse }}">&laquo;

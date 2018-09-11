@@ -129,66 +129,96 @@ function initEditStudentForm(form, modal) {
 
 }
 
+function changeBrowserURL(dom_element) {
+  // Change URL with browser address bar using the HTML5 History API.
+  if (history.pushState) {
+    // Parameters: data, page title, URL
+    history.pushState(null, null, dom_element.href);
+  }
+  // Fallback for non-supported browsers.
+  else {
+    document.location.hash = dom_element.getAttribute("href");
+  }
+}
+
+function getPageHtml(url, callback) {
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.send();
+
+
+  xhr.onreadystatechange = function() {
+
+    if (xhr.readyState != 4) return;
+      if (xhr.status != 200) {
+        callback(xhr.status);
+      } else {
+        callback(null, xhr.responseText);
+      }
+
+    }
+
+}
 
 function initEditStudentPage(event) {
-
+  console.log('INITIATED STUDENT PAGE');
   $('a.student-edit-form-link').click(function(event){
     event.preventDefault();
     var $link = $(this),
         $loader_wrapper = $('.loader-wrapper'),
         modal = $('#myModal'); 
 
+    // console.log('CLICKED');
+    // console.log($link[0].getAttribute('href'));
+
     $loader_wrapper.fadeIn('slow'); 
 
     setTimeout(function() {
 
-        $.ajax({
-          url      : $link.attr('href'),
-          method   : "GET",
-          dataType : "html"
-        }).then(function(data, status, xhr) {
+        changeBrowserURL($link[0]);
 
-          $loader_wrapper.fadeOut('slow');
-          var html = $(data), 
-              form_html = html.find('#content-column form'); 
+        // getModal($link, $loader_wrapper, modal);
 
-          if (status != 'success') {
-            
+        getPageHtml($link.attr('href'), function(error, html) {
+
+          if(error) {
+
             $loader_wrapper.fadeOut(100, function() {
 
-              modal.find('.modal-title').html('<p>Помилка notOK на сервері. Спробуйте будь-ласка пізніше.</p>');
-              return;
-            }); 
+              modal.find('.modal-body').html('<p class="alert-danger">Помилка error на сервері. Спробуйте будь-ласка пізніше.</p>');
+              modal.find('.modal-footer').html('');
+              modal.find('.modal-title').html('');
+              modal.modal({
+                'keyboard': false,
+                'backdrop': false,
+                'show': true
+              });
 
-          }
-          
-          // console.log(data);
-
-          modal.find('.modal-title').html(html.find('#content-column h2').text());
-          modal.find('.modal-body').html(form_html);
-
-          initEditStudentForm(form_html, modal);
-
-          modal.modal({
-            'keyboard': false,
-            'backdrop': false,
-            'show': true
-          });
-
-        }, function(xhr, status, error) {
-
-          $loader_wrapper.fadeOut(100, function() {
-
-            modal.find('.modal-body').html('<p class="alert-danger">Помилка error на сервері. Спробуйте будь-ласка пізніше.</p>');
-            modal.find('.modal-footer').html('');
-            modal.find('.modal-title').html('');
-            modal.modal({
-              'keyboard': false,
-              'backdrop': false,
-              'show': true
             });
 
-          }); 
+          } else {
+
+            $loader_wrapper.fadeOut(100, function() {
+
+              var $html = $(html), 
+                  form_html = $html.find('#content-column form');
+
+
+              modal.find('.modal-title').html($html.find('#content-column h2').text());
+              modal.find('.modal-body').html(form_html);
+
+              initEditStudentForm(form_html, modal);
+
+              modal.modal({
+                'keyboard': false,
+                'backdrop': false,
+                'show': true
+              }); 
+
+            });
+
+          }
 
         });
 
@@ -198,10 +228,121 @@ function initEditStudentPage(event) {
 
 }
 
-$(function(){
+function popStateHandler() {
+  // FF, Chrome, Safari, IE9.
+  if (history.pushState) {
+
+    // window.onpopstate = function (){
+    //     alert(location.href);
+    // }
+
+    window.addEventListener("popstate", function(e) {
+
+      // alert(location.href);
+
+      getPageHtml(location.href, function(error, html) {
+
+        if(error) {
+
+          return;
+
+        } else {
+
+          var html_tag = document.getElementsByTagName("html")[0];
+          html_tag.innerHTML = html;
+          init();
+
+        }
+
+      });
+
+    });
+  }
+}
+
+function loadJournalPage() {
+
+  $('#journal').click(function(event){
+
+    var $loader_wrapper = $('.loader-wrapper'),
+        $link = $(this);
+
+    $('.main-nav li').removeClass('active');
+    $('#journal').addClass('active');
+
+    event.preventDefault();
+
+    $loader_wrapper.fadeIn('slow');
+
+    setTimeout(function() {
+
+      $.ajax({
+        url      : $link.find('a').attr('href'),
+        method   : "GET",
+        dataType : "html"
+      }).then(function(data, status, xhr) {
+
+        var $html = $(data),
+            $body = $('body'),
+            $scripts = $html.filter('#scripts').find('script').not('.common-script');
+
+
+
+        $loader_wrapper.fadeOut('slow');
+
+        // console.log($html);
+        // console.log($html.filter('#scripts').find('script'));
+
+        if (status != 'success') {
+          
+          $loader_wrapper.fadeOut(100, function() {
+
+            alert('Error on server');
+            return;
+          }); 
+
+        }
+
+        $('#content-columns').html($html.find('#content-columns').html());
+        $body.append($html.find('.pagination-nav'));
+
+        $('link').not(".common").remove();
+        $('head').append($html.filter('link').not(".common"));
+
+        $body.find('#scripts script').not('.common-script').remove();
+        $body.append($scripts);
+
+        initEditStudentPage();
+
+      }, function(xhr, status, error) {
+
+        $loader_wrapper.fadeOut(100, function() {
+
+          alert('Error on server');
+
+        }); 
+
+      });
+
+}, 3000);
+
+  })
+
+
+}
+
+function init() {
 
   setGroupSelector();
   initEditStudentPage();
+  loadJournalPage();
+
+}
+
+$(function(){
+
+  popStateHandler();
+  init();
   // initDatePicker();
 
 });

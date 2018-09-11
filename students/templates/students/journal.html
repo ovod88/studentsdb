@@ -110,7 +110,6 @@
 			integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 			crossorigin="anonymous">	
   </script>
-  <script src="{{ PORTAL_URL }}{% static 'js/journal/main.js' %}"></script>
   <script type="text/html" id='student_tmpl'>
       <tr style="display: none;">
         <td><%= row_num %></td>
@@ -129,4 +128,5 @@
         {% endfor %}
       </tr>
   </script>
+  <script src="{{ PORTAL_URL }}{% static 'js/journal/main.js' %}"></script>
 {% endblock extra_js %}
