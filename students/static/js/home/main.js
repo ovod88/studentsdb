@@ -131,7 +131,7 @@ function initEditStudentPage(event) {
 
         getPageHtml($link.attr('href'), function(error, html) {
 
-          changeBrowserURL($link[0]);
+          addHistoryEntry($link[0]);
 
           if(error) {
 

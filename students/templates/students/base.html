@@ -53,7 +53,7 @@
             <li role="presentation" id="journal" {% if journal_url in request.path %} class="active" {% endif %}>
               <a href="{% url 'journal' %}">Відвідування</a>
             </li>
-            <li role="presentation" {% if groups_list_url in request.path %} class="active" {% endif %}>
+            <li role="presentation" id='groups' {% if groups_list_url in request.path %} class="active" {% endif %}>
               <a href="{% url 'groups' %}">Групи</a>
             </li>
             <li role="presentation" {% if examins_url == request.path %} class="active" {% endif %}>

@@ -20,11 +20,11 @@ function setGroupSelector() {
 
 }
 
-function changeBrowserURL(dom_element) {
+function addHistoryEntry(dom_element, state_data=null) {
   // Change URL with browser address bar using the HTML5 History API.
   // if (History) {
     // Parameters: data, page title, URL
-  History.pushState(null, '', dom_element ? dom_element.href : null );
+  History.pushState({ data : state_data }, '', dom_element ? dom_element.href : null );
   // History.pushState(null, '', "?student=x" );
   // }
   // Fallback for non-supported browsers.
@@ -55,18 +55,39 @@ function getPageHtml(url, callback) {
 
 function popStateHandler() {
 
-  // alert('h');
-
-  // console.log(History);
+  //THIS HANDLER IS ONLY PARTIALLY WORKS BECAUSE NOT ALL PAGES ARE LOADED VIA AJAX,
+  //SO 'statechange' IS NOT LAUNCHED ALWAYS. THUS NO 'no refresh' FUNCTIONALITY.
+  //CHECK JOURNAL PAGE, GROUPS PAGE AND PUSH BACK BUTTON - BROWSER SENDS USUAL REQUEST
+  //BECAUSE NO 'statechange' SINCE GROUPS ARE GET IN USUSAL WAY, SO history OBJECT NOT TOUCHED.
+  //THUS NO 'statechange' event WHEN REMOVED THIS ENTRY (PRESSED BACK BUTTON)
 
   History.Adapter.bind(window,'statechange',function(e){
 
-    var modal = $('#myModal');
-    // alert('h');
-    if(modal && modal.is(':visible')) {
+    var modal = $('#myModal'),
+        State = History.getState();
+    alert('State Changed');
+    if(modal && modal.is(':visible')) {//IF IT IS STUDENTS PAGE AND ONLY MODEL IS ADDED
 
       modal.modal('hide');
+      return;
       // History.back();
+
+    }
+
+    if(State && State.hash.includes('journal')) {//IS ACTIVATED WHEN JOURNAL AJAX PAGE IS PRESSED
+
+      console.log(State);
+      alert('Journal State here');
+      // console.log(State.data.data);
+      loadJournalContent(State.data.data);
+      return;
+
+    }
+
+    if(State && (State.hash === '/' || State.hash.includes('groups'))) {//IF RETURNED TO STUDENTS PAGE FROM ANOTHER PAGES
+
+      alert('Groups State here');
+      location.href = State.url;
 
     }
     // var State = History.getState();
@@ -122,9 +143,28 @@ function popStateHandler() {
 //   }
 }
 
+function loadJournalContent(html) {
+
+  // console.log('Journal Loader called');
+
+  var $html = $(html),
+      $body = $('body'),
+      $scripts = $html.filter('#scripts').find('script').not('.common-script');
+
+  $('#content-columns').html($html.find('#content-columns').html());
+  $body.append($html.find('.pagination-nav'));
+
+  $('link').not(".common").remove();
+  $('head').append($html.filter('link').not(".common"));
+
+  $body.find('#scripts script').not('.common-script').remove();
+  $body.append($scripts);//jQuery will load the scripts but synchronously
+
+}
+
 function loadJournalPage() {
 
-  $('#journal').click(function(event){
+  $('#journal').click(function(event){//WRONG ELEMENT!!!!!!!MUST BE A.
 
     var $loader_wrapper = $('.loader-wrapper'),
         $link = $(this);
@@ -144,17 +184,7 @@ function loadJournalPage() {
         dataType : "html"
       }).then(function(data, status, xhr) {
 
-        changeBrowserURL($link.find('a')[0], current_href=location.href)
-
         // console.log(history.state);
-
-        var $html = $(data),
-            $body = $('body'),
-            $scripts = $html.filter('#scripts').find('script').not('.common-script');
-
-
-
-        $loader_wrapper.fadeOut('slow');
 
         // console.log($html);
         // console.log($html.filter('#scripts').find('script'));
@@ -169,14 +199,20 @@ function loadJournalPage() {
 
         }
 
-        $('#content-columns').html($html.find('#content-columns').html());
-        $body.append($html.find('.pagination-nav'));
+        $loader_wrapper.fadeOut(100, function() {
 
-        $('link').not(".common").remove();
-        $('head').append($html.filter('link').not(".common"));
+          addHistoryEntry($link.find('a')[0], data);
 
-        $body.find('#scripts script').not('.common-script').remove();
-        $body.append($scripts);//jQuery will load the scripts but synchronously
+        });
+
+        // $('#content-columns').html($html.find('#content-columns').html());
+        // $body.append($html.find('.pagination-nav'));
+
+        // $('link').not(".common").remove();
+        // $('head').append($html.filter('link').not(".common"));
+
+        // $body.find('#scripts script').not('.common-script').remove();
+        // $body.append($scripts);//jQuery will load the scripts but synchronously
 
         // initEditStudentPage();
 
@@ -212,6 +248,13 @@ $(function(){
   // initDatePicker();
   init();
 
+   $('#groups a').click(function(event){
+      event.preventDefault();
 
+      // console.log($(this).find('a')[0]);
+      alert('Clicked');
+      addHistoryEntry($(this).find('a')[0], 'test');
+
+   });
   // console.log(History);
 });
