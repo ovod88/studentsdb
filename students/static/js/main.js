@@ -20,16 +20,17 @@ function setGroupSelector() {
 
 }
 
-function changeBrowserURL(dom_element, current_href=null) {
+function changeBrowserURL(dom_element) {
   // Change URL with browser address bar using the HTML5 History API.
-  if (history.pushState) {
+  // if (History) {
     // Parameters: data, page title, URL
-    window.history.pushState({ 'prev_href' : current_href }, '', dom_element ? dom_element.href : null );
-  }
+  History.pushState(null, '', dom_element ? dom_element.href : null );
+  // History.pushState(null, '', "?student=x" );
+  // }
   // Fallback for non-supported browsers.
-  else {
-    document.location.hash = dom_element.getAttribute("href");
-  }
+  // else {
+  //   document.location.hash = dom_element.getAttribute("href");
+  // }
 }
 
 function getPageHtml(url, callback) {
@@ -53,32 +54,54 @@ function getPageHtml(url, callback) {
 }
 
 function popStateHandler() {
+
+  // alert('h');
+
+  // console.log(History);
+
+  History.Adapter.bind(window,'statechange',function(e){
+
+    var modal = $('#myModal');
+    // alert('h');
+    if(modal && modal.is(':visible')) {
+
+      modal.modal('hide');
+      // History.back();
+
+    }
+    // var State = History.getState();
+    // location.href = State.url;
+    // console.log(e);
+
+  });
   // FF, Chrome, Safari, IE9.
-  if (history.pushState) {
+  // if (history.pushState) {
 
     // window.onpopstate = function (){
     //     alert(location.href);
     // }
 
-    window.onpopstate = function(e) {
+    // window.onpopstate = function(e) {
       // console.log(e.originalEvent);
-      alert('h');
+      // alert('h');
       // console.log(e);
+      // console.log(history);
+      // alert('h');
 
       // location.href = location.href;
 
       // console.log(window.location);
       // console.log(document.referrer);
       // window.location = document.referrer;
-      if(e.state){
+      // if(e.state){
 
-        location.href = e.state.prev_href;
+      //   location.href = e.state.prev_href;
       
-      } else {
+      // } else {
 
-        location.href = location.href;
+      //   location.href = location.href;
 
-      }
+      // }
       // getPageHtml(location.href, function(error, html) {
 
       //   if(error) {
@@ -95,8 +118,8 @@ function popStateHandler() {
 
       // });
 
-    };
-  }
+    // };
+//   }
 }
 
 function loadJournalPage() {
@@ -183,9 +206,12 @@ function init() {
 
 $(function(){
 
+  var History = window.History;
   popStateHandler();
-  init();
-  // window.history.replaceState({ 'prev_href' : location.href }, '', location.href );
+  // History.replaceState(null, '', location.href );
   // initDatePicker();
+  init();
 
+
+  // console.log(History);
 });

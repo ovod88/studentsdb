@@ -131,7 +131,7 @@ function initEditStudentPage(event) {
 
         getPageHtml($link.attr('href'), function(error, html) {
 
-          changeBrowserURL($link[0], location.href);
+          changeBrowserURL($link[0]);
 
           if(error) {
 
@@ -155,7 +155,7 @@ function initEditStudentPage(event) {
               var $html = $(html), 
                   form_html = $html.find('#content-column form');
 
-
+              // alert('HERE');
               modal.find('.modal-title').html($html.find('#content-column h2').text());
               modal.find('.modal-body').html(form_html);
 
@@ -274,7 +274,8 @@ function initEditStudentForm(form, modal) {
 
           setTimeout(function(){
             
-            location.href = history.state.prev_href;//REDIRECT TO PREVIOUS PAGE (URL IS STORED IN STATE WHILE PUSHSTATE)
+            var State = History.getState();
+            location.href = State.url;//REDIRECT TO PREVIOUS PAGE (URL IS STORED IN STATE WHILE PUSHSTATE)
 
           }, 2000);
 
