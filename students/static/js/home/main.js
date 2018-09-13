@@ -210,12 +210,17 @@ function initEditStudentForm(form, modal) {
 
   $waiter_to_modal.appendTo(modal.find('.modal-body'));
 
-  form.find('input[name="cancel_button"]').click(function(event){
+  function modalHide(event) {
 
     event.preventDefault();
     modal.modal('hide');
+    // alert('Clicked');
+    window.history.back();
 
-  });
+  }
+
+  form.find('input[name="cancel_button"]').click(modalHide);
+  modal.find('.close').click(modalHide);
 
   var $url = form.attr('action');
 

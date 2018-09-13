@@ -72,6 +72,7 @@ function popStateHandler() {
     if(modal && modal.is(':visible')) {//IF IT IS STUDENTS PAGE AND ONLY MODEL IS ADDED
 
       modal.modal('hide');
+      // History.back();
       return;
       // History.back();
 
@@ -172,7 +173,7 @@ function loadJournalContent(html) {
 
 function loadJournalPage() {
 
-  $('#journal a').click(function(event){//WRONG ELEMENT!!!!!!!MUST BE A.
+  $('#journal a').click(function(event){
 
     event.preventDefault();
 
