@@ -287,6 +287,7 @@ class StudentUpdateForm(ModelForm):
   #       )
 
 		self.helper[3] = Field('birthday', template='students/datepicker.html')
+		self.helper[4] = Field('photo', template='students/photo.html')
 		# self.helper["birthday"].wrap(Field, HTML("<span class='glyphicon glyphicon-calendar'></span>"))
 
 		self.helper.add_input(Submit('add_button', u'Зберегти', css_class="btn btn-primary"))

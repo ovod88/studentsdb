@@ -24,6 +24,7 @@ function addHistoryEntry(dom_element, state_data=null) {
   // Change URL with browser address bar using the HTML5 History API.
   // if (History) {
     // Parameters: data, page title, URL
+  // alert(dom_element.href);
   History.pushState({ data : state_data }, '', dom_element ? dom_element.href : null );
   // History.pushState(null, '', "?student=x" );
   // }

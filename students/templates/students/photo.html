@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div id="div_{{ field.id_for_label }}" class="form-group {% if form_show_errors and field.errors %} has-error{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}{% if div.css_class %} {{ div.css_class }}{% endif %}"> 
+	<label for="{{ field.id_for_label }}" class="control-label col-sm-2 control-label">
+        Фото
+    </label> 
+    <div class="controls col-sm-10">
+        Наразі: <img src="{% if field.value %}{{ field.value.url }}{% else %}{% static "img/default-user.png" %}{% endif %}" height="42" width="42"
+        		style="border-radius:50%;">
+		<input name="photo-clear" id="photo-clear_id" type="checkbox">
+		<label for="photo-clear_id">Очистити</label><br>
+		Змінити: <input name="photo" class="clearablefileinput" id="{{ field.id_for_label }}" type="file">
+	</div>
+</div>
