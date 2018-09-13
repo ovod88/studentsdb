@@ -65,7 +65,9 @@ function popStateHandler() {
 
     var modal = $('#myModal'),
         State = History.getState();
-    alert('State Changed');
+
+    // console.log(State);
+    // alert('State Changed');
     if(modal && modal.is(':visible')) {//IF IT IS STUDENTS PAGE AND ONLY MODEL IS ADDED
 
       modal.modal('hide');
@@ -76,20 +78,25 @@ function popStateHandler() {
 
     if(State && State.hash.includes('journal')) {//IS ACTIVATED WHEN JOURNAL AJAX PAGE IS PRESSED
 
-      console.log(State);
-      alert('Journal State here');
+      // alert('Journal State here');
       // console.log(State.data.data);
       loadJournalContent(State.data.data);
       return;
 
     }
 
-    if(State && (State.hash === '/' || State.hash.includes('groups'))) {//IF RETURNED TO STUDENTS PAGE FROM ANOTHER PAGES
+    if(State && State.hash.includes('groups')) {//JUST TO TEST ADDING STATE FOR GROUPS PAGE
 
-      alert('Groups State here');
+      // alert('Groups State here');
+      return;
+
+    }
+    if(State && State.hash === '/') {
+
       location.href = State.url;
 
     }
+
     // var State = History.getState();
     // location.href = State.url;
     // console.log(e);
@@ -164,15 +171,16 @@ function loadJournalContent(html) {
 
 function loadJournalPage() {
 
-  $('#journal').click(function(event){//WRONG ELEMENT!!!!!!!MUST BE A.
-
-    var $loader_wrapper = $('.loader-wrapper'),
-        $link = $(this);
-
-    $('.main-nav li').removeClass('active');
-    $('#journal').addClass('active');
+  $('#journal a').click(function(event){//WRONG ELEMENT!!!!!!!MUST BE A.
 
     event.preventDefault();
+
+    var $loader_wrapper = $('.loader-wrapper'),
+        $link = $('#journal'),
+        self = this;
+
+    $('.main-nav li').removeClass('active');
+    $link.addClass('active');
 
     $loader_wrapper.fadeIn('slow');
 
@@ -201,7 +209,7 @@ function loadJournalPage() {
 
         $loader_wrapper.fadeOut(100, function() {
 
-          addHistoryEntry($link.find('a')[0], data);
+          addHistoryEntry(self, data);
 
         });
 
@@ -248,13 +256,13 @@ $(function(){
   // initDatePicker();
   init();
 
-   $('#groups a').click(function(event){
-      event.preventDefault();
+   // $('#groups a').click(function(event){//JUST TO TEST GROUPS PAGE
+   //    event.preventDefault();
 
-      // console.log($(this).find('a')[0]);
-      alert('Clicked');
-      addHistoryEntry($(this).find('a')[0], 'test');
+   //    // console.log($(this).find('a')[0]);
+   //    alert('Clicked');
+   //    addHistoryEntry(this, 'test');
 
-   });
+   // });
   // console.log(History);
 });
