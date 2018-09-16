@@ -12,6 +12,9 @@ from django.contrib import messages
 from django.contrib.messages import get_messages
 import traceback
 
+import logging
+
+
 def clear_messages(request):
 	storage = get_messages(request)
 	for message in storage:#removing all messages
@@ -40,6 +43,8 @@ def contact_admin(request):
 							Спробуйте скористатись даною формою пізніше.'
 				messages.error(request, message)
 				traceback.print_exc()
+				logger = logging.getLogger(__name__)
+				logger.exception(message)
 			else:
 				# redirect to same contact page with success message
 				message = u'Повідомлення успішно надіслане!'
