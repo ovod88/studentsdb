@@ -279,8 +279,10 @@ function initEditStudentForm(form, modal) {
 
           setTimeout(function(){
             
-            var State = History.getState();
-            location.href = State.url;//REDIRECT TO PREVIOUS PAGE (URL IS STORED IN STATE WHILE PUSHSTATE)
+            // var State = History.getState();
+            // // console.log(State);
+            // // alert('h');
+            window.location.reload(window.history.back());
 
           }, 2000);
 
