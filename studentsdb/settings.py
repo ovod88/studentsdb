@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from .db import DATABASES
 from django.contrib.messages import constants as messages
+from colorama import Fore, Back, Style
 
 ADMIN_EMAIL = 'upworkem@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -146,11 +147,16 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
     'formatters': {
+        'verbose-colored': {
+            'format': Fore.GREEN + '%(levelname)s '
+                +  Fore.YELLOW + '%(asctime)s ' 
+                + Fore.BLUE + '%(module)s: ' + Style.RESET_ALL + '%(message)s'
+        },
         'verbose': {
             'format': '%(levelname)s %(asctime)s %(module)s: %(message)s'
         },
         'simple': {
-            'format': '%(levelname)s: %(message)s'
+            'format': Fore.GREEN + '%(levelname)s' + Style.RESET_ALL + ': %(message)s'
         },
     },
     'handlers': {
@@ -163,6 +169,16 @@ LOGGING = {
             'class'     : 'logging.StreamHandler',
             'formatter' : 'verbose'
         },
+        'console-simple': {
+            'level'     : 'INFO',
+            'class'     : 'logging.StreamHandler',
+            'formatter' : 'simple'
+        },
+        'console-colored': {
+            'level'     : 'INFO',
+            'class'     : 'studentsdb.ColorizingStreamHandler.ColorizingStreamHandler',
+            'formatter' : 'verbose'
+        },
         'file': {
             'level'     : 'INFO',
             'class'     : 'logging.FileHandler',
@@ -172,10 +188,9 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers'  : ['console'],
+            'handlers'  : ['console-colored'],
             'propagate' : True,
-            'level'     : 'INFO',
-            'formatter' : 'simple',
+            'level'     : 'INFO'
         },
         'students.signals': {
             'handlers' : ['console', 'file'],

@@ -16,6 +16,7 @@ import os
 
 from django.core.mail import send_mail
 from studentsdb.settings import ADMIN_EMAIL
+from colorama import Fore, Back, Style
 
 
 from ..models.students import Student
@@ -347,9 +348,10 @@ class StudentUpdateView(UpdateView):
 
 	def form_invalid(self, form):
 		message = 'Form was filled incorrectly by student id {}'.format(form.instance.id)
-		logging.warning(message)
+		logger = logging.getLogger('django')
+		logger.warning(message)
 		
-		send_mail('Edit form notification', message, ADMIN_EMAIL, [ADMIN_EMAIL])
+		# send_mail('Edit form notification', message, ADMIN_EMAIL, [ADMIN_EMAIL])
 
 
 		return super(StudentUpdateView, self).form_invalid(form)
