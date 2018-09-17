@@ -172,9 +172,10 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers'  : ['null'],
+            'handlers'  : ['console'],
             'propagate' : True,
             'level'     : 'INFO',
+            'formatter' : 'simple',
         },
         'students.signals': {
             'handlers' : ['console', 'file'],
