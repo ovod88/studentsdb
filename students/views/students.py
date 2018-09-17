@@ -14,6 +14,9 @@ from crispy_forms.layout import Submit, Field,Layout, Div, HTML
 from crispy_forms.bootstrap import FormActions
 import os
 
+from django.core.mail import send_mail
+from studentsdb.settings import ADMIN_EMAIL
+
 
 from ..models.students import Student
 from ..models.groups import Group
@@ -24,6 +27,8 @@ from ..utils import get_current_group
 
 import json
 from django.views.decorators.csrf import csrf_exempt
+
+import logging
 
 def clear_messages(request):
 	# list(messages.get_messages(request))#DOES THE SAME
@@ -339,6 +344,15 @@ class StudentUpdateView(UpdateView):
 		messages.success(self.request, 'Студента %s успішно збережено!' % self.object)
 
 		return reverse('home')
+
+	def form_invalid(self, form):
+		message = 'Form was filled incorrectly by student id {}'.format(form.instance.id)
+		logging.warning(message)
+		
+		send_mail('Edit form notification', message, ADMIN_EMAIL, [ADMIN_EMAIL])
+
+
+		return super(StudentUpdateView, self).form_invalid(form)
 
 	def post(self, request, *args, **kwargs):
 		# print(kwargs)

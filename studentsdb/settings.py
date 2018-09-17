@@ -14,7 +14,7 @@ import os
 from .db import DATABASES
 from django.contrib.messages import constants as messages
 
-ADMIN_EMAIL = 'admin@studentsdb.com'
+ADMIN_EMAIL = 'upworkem@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '465'
 EMAIL_HOST_USER = 'upworkem@gmail.com'
