@@ -1,13 +1,10 @@
 import logging
-import json
 import datetime
-from ..settings import BASE_DIR
-from os.path import basename, relpath, normpath
-import os
+from ..utils import getMobuleProjectPath
 
 class RelativePathFormatter(logging.Formatter):
 	# pass
-	data ={}
+	# data ={}
 
 	# def __init__(self):
  #        super(RelativePathFormatter, self).__init__()
@@ -20,10 +17,7 @@ class RelativePathFormatter(logging.Formatter):
 		name_arr = record.name.split('.')
 
 		if len(name_arr) == 1 and name_arr[0] == 'django':
-			path_str = str(relpath(normpath(record.pathname), BASE_DIR)).split('.')[:-1][0]
-			path_str = path_str.replace(os.sep, '.')
-
-			record.module = path_str
+			record.module = getMobuleProjectPath(record.pathname)
 			# print(str(os.path.basename(os.path.relpath(os.path.normpath(record.pathname), BASE_DIR))).replace(os.sep, '.'))
 
 		# print(record.__dict__)

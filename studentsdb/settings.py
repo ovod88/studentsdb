@@ -125,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Warsaw'
 
 USE_I18N = True
 
@@ -190,11 +190,19 @@ LOGGING = {
             'filename'  : LOG_FILE,
             'formatter' : 'verbose'
         },
+        'db' : {
+            'level'     : 'INFO',
+            'class'     : 'studentsdb.handlers.LogDatabaseHandler.LogDatabaseHandler'
+        }
     },
     'loggers': {
         'django': {
             'handlers'  : ['console-colored'],
             'propagate' : True,
+            'level'     : 'INFO'
+        },
+        'database' : {
+            'handlers'  : ['db'],
             'level'     : 'INFO'
         },
         'students.signals': {

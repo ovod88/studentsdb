@@ -348,7 +348,9 @@ class StudentUpdateView(UpdateView):
 
 	def form_invalid(self, form):
 		message = 'Form was filled incorrectly by student id {}'.format(form.instance.id)
-		logger = logging.getLogger('django')
+		
+		logger = logging.getLogger('database')
+
 		# print(__name__)
 		logger.warning(message)
 		
