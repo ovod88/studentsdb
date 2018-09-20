@@ -35,6 +35,7 @@ MESSAGE_TAGS = {
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# print(os.path.relpath(os.path.abspath(__file__), BASE_DIR))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -158,6 +159,10 @@ LOGGING = {
         'simple': {
             'format': Fore.GREEN + '%(levelname)s' + Style.RESET_ALL + ': %(message)s'
         },
+        'relative-path-verbose': {
+            '()'     : 'studentsdb.formatters.RelativePathFormatter.RelativePathFormatter',
+            'format' : '%(levelname)s || %(date)s || %(module)s: %(message)s'
+        }
     },
     'handlers': {
         'null': {
@@ -176,8 +181,8 @@ LOGGING = {
         },
         'console-colored': {
             'level'     : 'INFO',
-            'class'     : 'studentsdb.ColorizingStreamHandler.ColorizingStreamHandler',
-            'formatter' : 'verbose'
+            'class'     : 'studentsdb.handlers.ColorizingStreamHandler.ColorizingStreamHandler',
+            'formatter' : 'relative-path-verbose'
         },
         'file': {
             'level'     : 'INFO',
@@ -198,7 +203,7 @@ LOGGING = {
         },
         'students.views.contact_admin': {
             'handlers' : ['console', 'file'],
-            'level'    : 'INFO',
+            'level'    : 'INFO'
         }
     }
 }
