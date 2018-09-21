@@ -1,0 +1,36 @@
+{% extends "students/base.html" %}
+
+{% load static %}
+
+{% block meta_title %}- Логи{% endblock meta_title %}
+
+{% block title %}Логи{% endblock title %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/logs/main.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+	<table class="table table-hover table-striped">
+		<thead class="thead-inverse">
+            <tr>
+              <th>id</th>
+              <th>Log Level</th>
+              <th>Date</th>
+              <th>Module</th>
+              <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        	{% for log in logs %}
+        		<tr>
+        			<td>{{ log.id }}</td>
+	        		<td>{{ log.log_level }}</td>
+	        		<td>{{ log.date|date:"Y-m-d H:i:s" }}</td>
+	        		<td>{{ log.module }}</td>
+	        		<td>{{ log.message }}</td>
+        		</tr>
+        	{% endfor %}
+        </tbody>
+	</table>
+{% endblock %}

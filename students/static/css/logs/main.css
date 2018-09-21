@@ -1,0 +1,13 @@
+th, td {
+	text-align: center;
+}
+
+.thead-inverse th {
+	color: #fff;
+	background-color: #373a3c;
+}
+
+tr:hover {
+	background: orange !important;
+	color: white !important;
+}

@@ -24,6 +24,7 @@ from students.views.professors import *
 from students.views.studentList import *
 from students.views.examins_results import *
 from students.views.contact_admin import *
+from students.views.logsList import *
 
 from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
 
@@ -67,6 +68,8 @@ urlpatterns = [
     path(r'^contact_admin_forms$', ContactFormView.as_view(), name='contact_admin_forms'),#FORM USING DJANGO CONTACT FORM
     path(r'^contact_admin_forms/sent/$', TemplateView.as_view(template_name='contact_admin_forms/contact_form_sent.html'),
                             name='contact_admin_forms_sent'),
+
+    path(r'^logs$', LogsList.as_view(), name='logs')
 ] 
 
 if DEBUG:

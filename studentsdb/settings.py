@@ -192,7 +192,8 @@ LOGGING = {
         },
         'db' : {
             'level'     : 'INFO',
-            'class'     : 'studentsdb.handlers.LogDatabaseHandler.LogDatabaseHandler'
+            'class'     : 'studentsdb.handlers.LogDatabaseHandler.LogDatabaseHandler',
+            'model'     : 'students.models.logentry.LogEntry'
         }
     },
     'loggers': {

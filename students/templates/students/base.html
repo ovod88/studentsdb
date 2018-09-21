@@ -6,6 +6,7 @@
 {% url 'examins' as examins_url %}
 {% url 'examins_results_list' as examins_results_url %}
 {% url 'contact_admin' as contact_admin_url %}
+{% url 'logs' as logs_url %}
 
 <!DOCTYPE html>
 <html lang="uk">
@@ -63,6 +64,9 @@
             </li>
             <li role=”presentation” {% if contact_admin_url in request.path %} class=”active”{% endif %}>
               <a href="{% url 'contact_admin' %}">Контакт</a>
+            </li>
+            <li role=”presentation” {% if logs_url in request.path %} class=”active”{% endif %}>
+              <a href="{% url 'logs' %}">Логування</a>
             </li>
           </ul>
         </div>

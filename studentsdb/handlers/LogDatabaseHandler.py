@@ -6,9 +6,9 @@ from ..utils import getMobuleProjectPath
 
 class LogDatabaseHandler(logging.Handler):
 
-	def __init__(self, model_name=''):
+	def __init__(self, model=''):
 		super().__init__()
-		self.model_name = model_name
+		self.model_name = model
 
 	def emit(self, record):
 		
@@ -21,10 +21,10 @@ class LogDatabaseHandler(logging.Handler):
 		except Exception as e:
 			from students.models.logentry import LogEntry as model
 
-			data['message'] = record.getMessage()
-			data['date'] = datetime.datetime.now(pytz.timezone(TIME_ZONE))
-			data['module'] = getMobuleProjectPath(record.pathname)
-			data['log_level'] = record.levelname
+		data['message'] = record.getMessage()
+		data['date'] = datetime.datetime.now(pytz.timezone(TIME_ZONE))
+		data['module'] = getMobuleProjectPath(record.pathname)
+		data['log_level'] = record.levelname
 		# print(data['date'])
 
 
