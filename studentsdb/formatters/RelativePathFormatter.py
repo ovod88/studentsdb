@@ -16,7 +16,7 @@ class RelativePathFormatter(logging.Formatter):
 		record.date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		name_arr = record.name.split('.')
 
-		if len(name_arr) == 1 and name_arr[0] == 'django':
+		if len(name_arr) == 1 and (name_arr[0] == 'django' or name_arr[0] == 'database'):
 			record.module = getMobuleProjectPath(record.pathname)
 			# print(str(os.path.basename(os.path.relpath(os.path.normpath(record.pathname), BASE_DIR))).replace(os.sep, '.'))
 

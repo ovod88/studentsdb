@@ -202,7 +202,7 @@ LOGGING = {
             'level'     : 'INFO'
         },
         'database' : {
-            'handlers'  : ['db'],
+            'handlers'  : ['db', 'console-colored'],
             'level'     : 'INFO'
         },
         'students.signals': {
