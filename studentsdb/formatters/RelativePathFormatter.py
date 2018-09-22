@@ -1,6 +1,8 @@
 import logging
 import datetime
 from ..utils import getMobuleProjectPath
+import traceback
+import sys
 
 class RelativePathFormatter(logging.Formatter):
 	# pass
@@ -20,18 +22,9 @@ class RelativePathFormatter(logging.Formatter):
 			record.module = getMobuleProjectPath(record.pathname)
 			# print(str(os.path.basename(os.path.relpath(os.path.normpath(record.pathname), BASE_DIR))).replace(os.sep, '.'))
 
-		# print(record.__dict__)
+		if record.exc_info is not None:
+			record.exc_data = '\n'.join(traceback.format_tb(record.exc_info[2])) + str(record.exc_info[1])
+		else:
+			record.exc_data = ''
+
 		return super().formatMessage(record)
-
-	# # 	return super(RelativePathFormatter, self).format(record)
-	# 	# print(record)
-	# 	# record.message = record.getMessage()
-	# 	# input_data = {}
-	# 	# input_data['@timestamp'] = datetime.utcnow().isoformat()[:-3] + 'Z'
-	# 	# input_data['level'] = record.levelname
-
-	# 	# if record.message:
-	# 	#     input_data['message'] = record.message
-
-	# 	# input_data.update(self.data)
-	# 	# return json.dumps(input_data)

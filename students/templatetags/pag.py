@@ -1,6 +1,7 @@
 from django import template
 from ..models.students import Student
 from ..models.groups import Group
+from ..models.logentry import LogEntry
  
 register = template.Library()
 
@@ -20,6 +21,13 @@ def render_pagination(objects):
 			"objects"          : objects,
 			"first_page"       : "groups",
 			"default_order_by" : "title"
+		}
+
+	if isinstance(objects[0], LogEntry):
+		return {
+			"objects"          : objects,
+			"first_page"       : "logs",
+			"default_order_by" : "date"
 		}
 
      

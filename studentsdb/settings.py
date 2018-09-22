@@ -161,7 +161,7 @@ LOGGING = {
         },
         'relative-path-verbose': {
             '()'     : 'studentsdb.formatters.RelativePathFormatter.RelativePathFormatter',
-            'format' : '%(levelname)s || %(date)s || %(module)s: %(message)s'
+            'format' : '%(levelname)s || %(date)s || %(module)s: %(message)s \n %(exc_data)s'
         }
     },
     'handlers': {
