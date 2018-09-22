@@ -11,7 +11,11 @@
 {% endblock extra_css %}
 
 {% block content %}
+  <div class="alert alert-warning">
+    
+  </div>
 	<table class="table table-hover table-striped">
+    {% csrf_token %}
 		<thead class="thead-inverse">
             <tr>
               <th>id</th>
@@ -33,4 +37,14 @@
         	{% endfor %}
         </tbody>
 	</table>
+  <select id="log-size">
+    <option value="">Logs per page (10)</option>
+    <option value="20" {% if page_size == 20 %}selected{% endif %}>20 logs per page</option>
+    <option value="30" {% if page_size == 30 %}selected{% endif %}>30 logs per page</option>
+    <option value="40" {% if page_size == 40 %}selected{% endif %}>40 logs per page</option>
+  </select>
 {% endblock %}
+
+{% block extra_js %}
+  <script src="{{ PORTAL_URL }}{% static 'js/logs/main.js' %}"></script>
+{% endblock extra_js %}

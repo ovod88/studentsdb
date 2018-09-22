@@ -11,3 +11,11 @@ tr:hover {
 	background: orange !important;
 	color: white !important;
 }
+
+select {
+	float: right;
+}
+
+div.alert {
+	opacity: 0
+}

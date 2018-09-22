@@ -27,7 +27,7 @@ def render_pagination(objects):
 		return {
 			"objects"          : objects,
 			"first_page"       : "logs",
-			"default_order_by" : "date"
+			"default_order_by" : ""
 		}
 
      

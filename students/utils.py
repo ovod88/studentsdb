@@ -29,3 +29,11 @@ def get_current_group(request):
 			return group
 	else:
 		return None
+
+def get_page_size(request):
+	try:
+		page_size = int(request.COOKIES.get('page_size'))
+	except Exception as e:
+		return None
+	else:
+		return page_size

@@ -62,10 +62,10 @@
             </li>
             <li role="presentation" {% if examins_results_url in request.path %} class="active" {% endif %}>  <a href="{% url 'examins_results_list' %}">Результати екзамінів</a>
             </li>
-            <li role=”presentation” {% if contact_admin_url in request.path %} class=”active”{% endif %}>
+            <li role="presentation" {% if contact_admin_url in request.path %} class="active"{% endif %}>
               <a href="{% url 'contact_admin' %}">Контакт</a>
             </li>
-            <li role=”presentation” {% if logs_url in request.path %} class=”active”{% endif %}>
+            <li role="presentation" {% if logs_url in request.path %} class="active"{% endif %}>
               <a href="{% url 'logs' %}">Логування</a>
             </li>
           </ul>
