@@ -25,8 +25,8 @@ class LogEntry(models.Model):
 		verbose_name=u"Message")
 
 	def __str__(self):
-		return "{} {} {}: {}".format(self.first_name, self.last_name, 
-										self.ticket, self.id, self.student_group)
+		return "{} {} {}: {}".format(self.log_level, self.date, 
+										self.module, self.id, self.message)
 
 	def as_dict(self):
 		return {

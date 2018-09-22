@@ -17,15 +17,15 @@ class LogsList(ListView):
 		if page_size:
 			paginator, logs_page, logs, if_paginated = super().paginate_queryset(self.queryset, page_size)
 			context = {
-				'objects' : logs_page
+				'logs_page' : logs_page
 			}
 		else:
 			context = {
-				'objects' : None
+				'logs_page' : None
 			}
 
 		context.update(kwargs)
 
 		if context_object_name is not None:
-			context[context_object_name] = self.queryset
+			context[context_object_name] = logs
 		return context
