@@ -19,10 +19,33 @@
 		<thead class="thead-inverse">
             <tr>
               <th>id</th>
-              <th>Log Level</th>
-              <th>Date</th>
-              <th>Module</th>
-              <th>Message</th>
+              <th>
+                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Log Level
+                <div class="filter-window">
+                  <div class="filter-window-select">
+                    <select id="filter-log-level">
+                      <option value="">None</option>
+                      <option value="DEBUG">DEBUG</option>
+                      <option value="INFO">INFO</option>
+                      <option value="WARNING">WARNING</option>
+                      <option value="ERROR">ERROR</option>
+                      <option value="CRITICAL">CRITICAL</option>
+                    </select>
+                  </div>
+                </div>
+              </th>
+              <th>
+                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Date
+                <div class="filter-window">Filter</div>
+              </th>
+              <th>
+                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Module
+                <div class="filter-window">Filter</div>
+              </th>
+              <th>
+                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Message
+                <div class="filter-window">Filter</div>
+              </th>
             </tr>
         </thead>
         <tbody>

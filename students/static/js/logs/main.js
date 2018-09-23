@@ -1,5 +1,12 @@
 $(function(){
 
+	logSizeHandler();
+	toggleFilter();
+	
+});
+
+function logSizeHandler() {
+
 	$('#log-size').change(function(event){
 
 	  var page_size = $(this).val();
@@ -19,8 +26,8 @@ $(function(){
       getLogs();
 
 	});
-	
-});
+
+}
 
 function getLogs() {
 
@@ -72,5 +79,17 @@ function getLogs() {
 							});
 
 			});
+
+}
+
+function toggleFilter() {
+
+	let $filter_icon = $('.filter-icon');
+
+	$filter_icon.click(function() {
+
+		$(this).next('.filter-window').slideToggle('300');
+
+	});
 
 }

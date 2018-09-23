@@ -5,6 +5,7 @@ th, td {
 .thead-inverse th {
 	color: #fff;
 	background-color: #373a3c;
+	position: relative;
 }
 
 tr:hover {
@@ -18,4 +19,38 @@ select {
 
 div.alert {
 	opacity: 0
+}
+
+.filter-icon {
+	margin-right: 5px;
+}
+
+.filter-icon:hover {
+	cursor: pointer;
+}
+
+.filter-window {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 30px;
+	background: #3d4042;
+	bottom: 100%;
+	left: 0;
+	display: none;
+	border-radius: 2px 2px 0 0;
+}
+
+.filter-window-select {
+	text-align:center;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%)
+}
+
+#filter-log-level {
+	font-size: 12px;
+	line-height: 20px;
+	height: 20px;
 }
