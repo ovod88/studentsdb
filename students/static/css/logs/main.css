@@ -46,11 +46,83 @@ div.alert {
     position:absolute;
     top:50%;
     left:50%;
-    transform: translate(-50%,-50%)
+    transform: translate(-50%,-50%);
+    border: 1px solid #f7126e;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.filter-window-select-main {
+  	width: inherit;
+  	cursor: pointer;
+  	position: relative;
+  	/*line-height: 20px;*/
+  	display: inline-block;
+}
+
+.filter-window-select-main > .text {
+	padding: 3px 50px 3px 5px;
+	letter-spacing: 1px;
+	text-align: left;
+  	/*display: block;*/
+  	/*overflow: hidden;*/
+  	/*white-space: nowrap;*/
+  	/*text-overflow: ellipsis;*/
+}
+
+.filter-window-select-main-arrow {
+	position: absolute;
+	top:50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.filter-window-select-box {
+  	display: none;
+  	width: 100%;
+  	z-index: 2;
+  	position: absolute;
+  	background: #3d4042;
+  	border-radius: 3px;
+  	box-shadow: 0 8px 20px #000000;
+  	box-shadow: 0 8px 20px rgba(0,0,0,.35)
+}
+
+.filter-window-select-box.active {
+  display: block;
+}
+
+.filter-window-select-box.drop-up {
+  top: auto;
+  bottom: 100%;
 }
 
 #filter-log-level {
-	font-size: 12px;
+  margin: 0;
+  padding: 10px;
+  list-style-type: none;
+}
+
+#filter-log-level li {
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#filter-log-level li:hover,
+#filter-log-level li.active {
+  background-color: #999999;
+}
+
+/*#filter-log-level {
+	font-size: 7pt;
 	line-height: 20px;
 	height: 20px;
+	color: grey;
+	-webkit-appearance: none;
 }
+
+#filter-log-level option {
+	width: 100%;
+}*/

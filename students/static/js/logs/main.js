@@ -84,11 +84,93 @@ function getLogs() {
 
 function toggleFilter() {
 
-	let $filter_icon = $('.filter-icon');
+	let $filter_icon = $('.filter-icon'),
+		$filter_window_select_main = $('.filter-window-select-main');
 
 	$filter_icon.click(function() {
 
-		$(this).next('.filter-window').slideToggle('300');
+		let $filter_window = $(this).next('.filter-window'),
+			$filter_window_select_main = $filter_window.find('.filter-window-select-main'),
+			$filter_window_select_list = $filter_window.find('.filter-window-select-box'),
+			$filter_log_level_options = $("#filter-log-level li");
+
+		$filter_window.slideToggle('300', function() {
+
+			if($filter_window.is(':visible')) {
+
+				$filter_window_select_main.on("click", function () {
+
+        			if (!$filter_window_select_list.hasClass("active")) {
+
+			            let windowHeight = $(window).outerHeight(),
+			            	dropdownPosition = $(this).offset().top,
+			            	dropdownHeight = 95;
+
+			            if (dropdownPosition + dropdownHeight + 50 > windowHeight) {
+
+			                $filter_window_select_list.addClass("drop-up");
+
+			            }
+			            else {
+
+			                $filter_window_select_list.removeClass("drop-up");
+
+			            }
+
+			            var level_selected = $(this).find('text').text().trim();
+
+			            $.each($filter_log_level_options, function () {
+
+			                var level = $(this).text().trim();
+
+			                if (level === level_selected)
+
+			                    $(this).addClass("active");
+
+			                else
+
+			                    $(this).removeClass("active");
+
+			            });
+        			}
+
+        			$filter_window_select_list.toggleClass("active");
+
+				});
+
+				$filter_log_level_options.on("click", function () {
+
+        			var level = $(this).html();
+
+        			$("span.text").html(level);
+        			$filter_window_select_list.removeClass("active");
+
+    			});
+
+    			$filter_log_level_options.hover(function () {
+
+        			$filter_log_level_options.removeClass("acti ve");
+
+    			});
+
+    			$(document).click(function (event) {
+
+   					if (!($(event.target).is($filter_window) || 
+   						$filter_window.find(event.target).length == 1)) {
+
+            			$filter_window_select_list.removeClass("active");
+
+        			}
+
+    			});
+
+			} else {
+
+
+
+			}
+
+		});
 
 	});
 

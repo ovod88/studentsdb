@@ -23,14 +23,19 @@
                 <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Log Level
                 <div class="filter-window">
                   <div class="filter-window-select">
-                    <select id="filter-log-level">
-                      <option value="">None</option>
-                      <option value="DEBUG">DEBUG</option>
-                      <option value="INFO">INFO</option>
-                      <option value="WARNING">WARNING</option>
-                      <option value="ERROR">ERROR</option>
-                      <option value="CRITICAL">CRITICAL</option>
-                    </select>
+                    <div class="filter-window-select-main">
+                      <span class='text'>Select</span>
+                      <img class="filter-window-select-main-arrow" src="{{ PORTAL_URL }}{% static 'img/logs/arrow-down.png' %}" height="9" width="7" />
+                    </div>
+                    <div class="filter-window-select-box">
+                      <ul id="filter-log-level">
+                        <li data-value="DEBUG">DEBUG</li>
+                        <li data-value="INFO">INFO</li>
+                        <li data-value="WARNING">WARNING</li>
+                        <li data-value="ERROR">ERROR</li>
+                        <li data-value="CRITICAL">CRITICAL</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </th>
