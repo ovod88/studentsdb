@@ -46,7 +46,14 @@
               </th>
               <th>
                 <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Date
-                <div class="filter-window">Filter</div>
+                <div class="filter-window">
+                  <button type="submit" name="delete_filter_button" class="filter-window-select-main-button button-delete">Del
+                  </button>
+                  <input type='text' value='' name='date_filter_input' id='date_filter_input' placeholder='1970-01-01'/>
+                  <button type="submit" name="apply_filter_button" class="filter-window-select-main-button apply-button">
+                    Ok
+                  </button>
+                </div>
               </th>
               <th>
                 <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Module
