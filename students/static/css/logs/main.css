@@ -47,13 +47,15 @@ div.alert {
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    border: 1px solid #f7126e;
+    border: 1px solid white;
     border-radius: 2px;
     font-size: 10px;
 }
 
 .filter-window-select-main {
-  	width: inherit;
+  	width: 80px;
+  	text-align: left;
+  	padding-left: 5px;
   	cursor: pointer;
   	position: relative;
   	/*line-height: 20px;*/
@@ -61,7 +63,10 @@ div.alert {
 }
 
 .filter-window-select-main > .text {
-	padding: 3px 50px 3px 5px;
+	/*position: absolute;
+	left: 5px;
+	top: 50%;
+	transform: translateY(-50%);*/
 	letter-spacing: 1px;
 	text-align: left;
   	/*display: block;*/
@@ -75,6 +80,47 @@ div.alert {
 	top:50%;
     right: 10px;
     transform: translateY(-50%);
+}
+
+.filter-window-select-main-button {
+	width: 25px;
+	/*height: 14px;*/
+	font-size: 10px;
+	position: absolute;
+	background: #3d4042;
+	letter-spacing: 1px;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	padding: 0;
+	border-radius: 2px;
+	border: 1px solid white;
+}
+
+.button-delete {
+	left: 5px;
+	color: orange;
+}
+
+.button-delete:hover {
+	color: white;
+	background: orange;
+}
+
+.apply-button {
+	right: 5px;
+	color: orange;
+}
+
+.apply-button:hover {
+	background: white;
+}
+
+.filter-window-select-main-button:active, 
+.filter-window-select-main-button:visited, 
+.filter-window-select-main-button:focus, 
+.filter-window-select-main-button:active:focus {
+	border: 1px solid white;
 }
 
 .filter-window-select-box {
@@ -99,7 +145,7 @@ div.alert {
 
 #filter-log-level {
   margin: 0;
-  padding: 10px;
+  padding: 0;
   list-style-type: none;
 }
 
@@ -108,11 +154,13 @@ div.alert {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding: 5px;
+  /*display: inline-block;*/
 }
 
 #filter-log-level li:hover,
 #filter-log-level li.active {
-  background-color: #999999;
+  background-color: orange; 
 }
 
 /*#filter-log-level {
