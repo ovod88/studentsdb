@@ -22,7 +22,19 @@ div.alert {
 }
 
 .filter-icon {
-	margin-right: 5px;
+	margin-right: 1px;
+}
+
+.filter-icon {
+	width: 18px;
+	height: 16px;
+	display: inline-block;
+	background: url('../../img/logs/filter-splite.png') no-repeat;
+	vertical-align: middle;
+}
+
+.column-name {
+	vertical-align: middle;
 }
 
 .filter-icon:hover {
@@ -97,6 +109,11 @@ div.alert {
 	border: 1px solid white;
 }
 
+.relative-button {
+	position: relative;
+	vertical-align: top;
+}
+
 .button-delete {
 	left: 5px;
 	color: orange;
@@ -116,7 +133,9 @@ div.alert {
 	background: white;
 }
 
-#date_filter_input {
+#date_filter_input,
+#module_filter_input,
+#message_filter_input {
 	border: 0;
 	vertical-align: top;
 	margin: 0;
@@ -131,14 +150,31 @@ div.alert {
 	caret-color: orange;
 }
 
+#module_filter_input {
+	width: 160px;
+}
+
+#message_filter_input {
+	width: 220px;
+	margin: 0 10px 0 10px;
+}
+
 #date_filter_input::placeholder,
-#date_filter_input::-webkit-input-placeholder {
+#date_filter_input::-webkit-input-placeholder,
+#module_filter_input::placeholder,
+#module_filter_input::-webkit-input-placeholder,
+#message_filter_input::placeholder,
+#message_filter_input::-webkit-input-placeholder {
 	color: #ccc;
 	opacity: 1;
 }
 
 #date_filter_input:focus,
-#date_filter_input:active:focus {
+#date_filter_input:active:focus,
+#module_filter_input:focus,
+#module_filter_input:active:focus,
+#message_filter_input:focus,
+#message_filter_input:active:focus {
 	box-shadow: none;
 	outline: none;
 }

@@ -20,7 +20,8 @@
             <tr>
               <th>id</th>
               <th>
-                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Log Level
+                <div class="filter-icon"/></div>
+                <span class="column-name">log Level</span>
                 <div class="filter-window">
                   <button type="submit" name="delete_filter_button" class="filter-window-select-main-button button-delete">Del
                   </button>
@@ -45,7 +46,8 @@
                 </div>
               </th>
               <th>
-                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Date
+                <div class="filter-icon"/></div>
+                <span class="column-name">Date</span>
                 <div class="filter-window">
                   <button type="submit" name="delete_filter_button" class="filter-window-select-main-button button-delete">Del
                   </button>
@@ -56,12 +58,28 @@
                 </div>
               </th>
               <th>
-                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Module
-                <div class="filter-window">Filter</div>
+                <div class="filter-icon"/></div>
+                <span class="column-name">Module</span>
+                <div class="filter-window">
+                  <button type="submit" name="delete_filter_button" class="filter-window-select-main-button button-delete">Del
+                  </button>
+                  <input type='text' value='' name='module_filter_input' id='module_filter_input' placeholder=''/>
+                  <button type="submit" name="apply_filter_button" class="filter-window-select-main-button apply-button">
+                    Ok
+                  </button>
+                </div>
               </th>
               <th>
-                <img class="filter-icon" src="{{ PORTAL_URL }}{% static 'img/logs/funnel-inactive.png' %}" height="16" width="16" />Message
-                <div class="filter-window">Filter</div>
+                <div class="filter-icon"/></div>
+                <span class="column-name">Message</span>
+                <div class="filter-window">
+                  <button type="submit" name="delete_filter_button" class="filter-window-select-main-button button-delete relative-button">Del
+                  </button>
+                  <input type='text' value='' name='message_filter_input' id='message_filter_input' placeholder=''/>
+                  <button type="submit" name="apply_filter_button" class="filter-window-select-main-button apply-button relative-button">
+                    Ok
+                  </button>
+                </div>
               </th>
             </tr>
         </thead>

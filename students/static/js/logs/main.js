@@ -89,7 +89,7 @@ function toggleFilter() {
 
 	$filter_icon.click(function() {
 
-		let $filter_window = $(this).next('.filter-window'),
+		let $filter_window = $(this).siblings('.filter-window'),
 			$filter_window_select_main = $filter_window.find('.filter-window-select-main'),
 			$filter_window_select_list = $filter_window.find('.filter-window-select-box'),
 			$filter_log_level_options = $("#filter-log-level li");
