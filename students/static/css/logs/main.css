@@ -206,13 +206,13 @@ div.alert {
   bottom: 100%;
 }
 
-#filter-log-level {
+.filter-window-select-box-options {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-#filter-log-level li {
+.filter-window-select-box-options li {
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
@@ -221,8 +221,8 @@ div.alert {
   /*display: inline-block;*/
 }
 
-#filter-log-level li:hover,
-#filter-log-level li.active {
+.filter-window-select-box-options li:hover,
+.filter-window-select-box-options li.active {
   background-color: orange; 
 }
 

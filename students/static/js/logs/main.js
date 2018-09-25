@@ -82,6 +82,127 @@ function getLogs() {
 
 }
 
+function activateSelectFilter($filter_window, run) {
+
+	let $filter_window_select = $filter_window.find('.filter-window-select'), 
+		$filter_window_select_main = $filter_window_select.find('.filter-window-select-main'),
+		$filter_window_select_list = $filter_window_select.find('.filter-window-select-box'),
+		$filter_window_select_options = $filter_window_select_list.find(".filter-window-select-box-options li"),
+		$document = $(document);
+
+	if(run) {
+
+		$filter_window_select_main.on("click", function () {
+
+			if (!$filter_window_select_list.hasClass("active")) {
+
+	            let windowHeight = $(window).outerHeight(),
+	            	dropdownPosition = $(this).offset().top,
+	            	dropdownHeight = 95;
+
+	            if (dropdownPosition + dropdownHeight + 50 > windowHeight) {
+
+	                $filter_window_select_list.addClass("drop-up");
+
+	            }
+	            else {
+
+	                $filter_window_select_list.removeClass("drop-up");
+
+	            }
+
+	            let option_selected = $(this).find('.text').text().trim();
+
+	            $.each($filter_window_select_options, function () {
+
+	                let option = $(this).text().trim();
+
+	                if (option === option_selected)
+
+	                    $(this).addClass("active");
+
+	                else
+
+	                    $(this).removeClass("active");
+
+	            });
+			}
+
+			$filter_window_select_list.toggleClass("active");
+
+		});
+
+		$filter_window_select_options.on("click", function () {
+
+			var option = $(this).html();
+
+			$filter_window_select_main.find('.text').html(option);
+			$filter_window_select_list.removeClass("active");
+
+		});
+
+		$document.on('click', function (event) {
+
+			if (!($(event.target).is($filter_window) || 
+				$filter_window.find(event.target).length == 1)) {
+
+				$filter_window_select_list.removeClass("active");
+
+			}
+
+		});
+
+	} else {
+
+		$filter_window_select_main.off();
+		$filter_window_select_options.off();
+		$document.off('click');
+
+	}
+
+}
+
+function configureFilterOptions($filter_window) {
+
+	let $filter_window_select = $filter_window.find('.filter-window-select'),
+		$button_delete = $filter_window.find('.button-delete'),
+		$apply_button = $filter_window.find('.apply-button');
+
+	if($filter_window.is(':visible')) {
+
+		if($filter_window_select.length) {
+
+			activateSelectFilter($filter_window, true);
+
+		}
+
+		$button_delete.on('click', function() {
+
+			alert('DELETE');
+
+		});
+
+		$apply_button.on('click', function() {
+
+			alert('APPLY');
+
+		});
+
+	} else {
+
+		if($filter_window_select.length) {
+
+			activateSelectFilter($filter_window, false);
+
+		}
+
+		$button_delete.off();
+		$apply_button.off();
+
+	}
+
+}
+
 function toggleFilter() {
 
 	let $filter_icon = $('.filter-icon'),
@@ -89,86 +210,11 @@ function toggleFilter() {
 
 	$filter_icon.click(function() {
 
-		let $filter_window = $(this).siblings('.filter-window'),
-			$filter_window_select_main = $filter_window.find('.filter-window-select-main'),
-			$filter_window_select_list = $filter_window.find('.filter-window-select-box'),
-			$filter_log_level_options = $("#filter-log-level li");
+		let $filter_window = $(this).siblings('.filter-window');
 
 		$filter_window.slideToggle('300', function() {
 
-			if($filter_window.is(':visible')) {
-
-				$filter_window_select_main.on("click", function () {
-
-        			if (!$filter_window_select_list.hasClass("active")) {
-
-			            let windowHeight = $(window).outerHeight(),
-			            	dropdownPosition = $(this).offset().top,
-			            	dropdownHeight = 95;
-
-			            if (dropdownPosition + dropdownHeight + 50 > windowHeight) {
-
-			                $filter_window_select_list.addClass("drop-up");
-
-			            }
-			            else {
-
-			                $filter_window_select_list.removeClass("drop-up");
-
-			            }
-
-			            var level_selected = $(this).find('text').text().trim();
-
-			            $.each($filter_log_level_options, function () {
-
-			                var level = $(this).text().trim();
-
-			                if (level === level_selected)
-
-			                    $(this).addClass("active");
-
-			                else
-
-			                    $(this).removeClass("active");
-
-			            });
-        			}
-
-        			$filter_window_select_list.toggleClass("active");
-
-				});
-
-				$filter_log_level_options.on("click", function () {
-
-        			var level = $(this).html();
-
-        			$("span.text").html(level);
-        			$filter_window_select_list.removeClass("active");
-
-    			});
-
-    			$filter_log_level_options.hover(function () {
-
-        			$filter_log_level_options.removeClass("acti ve");
-
-    			});
-
-    			$(document).click(function (event) {
-
-   					if (!($(event.target).is($filter_window) || 
-   						$filter_window.find(event.target).length == 1)) {
-
-            			$filter_window_select_list.removeClass("active");
-
-        			}
-
-    			});
-
-			} else {
-
-
-
-			}
+			configureFilterOptions($filter_window);
 
 		});
 
