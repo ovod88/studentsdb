@@ -29,7 +29,7 @@ div.alert {
 	width: 18px;
 	height: 16px;
 	display: inline-block;
-	background: url('../../img/logs/filter-splite.png') no-repeat;
+	background: url('../../img/logs/filter-sprite.png') no-repeat;
 	vertical-align: middle;
 }
 
@@ -37,8 +37,9 @@ div.alert {
 	vertical-align: middle;
 }
 
-.filter-icon:hover {
+.filter-icon:hover, .filter-icon.active {
 	cursor: pointer;
+	background-position: -18px 0;
 }
 
 .filter-window {

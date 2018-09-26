@@ -82,17 +82,39 @@ function getLogs() {
 
 }
 
-function activateSelectFilter($filter_window, run) {
+function activateSelectFilter($filter_icon, $filter_window, run) {
 
 	let $filter_window_select = $filter_window.find('.filter-window-select'), 
 		$filter_window_select_main = $filter_window_select.find('.filter-window-select-main'),
 		$filter_window_select_list = $filter_window_select.find('.filter-window-select-box'),
 		$filter_window_select_options = $filter_window_select_list.find(".filter-window-select-box-options li"),
-		$document = $(document);
+		$document = $(document),
+		log_level_cookie = Cookies.get('log_level');
+
+		// alert($filter_icon);
 
 	if(run) {
 
+		if(log_level_cookie) {
+
+			$.each($filter_window_select_options, function () {
+
+                let option = $(this).text().trim();
+
+                if (option === log_level_cookie) {
+
+                    $(this).addClass("active");
+
+                }
+
+            });
+
+		}
+
 		$filter_window_select_main.on("click", function () {
+
+			console.log('CLICKED MAIN');
+			console.log($filter_window_select_list);
 
 			if (!$filter_window_select_list.hasClass("active")) {
 
@@ -117,14 +139,16 @@ function activateSelectFilter($filter_window, run) {
 
 	                let option = $(this).text().trim();
 
-	                if (option === option_selected)
+	                if (option === option_selected) {
 
 	                    $(this).addClass("active");
 
-	                else
+	                } else {
 
 	                    $(this).removeClass("active");
 
+	            	}
+	            
 	            });
 			}
 
@@ -162,7 +186,7 @@ function activateSelectFilter($filter_window, run) {
 
 }
 
-function configureFilterOptions($filter_window) {
+function configureFilterOptions($filter_icon, $filter_window) {
 
 	let $filter_window_select = $filter_window.find('.filter-window-select'),
 		$button_delete = $filter_window.find('.button-delete'),
@@ -172,19 +196,59 @@ function configureFilterOptions($filter_window) {
 
 		if($filter_window_select.length) {
 
-			activateSelectFilter($filter_window, true);
+			activateSelectFilter($filter_icon, $filter_window, true);
 
 		}
 
 		$button_delete.on('click', function() {
 
-			alert('DELETE');
+			if($filter_window_select.length) {
+
+				$filter_window.slideUp('100', function() {
+
+					activateSelectFilter($filter_icon, $filter_window, false);
+
+					$filter_window_select.find('.filter-window-select-main').find('.text').html('Select');
+					$filter_window_select.find('.filter-window-select-box').removeClass('active');
+					$filter_window_select.find(".filter-window-select-box-options li").removeClass('active');
+
+					Cookies.remove('log_level', {'path': window.location.pathname});
+					$filter_icon.removeClass('active');
+					
+				});
+				
+			}
 
 		});
 
 		$apply_button.on('click', function() {
 
-			alert('APPLY');
+			if($filter_window_select.length) {
+
+				$filter_window.slideUp('100', function() {
+
+					activateSelectFilter($filter_icon, $filter_window, false);
+
+					let option_selected = $filter_window_select.find('.filter-window-select-main').find('.text').html().trim();
+
+					$.each($filter_window_select.find(".filter-window-select-box-options li"), function () {
+
+	                	let option = $(this).text().trim();
+
+		                if (option === option_selected) {
+
+		                    Cookies.set('log_level', option_selected, {'path': window.location.pathname, 'expires': 365});
+
+		                }
+
+	            	});
+
+	            	$filter_window_select.find('.filter-window-select-box').removeClass('active');
+	            	$filter_icon.addClass('active');
+
+				});
+
+			}
 
 		});
 
@@ -192,7 +256,7 @@ function configureFilterOptions($filter_window) {
 
 		if($filter_window_select.length) {
 
-			activateSelectFilter($filter_window, false);
+			activateSelectFilter($filter_icon, $filter_window, false);
 
 		}
 
@@ -206,15 +270,24 @@ function configureFilterOptions($filter_window) {
 function toggleFilter() {
 
 	let $filter_icon = $('.filter-icon'),
-		$filter_window_select_main = $('.filter-window-select-main');
+		$filter_window_select_main = $('.filter-window-select-main'),
+		log_level_cookie = Cookies.get('log_level');
+
+	if(log_level_cookie) {
+
+		$('#filter-icon').addClass('active');
+		$filter_window_select_main.find('.text').html(log_level_cookie);
+
+	}
 
 	$filter_icon.click(function() {
 
-		let $filter_window = $(this).siblings('.filter-window');
+		let $filter_window = $(this).siblings('.filter-window'),
+			$filter_icon_clicked = $(this);
 
 		$filter_window.slideToggle('300', function() {
 
-			configureFilterOptions($filter_window);
+			configureFilterOptions($filter_icon_clicked, $filter_window);
 
 		});
 
