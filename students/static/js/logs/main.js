@@ -198,10 +198,7 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 			ifFilterWithSelect($filter_icon, $filter_window, true);
 
-		} else {
-
-
-		}
+		} 
 
 		$button_delete.on('click', function() {
 
@@ -216,6 +213,18 @@ function configureFilterOptions($filter_icon, $filter_window) {
 					
 				});
 				
+			} else {
+
+				$filter_window.slideUp('100', function() {
+
+					let $input = $filter_window.find('input');
+
+					Cookies.remove($input.data('cookie'), {'path': window.location.pathname});
+					$input.val('');
+					deactivateFilter($filter_icon, $filter_window);
+
+				});
+
 			}
 
 		});
@@ -238,12 +247,27 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 		                    Cookies.set('log_level', option_selected, {'path': window.location.pathname, 'expires': 365});
 		                    $filter_icon.addClass('active');
-		                    
+
 		                }
 
 	            	});
 
 	            	$filter_window_select.find('.filter-window-select-box').removeClass('active');
+
+				});
+
+			} else {
+
+				$filter_window.slideUp('100', function() {
+
+					let $input = $filter_window.find('input');
+
+					if($input.val()) {
+
+						Cookies.set($input.data('cookie'), $input.val(), {'path': window.location.pathname});
+						$filter_icon.addClass('active');
+
+					}
 
 				});
 
@@ -269,7 +293,10 @@ function configureFilterOptions($filter_icon, $filter_window) {
 function toggleFilter() {
 
 	let $filter_icon = $('.filter-icon'),
-		log_level_cookie = Cookies.get('log_level');
+		log_level_cookie = Cookies.get('log_level'),
+		date_cookie = Cookies.get('date'),
+		module_cookie = Cookies.get('module'),
+		message_cookie = Cookies.get('message');
 
 	if(log_level_cookie) {
 
@@ -287,6 +314,21 @@ function toggleFilter() {
                 }
 
             });
+
+	} else if(date_cookie) {
+
+		$('#filter-date-icon').addClass('active');
+		$('#date_filter_input').val(date_cookie);
+
+	} else if(module_cookie) {
+
+		$('#filter-module-icon').addClass('active');
+		$('#module_filter_input').val(module_cookie);
+
+	} else if(message_cookie) {
+
+		$('#filter-message-icon').addClass('active');
+		$('#message_filter_input').val(message_cookie);
 
 	}
 
