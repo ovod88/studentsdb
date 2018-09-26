@@ -9,19 +9,19 @@ function logSizeHandler() {
 
 	$('#log-size').change(function(event){
 
-	  var page_size = $(this).val();
+		var page_size = $(this).val();
 
-      page_size = page_size.trim();
-      
-      if (page_size) {
+	    page_size = page_size.trim();
+	      
+	    if (page_size) {
 
-        Cookies.set('page_size', page_size, {'path': window.location.pathname, 'expires': 365});
+	        Cookies.set('page_size', page_size, {'path': window.location.pathname, 'expires': 365});
 
-      } else {
+	    } else {
 
-        Cookies.remove('page_size', {'path': window.location.pathname});
+	        Cookies.remove('page_size', {'path': window.location.pathname});
 
-      }
+	    }
 
       getLogs();
 
@@ -48,7 +48,7 @@ function getLogs() {
 
 				$tbody.hide().html($new_tbody.html()).fadeIn('slow');
 
-				console.log($new_navigation);
+				// console.log($new_navigation);
 
 				if($cur_navigation.length && $new_navigation.length) {
 
@@ -210,6 +210,8 @@ function configureFilterOptions($filter_icon, $filter_window) {
 					deactivateFilter($filter_icon, $filter_window);
 
 					Cookies.remove('log_level', {'path': window.location.pathname});
+
+					getLogs();
 					
 				});
 				
@@ -222,6 +224,8 @@ function configureFilterOptions($filter_icon, $filter_window) {
 					Cookies.remove($input.data('cookie'), {'path': window.location.pathname});
 					$input.val('');
 					deactivateFilter($filter_icon, $filter_window);
+
+					getLogs();
 
 				});
 
@@ -253,6 +257,7 @@ function configureFilterOptions($filter_icon, $filter_window) {
 	            	});
 
 	            	$filter_window_select.find('.filter-window-select-box').removeClass('active');
+	            	getLogs();
 
 				});
 
@@ -262,13 +267,20 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 					let $input = $filter_window.find('input');
 
-					if($input.val()) {
+					// alert($input.val().trim());
+
+					if($input.val().trim()) {
 
 						Cookies.set($input.data('cookie'), $input.val(), {'path': window.location.pathname});
 						$filter_icon.addClass('active');
 
-					}
+					} else {
 
+						$input.val('');
+					
+					}
+					getLogs();
+						
 				});
 
 			}

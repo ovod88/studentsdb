@@ -1,3 +1,5 @@
+from urllib.parse import unquote
+
 def get_groups(request):
 	from .models.groups import Group
 
@@ -30,10 +32,16 @@ def get_current_group(request):
 	else:
 		return None
 
-def get_page_size(request):
+def get_filter_values(request, cookie_name):
 	try:
-		page_size = int(request.COOKIES.get('page_size'))
+		# import pdb; pdb.set_trace()
+		# print(request.COOKIES)
+
+		cookie_value = request.COOKIES.get(cookie_name)
 	except Exception as e:
-		return None
+		return ''
 	else:
-		return page_size
+		if cookie_value is not None:
+			return unquote(cookie_value)
+		else:
+			return ''

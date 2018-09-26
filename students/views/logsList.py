@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 from students.models.logentry import LogEntry
-from ..utils import get_page_size
+from ..utils import get_filter_values
 
 class LogsList(ListView):
 
@@ -34,7 +34,29 @@ class LogsList(ListView):
 		return context
 
 	def get(self, request, *args, **kwargs):
-		page_size = get_page_size(request)
+		try:
+			page_size = int(get_filter_values(request, 'page_size'))
+		except Exception as e:
+			# print(e)
+			page_size = None
+
+		log_level = get_filter_values(request, 'log_level')
+		date = get_filter_values(request, 'date')
+		module = get_filter_values(request, 'module')
+		message = get_filter_values(request, 'message')
+
+		# print(page_size)
+		# print(log_level)
+		# print(date)
+		# print(module)
+		# print(message)
+
+		self.queryset = LogEntry.objects.filter(log_level__contains=log_level,
+												date__contains=date,
+												module__contains=module,
+												message__contains=message)
+
+		print(self.queryset);
 
 		if page_size is not None:
 			self.paginate_by = page_size
