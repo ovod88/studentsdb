@@ -82,39 +82,22 @@ function getLogs() {
 
 }
 
-function activateSelectFilter($filter_icon, $filter_window, run) {
+function ifFilterWithSelect($filter_icon, $filter_window, run) {
 
 	let $filter_window_select = $filter_window.find('.filter-window-select'), 
 		$filter_window_select_main = $filter_window_select.find('.filter-window-select-main'),
 		$filter_window_select_list = $filter_window_select.find('.filter-window-select-box'),
 		$filter_window_select_options = $filter_window_select_list.find(".filter-window-select-box-options li"),
-		$document = $(document),
-		log_level_cookie = Cookies.get('log_level');
+		$document = $(document);
 
 		// alert($filter_icon);
 
 	if(run) {
 
-		if(log_level_cookie) {
-
-			$.each($filter_window_select_options, function () {
-
-                let option = $(this).text().trim();
-
-                if (option === log_level_cookie) {
-
-                    $(this).addClass("active");
-
-                }
-
-            });
-
-		}
-
 		$filter_window_select_main.on("click", function () {
 
-			console.log('CLICKED MAIN');
-			console.log($filter_window_select_list);
+			// console.log('CLICKED MAIN');
+			// console.log($filter_window_select_list);
 
 			if (!$filter_window_select_list.hasClass("active")) {
 
@@ -133,23 +116,23 @@ function activateSelectFilter($filter_icon, $filter_window, run) {
 
 	            }
 
-	            let option_selected = $(this).find('.text').text().trim();
+	            // let option_selected = $(this).find('.text').text().trim();
 
-	            $.each($filter_window_select_options, function () {
+	            // $.each($filter_window_select_options, function () {
 
-	                let option = $(this).text().trim();
+	            //     let option = $(this).text().trim();
 
-	                if (option === option_selected) {
+	            //     if (option === option_selected) {
 
-	                    $(this).addClass("active");
+	            //         $(this).addClass("active");
 
-	                } else {
+	            //     } else {
 
-	                    $(this).removeClass("active");
+	            //         $(this).removeClass("active");
 
-	            	}
+	            // 	}
 	            
-	            });
+	            // });
 			}
 
 			$filter_window_select_list.toggleClass("active");
@@ -162,6 +145,7 @@ function activateSelectFilter($filter_icon, $filter_window, run) {
 
 			$filter_window_select_main.find('.text').html(option);
 			$filter_window_select_list.removeClass("active");
+			$(this).addClass('active');
 
 		});
 
@@ -186,6 +170,22 @@ function activateSelectFilter($filter_icon, $filter_window, run) {
 
 }
 
+function deactivateFilter($filter_icon, $filter_window) {
+
+	let $filter_window_select = $filter_window.find('.filter-window-select');
+
+	if($filter_window_select.length) {
+
+		$filter_window_select.find('.filter-window-select-main').find('.text').html('Select');
+		$filter_window_select.find('.filter-window-select-box').removeClass('active');
+		$filter_window_select.find(".filter-window-select-box-options li").removeClass('active');
+
+	}
+	
+	$filter_icon.removeClass('active');
+
+}
+
 function configureFilterOptions($filter_icon, $filter_window) {
 
 	let $filter_window_select = $filter_window.find('.filter-window-select'),
@@ -196,7 +196,10 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 		if($filter_window_select.length) {
 
-			activateSelectFilter($filter_icon, $filter_window, true);
+			ifFilterWithSelect($filter_icon, $filter_window, true);
+
+		} else {
+
 
 		}
 
@@ -206,14 +209,10 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 				$filter_window.slideUp('100', function() {
 
-					activateSelectFilter($filter_icon, $filter_window, false);
-
-					$filter_window_select.find('.filter-window-select-main').find('.text').html('Select');
-					$filter_window_select.find('.filter-window-select-box').removeClass('active');
-					$filter_window_select.find(".filter-window-select-box-options li").removeClass('active');
+					ifFilterWithSelect($filter_icon, $filter_window, false);
+					deactivateFilter($filter_icon, $filter_window);
 
 					Cookies.remove('log_level', {'path': window.location.pathname});
-					$filter_icon.removeClass('active');
 					
 				});
 				
@@ -227,7 +226,7 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 				$filter_window.slideUp('100', function() {
 
-					activateSelectFilter($filter_icon, $filter_window, false);
+					ifFilterWithSelect($filter_icon, $filter_window, false);
 
 					let option_selected = $filter_window_select.find('.filter-window-select-main').find('.text').html().trim();
 
@@ -238,13 +237,13 @@ function configureFilterOptions($filter_icon, $filter_window) {
 		                if (option === option_selected) {
 
 		                    Cookies.set('log_level', option_selected, {'path': window.location.pathname, 'expires': 365});
-
+		                    $filter_icon.addClass('active');
+		                    
 		                }
 
 	            	});
 
 	            	$filter_window_select.find('.filter-window-select-box').removeClass('active');
-	            	$filter_icon.addClass('active');
 
 				});
 
@@ -256,7 +255,7 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 		if($filter_window_select.length) {
 
-			activateSelectFilter($filter_icon, $filter_window, false);
+			ifFilterWithSelect($filter_icon, $filter_window, false);
 
 		}
 
@@ -270,13 +269,24 @@ function configureFilterOptions($filter_icon, $filter_window) {
 function toggleFilter() {
 
 	let $filter_icon = $('.filter-icon'),
-		$filter_window_select_main = $('.filter-window-select-main'),
 		log_level_cookie = Cookies.get('log_level');
 
 	if(log_level_cookie) {
 
-		$('#filter-icon').addClass('active');
-		$filter_window_select_main.find('.text').html(log_level_cookie);
+		$('#filter-log-icon').addClass('active');
+		$('#filter-log-select-main').find('.text').html(log_level_cookie);
+
+		$.each($('#filter-log-select-box li'), function () {
+
+                let option = $(this).text().trim();
+
+                if (option === log_level_cookie) {
+
+                    $(this).addClass("active");
+
+                }
+
+            });
 
 	}
 
