@@ -31,6 +31,8 @@ function logSizeHandler() {
 
 function getLogs() {
 
+	// console.log('GET LOGS CALED');
+
 	var $div_errors = $('div.alert'),
 		$tbody = $('table tbody'),
 		$cur_navigation = $('.pagination-nav');
@@ -52,17 +54,17 @@ function getLogs() {
 
 				if($cur_navigation.length && $new_navigation.length) {
 
+					// alert('PAGE HAS NAVIGATION BUT NEEDED TO BE UPDATED');
 					$cur_navigation.hide().html($new_navigation.html()).fadeIn('slow');
 
 				} else if($cur_navigation && !$new_navigation.length) {
 
-					// alert('HERE');
-
+					// alert('PAGE HAS NAVIGATION BUT NO NEED');
 					$cur_navigation.remove();
  
 				} else {
 
-					// alert('HERE2');
+					// alert('PAGE HAS NO NAVIGATION BUT NEEDED');
 					$new_navigation.insertBefore('#footer');
 
 				}
@@ -88,7 +90,9 @@ function ifFilterWithSelect($filter_icon, $filter_window, run) {
 		$filter_window_select_main = $filter_window_select.find('.filter-window-select-main'),
 		$filter_window_select_list = $filter_window_select.find('.filter-window-select-box'),
 		$filter_window_select_options = $filter_window_select_list.find(".filter-window-select-box-options li"),
-		$document = $(document);
+		$document = $(document),
+		$button_delete = $filter_window.find('.button-delete'),
+		$apply_button = $filter_window.find('.apply-button');
 
 		// alert($filter_icon);
 
@@ -198,11 +202,14 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 			ifFilterWithSelect($filter_icon, $filter_window, true);
 
-		} 
-
+		}
+		
+		$button_delete.off('click');
 		$button_delete.on('click', function() {
 
 			if($filter_window_select.length) {
+
+				// console.log('DEL INSIDE SELECT FILTER');
 
 				$filter_window.slideUp('100', function() {
 
@@ -217,6 +224,7 @@ function configureFilterOptions($filter_icon, $filter_window) {
 				
 			} else {
 
+				// console.log('DEL INSIDE USUAL FILTER');
 				$filter_window.slideUp('100', function() {
 
 					let $input = $filter_window.find('input');
@@ -233,6 +241,7 @@ function configureFilterOptions($filter_icon, $filter_window) {
 
 		});
 
+		$apply_button.off('click');
 		$apply_button.on('click', function() {
 
 			if($filter_window_select.length) {
@@ -321,6 +330,7 @@ function toggleFilter() {
 
                 if (option === log_level_cookie) {
 
+                	$('#filter-log-select-box li').removeClass('active');
                     $(this).addClass("active");
 
                 }

@@ -7,7 +7,7 @@ class LogsList(ListView):
 	model = LogEntry
 	context_object_name = 'logs'
 	template_name = 'students/logs.html'
-	queryset = LogEntry.objects.all().order_by('date').reverse()
+	queryset = None
 	paginate_by = 10
 
 	def get_context_data(self, **kwargs):
@@ -54,9 +54,9 @@ class LogsList(ListView):
 		self.queryset = LogEntry.objects.filter(log_level__contains=log_level,
 												date__contains=date,
 												module__contains=module,
-												message__contains=message)
+												message__contains=message).order_by('date').reverse()
 
-		print(self.queryset);
+		# print(self.queryset)
 
 		if page_size is not None:
 			self.paginate_by = page_size
