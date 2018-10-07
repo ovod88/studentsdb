@@ -2,6 +2,7 @@ $(function(){
 
 	logSizeHandler();
 	toggleFilter();
+	initDatePicker();
 	
 });
 
@@ -26,6 +27,20 @@ function logSizeHandler() {
       getLogs();
 
 	});
+
+}
+
+function initDatePicker() {
+
+   	$('#date_filter_input').on('click', function() {
+
+      $(this).datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        language: 'uk'
+      }).focus();
+
+  });
 
 }
 

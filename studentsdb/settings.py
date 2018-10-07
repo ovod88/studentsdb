@@ -125,7 +125,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'Europe/Warsaw'
+# TIME_ZONE = 'Europe/Warsaw'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -207,7 +208,7 @@ LOGGING = {
             'level'     : 'INFO'
         },
         'students.signals': {
-            'handlers' : ['console', 'file'],
+            'handlers' : ['console', 'file', 'db'],
             'level'    : 'INFO',
         },
         'students.views.contact_admin': {

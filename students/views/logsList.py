@@ -1,6 +1,9 @@
 from django.views.generic import ListView
 from students.models.logentry import LogEntry
 from ..utils import get_filter_values
+import datetime
+from django.utils import timezone
+import pytz
 
 class LogsList(ListView):
 
@@ -41,10 +44,12 @@ class LogsList(ListView):
 			page_size = None
 
 		log_level = get_filter_values(request, 'log_level')
+		# print(get_filter_values(request, 'date'))
+
 		date = get_filter_values(request, 'date')
 		module = get_filter_values(request, 'module')
 		message = get_filter_values(request, 'message')
-
+		# print(date_log.date())
 		# print(page_size)
 		# print(log_level)
 		# print(date)
@@ -55,8 +60,8 @@ class LogsList(ListView):
 												date__contains=date,
 												module__contains=module,
 												message__contains=message).order_by('date').reverse()
-
-		# print(self.queryset)
+		
+		# timezone.activate(pytz.timezone('Europe/Warsaw'))#SETS RENDERING TIME TO LOCAL USER TIME
 
 		if page_size is not None:
 			self.paginate_by = page_size
