@@ -1,6 +1,7 @@
 import logging
 
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save, post_delete, post_migrate
+from django.core.signals import request_started
 from django.dispatch import receiver
 
 from .models.students import Student
@@ -8,6 +9,7 @@ from .models.groups import Group
 from .signals import email_admin_sent_signal
 
 logger = logging.getLogger(__name__)
+request_counter = 0
 
 @receiver(post_save, sender=Group)
 @receiver(post_save, sender=Student)
@@ -46,3 +48,15 @@ def email_admin_sent(sender, **kwargs):
 	from_who = kwargs['from_']
 	message = kwargs['message']
 	logger.info('Message was sent successfully from %s with message: %s', from_who, message)
+
+@receiver(post_migrate)
+def post_migrate(sender, **kwargs):
+
+	print(kwargs['using'])
+
+@receiver(request_started)
+def request_started(sender, **kwargs):
+
+	global request_counter
+	request_counter += 1
+	# print(request_counter)
