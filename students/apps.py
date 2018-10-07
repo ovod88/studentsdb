@@ -7,4 +7,4 @@ class StudentsAppConfig(AppConfig):
 
 
 	def ready(self):
-		from students import signals
+		from . import receivers

@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from studentsdb.settings import ADMIN_EMAIL
+from ..signals import email_admin_sent_signal
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
@@ -46,6 +47,7 @@ def contact_admin(request):
 				logger = logging.getLogger(__name__)
 				logger.exception(message)
 			else:
+				email_admin_sent_signal.send(sender=None, from_=from_email, message=message)
 				# redirect to same contact page with success message
 				message = u'Повідомлення успішно надіслане!'
 				messages.success(request, message)

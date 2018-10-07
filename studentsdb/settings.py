@@ -207,7 +207,7 @@ LOGGING = {
             'handlers'  : ['db', 'console-colored'],
             'level'     : 'INFO'
         },
-        'students.signals': {
+        'students.receivers': {
             'handlers' : ['console', 'file', 'db'],
             'level'    : 'INFO',
         },
