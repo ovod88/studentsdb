@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 {% load pag %}
 {% url 'home' as students_list_url %}
@@ -12,8 +13,8 @@
 <html lang="uk">
   <head>
     <meta charset="UTF-8"/>
-    <title>Сервіс Обліку Студентів {% block meta_title %}{% endblock meta_title %}</title>
-    <meta name="description" value="Система Обліку Студентів Навчального Закладу" />
+    <title>{% trans "Students Accounting Service" %} {% block meta_title %}{% endblock meta_title %}</title>
+    <meta name="description" value="{% trans "App to manage students database" %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link class="common" rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -28,12 +29,12 @@
       <!-- Start Header -->
       <div class="row" id="header"> 
         <div class="col-xs-8">
-          <h1>Сервіс Обліку Студентів</h1>
+          <h1>{% trans "Students Accounting Service" %}</h1>
         </div>
         <div class="col-xs-4" id="group-selector">
-          <strong>Група:</strong>
+          <strong>{% trans "Group:" %}</strong>
           <select>
-            <option value="">Усі Студенти</option>
+            <option value="">{% trans "All Students" %}</option>
             {% if GROUPS_ALL %}
               {% for group in GROUPS_ALL %}
                 <option value="{{ group.id }}" {% if group.selected %}selected{% endif %}>{{ group.str }}</option>
@@ -49,24 +50,24 @@
         <div class="col-xs-12">
           <ul class="nav nav-tabs main-nav" role="tablist">
             <li role="presentation" {% if request.path == students_list_url %} class="active" {% endif %}>
-              <a href="{% url 'home' %}">Студенти</a>
+              <a href="{% url 'home' %}">{% trans "Students" %}</a>
             </li>
             <li role="presentation" id="journal" {% if journal_url in request.path %} class="active" {% endif %}>
-              <a href="{% url 'journal' %}">Відвідування</a>
+              <a href="{% url 'journal' %}">{% trans "Journal" %}</a>
             </li>
             <li role="presentation" id='groups' {% if groups_list_url in request.path %} class="active" {% endif %}>
-              <a href="{% url 'groups' %}">Групи</a>
+              <a href="{% url 'groups' %}">{% trans "Groups" %}</a>
             </li>
             <li role="presentation" {% if examins_url == request.path %} class="active" {% endif %}>
-              <a href="{% url 'examins' %}">Екзаміни</a>
+              <a href="{% url 'examins' %}">{% trans "Examins" %}</a>
             </li>
-            <li role="presentation" {% if examins_results_url in request.path %} class="active" {% endif %}>  <a href="{% url 'examins_results_list' %}">Результати екзамінів</a>
+            <li role="presentation" {% if examins_results_url in request.path %} class="active" {% endif %}>  <a href="{% url 'examins_results_list' %}">{% trans "Examin Results" %}</a>
             </li>
             <li role="presentation" {% if contact_admin_url in request.path %} class="active"{% endif %}>
-              <a href="{% url 'contact_admin' %}">Контакт</a>
+              <a href="{% url 'contact_admin' %}">{% trans "Contact" %}</a>
             </li>
             <li role="presentation" {% if logs_url in request.path %} class="active"{% endif %}>
-              <a href="{% url 'logs' %}">Логування</a>
+              <a href="{% url 'logs' %}">{% trans "Logging" %}</a>
             </li>
           </ul>
         </div>
@@ -151,7 +152,7 @@
       <!-- Start Footer -->
       <div class="row" id="footer">
         <div class="col-xs-12">
-          &copy; 2014 Сервіс Обліку Студентів
+          &copy; 2014  {% trans "Students Accounting Service" %}
         </div>
       </div>
       <!-- End Footer -->
@@ -168,6 +169,7 @@
       <script class="common-script" src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
       <script class="common-script" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
       <script class="common-script" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.uk.min.js"></script>
+      <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
       <script class="common-script" src="{{ PORTAL_URL }}{% static 'js/main.js' %}"></script>
       {% block extra_js %}{% endblock extra_js %}
     </div>

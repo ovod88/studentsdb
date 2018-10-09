@@ -1,10 +1,11 @@
 {% extends "students/base.html" %}
 
+{% load i18n %}
 {% load static %}
 
-{% block meta_title %}- Студенти{% endblock meta_title %}
+{% block meta_title %}{% trans "Students" %}{% endblock meta_title %}
 
-{% block title %}База Студентів{% endblock title %}
+{% block title %}{% trans "Students List" %}{% endblock title %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/home/main.css' %}">
@@ -13,7 +14,7 @@
 {% block content %}
   
   {% csrf_token %}
-  <a href="{% url 'students_add' %}" class="btn btn-primary">Додати Студента</a>
+  <a href="{% url 'students_add' %}" class="btn btn-primary">{% trans "Add student" %}</a>
 
 
 
@@ -21,16 +22,16 @@
           <!-- Start Students Listing -->
     <form action="{% url "students_multi_delete" %}" method="get" enctype="multipart/form-data" 
     role="form" class="form-horizontal delete-students">
-      <input type="submit" value="Видалити вибраних студентів" name="students_multi_delete_bt" 
+      <input type="submit" value="{% trans "Delete selected users" %}" name="students_multi_delete_bt" 
              class="btn btn-warning"/>
       <table class="table table-hover table-striped">
         {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
           <thead>
             <tr>
               <th>#</th>
-              <th>Фото</th>
+              <th>{% trans "Photo" %}</th>
               <th>
-                <a href="{% url "home" %}?order_by=last_name{% if request.GET.order_by == 'last_name' and request.GET.reverse != '1' or not request.GET %}&amp;reverse=1{% endif %}">Прізвище
+                <a href="{% url "home" %}?order_by=last_name{% if request.GET.order_by == 'last_name' and request.GET.reverse != '1' or not request.GET %}&amp;reverse=1{% endif %}">{% trans "Last Name" %}
                   {% if request.GET.order_by == 'last_name' and request.GET.reverse != '1' or not request.GET %}
                     &uarr;
                   {% elif request.GET.order_by == 'last_name' and request.GET.reverse == '1' %}
@@ -39,7 +40,7 @@
                 </a>
               </th>
               <th>
-                <a href="{% url "home" %}?order_by=first_name{% if order_by == 'first_name' and reverse != '1' %}&amp;reverse=1{% endif %}">Ім'я
+                <a href="{% url "home" %}?order_by=first_name{% if order_by == 'first_name' and reverse != '1' %}&amp;reverse=1{% endif %}">{% trans "First Name" %}
                   {% if order_by == 'first_name' and reverse != '1' %}
                     &uarr;
                   {% elif order_by == 'first_name' and reverse == '1' %}
@@ -48,7 +49,7 @@
                 </a>
               </th>
               <th>
-                <a href="{% url "home" %}?order_by=ticket{% if order_by == 'ticket' and reverse != '1' %}&amp;reverse=1{% endif %}">№ Білету
+                <a href="{% url "home" %}?order_by=ticket{% if order_by == 'ticket' and reverse != '1' %}&amp;reverse=1{% endif %}">{% trans "Ticket #" %}
                   {% if order_by == 'ticket' and reverse != '1' %}
                     &uarr;
                   {% elif order_by == 'ticket' and reverse == '1' %}
@@ -56,7 +57,7 @@
                   {% endif %}
                 </a>
               </th>
-              <th>Дії</th>
+              <th>{% trans "Actions" %}</th>
             </tr>
           </thead>
         {% endwith %}  
@@ -77,13 +78,13 @@
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">Дія
+                        data-toggle="dropdown">{% trans "Action" %}
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{% url 'students_edit' student.id%}" class="student-edit-form-link">Редагувати</a></li>
-                  <li><a href="{% url 'journal_student' student.id%}">Відвідування</a></li>
-                  <li><a href="{% url 'students_delete' student.id%}">Видалити</a></li>
+                  <li><a href="{% url 'students_edit' student.id%}" class="student-edit-form-link">{% trans "Edit" %}</a></li>
+                  <li><a href="{% url 'journal_student' student.id%}">{% trans "Journal" %}</a></li>
+                  <li><a href="{% url 'students_delete' student.id%}">{% trans "Delete" %}</a></li>
                 </ul>
               </div>
             </td>
@@ -122,13 +123,13 @@
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle"
-                      data-toggle="dropdown">Дія
+                      data-toggle="dropdown">{% trans "Action" %}
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="{% url 'students_edit' 0%}" class="student-edit-form-link">Редагувати</a></li>
-                <li><a href="{% url 'journal_student' 0%}">Відвідування</a></li>
-                <li><a href="{% url 'students_delete' 0%}">Видалити</a></li>
+                <li><a href="{% url 'students_edit' 0%}" class="student-edit-form-link">{% trans "Edit" %}</a></li>
+                <li><a href="{% url 'journal_student' 0%}">{% trans "Journal" %}</a></li>
+                <li><a href="{% url 'students_delete' 0%}">{% trans "Delete" %}</a></li>
               </ul>
             </div>
           </td>

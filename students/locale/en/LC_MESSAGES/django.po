@@ -1,0 +1,232 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-09 09:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models/students.py:47
+msgid "Student"
+msgstr ""
+
+#: models/students.py:48 templates/students/base.html:53
+#: templates/students/students_list.html:6
+msgid "Students"
+msgstr ""
+
+#: models/students.py:53 templates/students/students_list.html:43
+msgid "First Name"
+msgstr ""
+
+#: models/students.py:58 templates/students/students_list.html:34
+msgid "Last Name"
+msgstr ""
+
+#: models/students.py:63
+msgid "Father Surname"
+msgstr ""
+
+#: models/students.py:68
+msgid "Birthday"
+msgstr ""
+
+#: models/students.py:73 templates/students/students_list.html:32
+msgid "Photo"
+msgstr ""
+
+#: models/students.py:79
+msgid "Ticket"
+msgstr ""
+
+#: models/students.py:83
+msgid "Notes"
+msgstr ""
+
+#: models/students.py:86
+msgid "Group"
+msgstr ""
+
+#: models/students.py:93
+msgid "Examin"
+msgstr ""
+
+#: templates/students/base.html:16 templates/students/base.html:32
+#: templates/students/base.html:155
+msgid "Students Accounting Service"
+msgstr ""
+
+#: templates/students/base.html:17
+msgid "App to manage students database"
+msgstr ""
+
+#: templates/students/base.html:35
+msgid "Group:"
+msgstr ""
+
+#: templates/students/base.html:37
+msgid "All Students"
+msgstr ""
+
+#: templates/students/base.html:56 templates/students/students_list.html:86
+#: templates/students/students_list.html:131
+msgid "Journal"
+msgstr ""
+
+#: templates/students/base.html:59
+msgid "Groups"
+msgstr ""
+
+#: templates/students/base.html:62
+msgid "Examins"
+msgstr ""
+
+#: templates/students/base.html:64
+msgid "Examin Results"
+msgstr ""
+
+#: templates/students/base.html:67
+msgid "Contact"
+msgstr ""
+
+#: templates/students/base.html:70
+msgid "Logging"
+msgstr ""
+
+#: templates/students/students_confirm_delete.html:5
+#: templates/students/students_confirm_delete.html:6
+msgid "Delete Student"
+msgstr ""
+
+#: templates/students/students_confirm_delete.html:11
+#, python-format
+msgid "Do you really want to delete student: \"%(student)s\"?"
+msgstr ""
+
+#: templates/students/students_confirm_delete.html:12
+msgid "Oui"
+msgstr ""
+
+#: templates/students/students_confirm_delete.html:13
+msgid "Non"
+msgstr ""
+
+#: templates/students/students_list.html:8
+msgid "Students List"
+msgstr ""
+
+#: templates/students/students_list.html:17
+msgid "Add student"
+msgstr ""
+
+#: templates/students/students_list.html:25
+msgid "Delete selected users"
+msgstr ""
+
+#: templates/students/students_list.html:52
+msgid "Ticket #"
+msgstr ""
+
+#: templates/students/students_list.html:60
+msgid "Actions"
+msgstr ""
+
+#: templates/students/students_list.html:81
+#: templates/students/students_list.html:126
+msgid "Action"
+msgstr ""
+
+#: templates/students/students_list.html:85
+#: templates/students/students_list.html:130
+msgid "Edit"
+msgstr ""
+
+#: templates/students/students_list.html:87
+#: templates/students/students_list.html:132
+msgid "Delete"
+msgstr ""
+
+#: views/forms.py:15
+msgid "Your name"
+msgstr ""
+
+#: views/forms.py:17
+msgid "Your email address"
+msgstr ""
+
+#: views/forms.py:19
+msgid "Your message"
+msgstr ""
+
+#: views/students.py:164
+msgid "First Name field is required"
+msgstr ""
+
+#: views/students.py:170
+msgid "Last Name is required"
+msgstr ""
+
+#: views/students.py:181
+msgid "Enter correct date (ex. 1984-39 12-30)"
+msgstr ""
+
+#: views/students.py:187
+msgid "Ticket number is required"
+msgstr ""
+
+#: views/students.py:193
+msgid "Choose group for student"
+msgstr ""
+
+#: views/students.py:197
+msgid "Choose correct group"
+msgstr ""
+
+#: views/students.py:213
+msgid "Not a valid image extension (supported jpg, jpeg, png, gif)"
+msgstr ""
+
+#: views/students.py:215
+msgid "Please upload image smaller than 2mB"
+msgstr ""
+
+#: views/students.py:220
+msgid "Not a valid image file"
+msgstr ""
+
+#: views/students.py:230
+#, python-format
+msgid "Student %s was successfully added"
+msgstr ""
+
+#: views/students.py:238
+msgid "Please, fix the next errors"
+msgstr ""
+
+#: views/students.py:248
+msgid "Adding the student was cancelled!"
+msgstr ""
+
+#: views/students.py:301
+msgid "Save"
+msgstr ""
+
+#: views/students.py:302
+msgid "Cancel"
+msgstr ""
+
+#: views/students.py:311
+msgid "Student is a leader of another group."
+msgstr ""

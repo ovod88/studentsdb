@@ -203,7 +203,7 @@ function loadJournalPage() {
           
           $loader_wrapper.fadeOut(100, function() {
 
-            alert('Error on server');
+            alert(gettext('Error on server'));
             return;
           }); 
 
@@ -230,7 +230,7 @@ function loadJournalPage() {
 
         $loader_wrapper.fadeOut(100, function() {
 
-          alert('Error on server');
+          alert(gettext('Error on server'));
 
         }); 
 

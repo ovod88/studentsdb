@@ -137,7 +137,7 @@ function initEditStudentPage(event) {
 
             $loader_wrapper.fadeOut(100, function() {
 
-              modal.find('.modal-body').html('<p class="alert-danger">Помилка error на сервері. Спробуйте будь-ласка пізніше.</p>');
+              modal.find('.modal-body').html('<p class="alert-danger">' + gettext('There was an error on the server. Please, try again a bit later.') + '</p>');
               modal.find('.modal-footer').html('');
               modal.find('.modal-title').html('');
               modal.modal({
@@ -246,7 +246,7 @@ function initEditStudentForm(form, modal) {
           $inputs.prop('disabled', false);
           $select.prop('disabled', false);
           $textarea.prop('disabled', false);
-          $modal_footer.html('<p class="alert-danger">Помилка i на сервері. Спробуйте будь-ласка пізніше.</p>');
+          $modal_footer.html('<p class="alert-danger">' + gettext('There was an error on the server. Please, try again a bit later.') + '</p>');
           
           setTimeout(function() {
             $modal_footer.html('');

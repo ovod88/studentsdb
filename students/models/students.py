@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 #ONLY TO TEST THE CASE THEN DB FIELD HAS WRONG DATATYPE
 class TicketIntManager(models.Manager):
@@ -43,53 +44,53 @@ class TicketIntManager(models.Manager):
 class Student(models.Model):
 
 	class Meta(object):
-		verbose_name=u"Студент"
-		verbose_name_plural = u"Студенти"
+		verbose_name=_(u"Student")
+		verbose_name_plural = _(u"Students")
 
 	first_name = models.CharField(
 		max_length=256,
 		blank=False,
-		verbose_name=u"Ім'я")
+		verbose_name=_(u"First Name"))
 
 	last_name = models.CharField(
 		max_length=256,
 		blank=False,
-		verbose_name=u"Прізвище")
+		verbose_name=_(u"Last Name"))
 
 	middle_name = models.CharField(
  		max_length=256,
  		blank=True,
-		verbose_name=u"По-батькові",
+		verbose_name=_(u"Father Surname"),
 		default='')
 
 	birthday = models.DateField(
 		blank=False,
-		verbose_name=u"Дата народження",
+		verbose_name=_(u"Birthday"),
 		null=True)
 
 	photo = models.ImageField(
  		blank=True,
-		verbose_name=u"Фото",
+		verbose_name=_(u"Photo"),
  		null=True)
 
 	ticket = models.CharField(
 		max_length=256,
 		blank=False,
-		verbose_name=u"Білет")
+		verbose_name=_(u"Ticket"))
 
 	notes = models.TextField(
 		blank=True,
-		verbose_name=u"Додаткові нотатки")
+		verbose_name=_(u"Notes"))
 
 	student_group = models.ForeignKey("Group",
-		verbose_name=u"Група",
+		verbose_name=_(u"Group"),
 		blank=False,
 		null=True,
 		on_delete=models.PROTECT)#It wont allow group to be deleted while there is at least one student
 								#pointing to it
 
 	student_examin = models.ManyToManyField("Examin",
-		verbose_name=u"Екзамін",
+		verbose_name=_(u"Examin"),
 		blank=False,
 		through="ExaminResult")
 

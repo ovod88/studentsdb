@@ -14,6 +14,8 @@ from crispy_forms.layout import Submit, Field,Layout, Div, HTML
 from crispy_forms.bootstrap import FormActions
 import os
 
+from django.utils.translation import ugettext as _
+
 from django.core.mail import send_mail
 from studentsdb.settings import ADMIN_EMAIL
 from colorama import Fore, Back, Style
@@ -159,40 +161,40 @@ def students_add(request):
 
 			first_name = request.POST.get('first_name', '').strip()
 			if not first_name:
-				errors['first_name'] = u"Ім’я є обов’язковим"
+				errors['first_name'] = _(u"First Name field is required")
 			else:
 				data['first_name'] = first_name
 
 			last_name = request.POST.get('last_name', '').strip()
 			if not last_name:
-				errors['last_name'] = u"Прізвище є обов’язковим"
+				errors['last_name'] = _(u"Last Name is required")
 			else:
 				data['last_name'] = last_name
 			
 			birthday = request.POST.get('birthday', '').strip()
 			if not birthday:
-				errors['birthday'] = u"Дата народження є обов’язковою"
+				errors['birthday'] = u"Birthday is required"
 			else:
 				try:
 					datetime.strptime(birthday, '%Y-%m-%d')
 				except Exception:
-					errors['birthday'] = u"Введіть коректний формат дати (напр. 1984-39 12-30)"
+					errors['birthday'] = _(u"Enter correct date (ex. 1984-39 12-30)")
 				else:
 					data['birthday'] = birthday
 
 			ticket = request.POST.get('ticket', '').strip()
 			if not ticket:
-				errors['ticket'] = u"Номер білета є обов’язковим"
+				errors['ticket'] = _(u"Ticket number is required")
 			else:
 				data['ticket'] = ticket
 
 			student_group = request.POST.get('student_group', '').strip()
 			if not student_group:
-				errors['student_group'] = u"Оберіть групу для студента"
+				errors['student_group'] = _(u"Choose group for student")
 			else:
 				groups_selected = Group.objects.filter(pk=student_group)
 				if len(groups_selected) != 1:
-					errors['student_group'] = u"Оберіть коректну групу"
+					errors['student_group'] = _(u"Choose correct group")
 				else:
 					data['student_group'] = groups_selected[0]
 
@@ -208,14 +210,14 @@ def students_add(request):
 				]
 
 				if not any([str(photo).lower().endswith(e) for e in VALID_IMAGE_EXTENSIONS]):
-					errors['photo'] = 'Not a valid image extension (supported jpg, jpeg, png, gif)'
+					errors['photo'] = _(u'Not a valid image extension (supported jpg, jpeg, png, gif)')
 				elif photo._size > 2097152:
-					errors['photo'] = 'Please upload image smaller than 2mB'
+					errors['photo'] = _(u'Please upload image smaller than 2mB')
 				else:
 					try:
 						im=Image.open(photo).verify()
 					except IOError as e:
-						errors['photo'] = 'Not a valid image file'
+						errors['photo'] = _(u'Not a valid image file')
 					else:
 						data['photo'] = photo			
 
@@ -225,7 +227,7 @@ def students_add(request):
 
 				clear_messages(request)
 
-				messages.success(request, 'Студента %s успішно додано' % student)
+				messages.success(request, _(u'Student %s was successfully added' % student))
 
 				return HttpResponseRedirect(reverse('home'))
 				# return HttpResponseRedirect(u'%s?status_message=Студента %s успішно додано!' % (reverse('home'), student))
@@ -233,7 +235,7 @@ def students_add(request):
 			else:
 				clear_messages(request)
 
-				messages.error(request, 'Будь-ласка, виправте наступні помилки')
+				messages.error(request, _(u'Please, fix the next errors'))
 
 				return render(request, 'students/students_add.html', {
 					'errors' : errors,
@@ -243,7 +245,7 @@ def students_add(request):
 			# redirect to home page on cancel button
 			clear_messages(request)
 
-			messages.info(request, 'Додавання студента скасовано!')
+			messages.info(request, _(u'Adding the student was cancelled!'))
 
 			return HttpResponseRedirect(reverse('home'))
 			# return HttpResponseRedirect(u'%s?status_message=Додавання студента скасовано!' % reverse('home'))
@@ -296,8 +298,8 @@ class StudentUpdateForm(ModelForm):
 		self.helper[4] = Field('photo', template='students/photo.html')
 		# self.helper["birthday"].wrap(Field, HTML("<span class='glyphicon glyphicon-calendar'></span>"))
 
-		self.helper.add_input(Submit('add_button', u'Зберегти', css_class="btn btn-primary"))
-		self.helper.add_input(Submit('cancel_button', u'Скасувати', css_class="btn btn-link",
+		self.helper.add_input(Submit('add_button', _(u'Save'), css_class="btn btn-primary"))
+		self.helper.add_input(Submit('cancel_button', _(u'Cancel'), css_class="btn btn-link",
 										formnovalidate='formnovalidate'))
 
 	def clean_student_group(self):
@@ -306,7 +308,7 @@ class StudentUpdateForm(ModelForm):
 		# get group where current student is a leader
 		groups = Group.objects.filter(leader=self.instance)
 		if len(groups) > 0 and self.cleaned_data['student_group'] != groups[0]:
-			raise ValidationError(u'Студент є старостою іншої групи.', code='invalid')
+			raise ValidationError(_(u'Student is a leader of another group.'), code='invalid')
 
 		return self.cleaned_data['student_group']
 

@@ -66,6 +66,7 @@ def journal_list(request, sid = None):
 		for student in students:
 
 			days = student.journal_set.filter(date__year=cur_year, date__month=cur_month).dates('date','day')
+			# print(days)
 			student.days = list(map(lambda date: date.day, days))
 
 	if following_month:
