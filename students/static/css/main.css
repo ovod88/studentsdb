@@ -18,6 +18,25 @@ input[type="submit"]:focus, input[type="submit"]:active:focus {
   margin-top: 30px;
 }
 
+.languages {
+  display: inline;
+  position: absolute;
+  right: 500px;
+  top: 34px;
+  color: pink;
+}
+
+.language_selected {
+  padding: 5px;
+  background: pink;
+  color: white;
+  border-radius: 2px;
+}
+
+.language:hover {
+  cursor: pointer;
+}
+
 #group-selector select {
   width: 80%;
   margin: 0;

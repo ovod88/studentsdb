@@ -7,3 +7,11 @@ def getMobuleProjectPath(fullpath):
 	path_str = path_str.replace(os.sep, '.')
 
 	return path_str
+
+def get_language(request):
+	cookie_value = request.COOKIES.get('language')
+
+	if cookie_value:
+		return cookie_value
+	else:
+		return None

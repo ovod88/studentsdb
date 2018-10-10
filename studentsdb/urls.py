@@ -29,7 +29,12 @@ from students.views.logsList import *
 from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
 
 from django.views.generic import TemplateView
+from django.views.i18n import JavaScriptCatalog
 from students.views.contact_admin_forms import ContactFormView
+
+js_info_dict = {
+    'packages': ('students',),
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -69,7 +74,8 @@ urlpatterns = [
     path(r'^contact_admin_forms/sent/$', TemplateView.as_view(template_name='contact_admin_forms/contact_form_sent.html'),
                             name='contact_admin_forms_sent'),
 
-    path(r'^logs$', LogsList.as_view(), name='logs')
+    path(r'^logs$', LogsList.as_view(), name='logs'),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog')
 ] 
 
 if DEBUG:

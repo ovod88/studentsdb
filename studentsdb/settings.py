@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -85,6 +86,7 @@ TEMPLATES = [
             'context_processors': [
                 'students.templates.mama.testing',
                 'studentsdb.custom_context_processor.students_proc',
+                'studentsdb.custom_context_processor.set_language',
                 'students.groups_context.groups_context_processor',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -134,6 +136,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES_SUPPORTED = ['en']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

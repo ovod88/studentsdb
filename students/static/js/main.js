@@ -243,6 +243,25 @@ function loadJournalPage() {
 
 }
 
+function select_language() {
+
+  let $languages = $('.language');
+
+  $languages.on('click', function() {
+
+    let language = $(this).data('name');
+    
+    $languages.removeClass('language_selected');
+    $(this).addClass('language_selected');
+
+    Cookies.set('language', language, {'path': '/', 'expires': 365});
+
+    location.reload(true);
+
+  });
+
+}
+
 function init() {
 
   setGroupSelector();
@@ -257,6 +276,7 @@ $(function(){
   // History.replaceState(null, '', location.href );
   // initDatePicker();
   init();
+  select_language();
 
    // $('#groups a').click(function(event){//JUST TO TEST GROUPS PAGE
    //    event.preventDefault();
