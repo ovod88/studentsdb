@@ -13,6 +13,8 @@ from django.contrib import messages
 from django.contrib.messages import get_messages
 import traceback
 
+from django.contrib.auth.decorators import permission_required
+
 import logging
 
 
@@ -21,7 +23,7 @@ def clear_messages(request):
 	for message in storage:#removing all messages
 		pass
 
-
+@permission_required('auth.add_user')
 def contact_admin(request):
 	# check if form was posted
 	if request.method == 'POST':

@@ -68,20 +68,24 @@
             <li role="presentation" {% if request.path == students_list_url %} class="active" {% endif %}>
               <a href="{% url 'home' %}">{% trans "Students" %}</a>
             </li>
-            <li role="presentation" id="journal" {% if journal_url in request.path %} class="active" {% endif %}>
-              <a href="{% url 'journal' %}">{% trans "Journal" %}</a>
-            </li>
-            <li role="presentation" id='groups' {% if groups_list_url in request.path %} class="active" {% endif %}>
-              <a href="{% url 'groups' %}">{% trans "Groups" %}</a>
-            </li>
+            {% if user.is_authenticated %}
+              <li role="presentation" id="journal" {% if journal_url in request.path %} class="active" {% endif %}>
+                <a href="{% url 'journal' %}">{% trans "Journal" %}</a>
+              </li>
+              <li role="presentation" id='groups' {% if groups_list_url in request.path %} class="active" {% endif %}>
+                <a href="{% url 'groups' %}">{% trans "Groups" %}</a>
+              </li>
+            {% endif %}
             <li role="presentation" {% if examins_url == request.path %} class="active" {% endif %}>
               <a href="{% url 'examins' %}">{% trans "Examins" %}</a>
             </li>
             <li role="presentation" {% if examins_results_url in request.path %} class="active" {% endif %}>  <a href="{% url 'examins_results_list' %}">{% trans "Examin Results" %}</a>
             </li>
-            <li role="presentation" {% if contact_admin_url in request.path %} class="active"{% endif %}>
-              <a href="{% url 'contact_admin' %}">{% trans "Contact" %}</a>
-            </li>
+            {% if perms.auth.add_user %}
+              <li role="presentation" {% if contact_admin_url in request.path %} class="active"{% endif %}>
+                <a href="{% url 'contact_admin' %}">{% trans "Contact" %}</a>
+              </li>
+            {% endif %}
             <li role="presentation" {% if logs_url in request.path %} class="active"{% endif %}>
               <a href="{% url 'logs' %}">{% trans "Logging" %}</a>
             </li>

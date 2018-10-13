@@ -36,6 +36,9 @@ from students_auth.views import RegistrationView
 from django.views.i18n import JavaScriptCatalog
 from students.views.contact_admin_forms import ContactFormView
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
+
 js_info_dict = {
     'packages': ('students',),
 }
@@ -61,12 +64,12 @@ urlpatterns = [
 
     path(r'^students$', StudentList.as_view(), name='home_view'),
 
-    path(r'^groups$', groups_list, name='groups'),
+    path(r'^groups$', login_required(groups_list), name='groups'),
     path(r'^groups/add$', groups_add, name='groups_add'),
     path(r'^groups/(?P<gid>\d+)/edit$', groups_edit, name='groups_edit'),
     path(r'^groups/(?P<gid>\d+)/delete$', groups_delete, name='groups_delete'),
 
-    path(r'^journal$', journal_list, name='journal'),
+    path(r'^journal$', permission_required('auth.add_user')(journal_list), name='journal'),
     path(r'^journal/(?P<sid>\d+)$', journal_student, name='journal_student'),
 
     path(r'^examins$', examins_list, name='examins'),
