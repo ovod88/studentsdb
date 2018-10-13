@@ -14,6 +14,11 @@ from crispy_forms.layout import Submit, Field,Layout, Div, HTML
 from crispy_forms.bootstrap import FormActions
 import os
 
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+
+from students_auth.views import AbstractLoginRequiredView
+
 from django.utils.translation import ugettext as _
 
 from django.core.mail import send_mail
@@ -148,6 +153,7 @@ def students_list3(request):
 	# import pdb;pdb.set_trace()
 	return render(request, 'students/students_list.html', {'students': students})
 
+@login_required
 def students_add(request):
 	groups = Group.objects.order_by('id')
 
@@ -335,10 +341,13 @@ class StudentCreateView(CreateView):
 		else:
 			return super(StudentCreateView, self).post(request, *args, **kwargs)
 
-class StudentUpdateView(UpdateView):
+class StudentUpdateView(AbstractLoginRequiredView, UpdateView):
 	model=Student
 	template_name='students/student_edit.html'
 	form_class = StudentUpdateForm
+
+	# def dispatch(self, *args, **kwargs):
+	# 	return AbstractLoginRequiredView.dispatch(self, *args, **kwargs)
 
 	def get_success_url(self):
 
@@ -379,6 +388,10 @@ class StudentDeleteView(DeleteView):
 	model = Student
 	template_name = 'students/students_confirm_delete.html'
 	context_object_name = 'student'
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(StudentDeleteView, self).dispatch(*args, **kwargs)
 
 	def get_success_url(self):
 		clear_messages(self.request)

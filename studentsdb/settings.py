@@ -50,6 +50,9 @@ ALLOWED_HOSTS = []
 
 REGISTRATION_FORM = 'students_auth.forms.RegistrationForm'
 
+LOGIN_URL = 'auth_login'
+LOGOUT_URL = 'auth_logout'
+
 # Application definition
 
 INSTALLED_APPS = [
