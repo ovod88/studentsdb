@@ -37,6 +37,11 @@ input[type="submit"]:focus, input[type="submit"]:active:focus {
   cursor: pointer;
 }
 
+#user-toolbar {
+  margin-top: 35px;
+}
+
+
 #group-selector select {
   width: 80%;
   margin: 0;

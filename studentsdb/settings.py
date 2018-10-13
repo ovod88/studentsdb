@@ -48,6 +48,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REGISTRATION_FORM = 'students_auth.forms.RegistrationForm'
 
 # Application definition
 
@@ -59,6 +60,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'students_auth',
+    'registration',
     'students'
 ]
 
@@ -137,6 +140,8 @@ USE_L10N = True
 USE_TZ = True
 
 LANGUAGES_SUPPORTED = ['en']
+
+REGISTRATION_OPEN = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

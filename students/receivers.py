@@ -51,8 +51,8 @@ def email_admin_sent(sender, **kwargs):
 
 @receiver(post_migrate)
 def post_migrate(sender, **kwargs):
-
-	print(kwargs['using'])
+	pass
+	# print(kwargs['using'])
 
 @receiver(request_started)
 def request_started(sender, **kwargs):

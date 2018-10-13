@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+
 from django.urls import re_path as path
 from django.conf.urls.static import static
+from django.urls import include
 from students.views.students import *
 from students.views.groups import *
 from students.views.journal import *
@@ -28,7 +31,8 @@ from students.views.logsList import *
 
 from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
+from students_auth.views import RegistrationView
 from django.views.i18n import JavaScriptCatalog
 from students.views.contact_admin_forms import ContactFormView
 
@@ -38,6 +42,16 @@ js_info_dict = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path(r'^users/logout/$', auth_views.logout, kwargs={'next_page': 'home'}, name='auth_logout'),
+    path(r'^register/complete/$', RedirectView.as_view(pattern_name='home'), name='registration_complete'),
+    path(r'^users/register/$', RegistrationView.as_view(), name='registration_register'),
+    path(r'^users/', include('registration.backends.simple.urls')),
+
+
+
+
+
     path(r'^$', students_list3, name='home'),
     # path(r'^students/add$', students_add, name='students_add'),#COMPLETELY MANUAL FORM
     path(r'^students/add$', StudentCreateView.as_view(), name='students_add'),#CBV solution
