@@ -48,9 +48,19 @@ urlpatterns = [
 
     path(r'^users/profile/edit$', login_required(ProfileUpdateView.as_view()), name='profile_edit'),
     path(r'^users/profile/$', login_required(TemplateView.as_view(template_name='registration/profile.html')), name='profile'),
+    
     path(r'^users/logout/$', auth_views.logout, kwargs={'next_page': 'home'}, name='auth_logout'),
+    
     path(r'^register/complete/$', RedirectView.as_view(pattern_name='home'), name='registration_complete'),
     path(r'^users/register/$', RegistrationView.as_view(), name='registration_register'),
+    
+    path(r'^users/password/reset/$', auth_views.PasswordResetView.as_view(template_name='registration/auth_password_reset_form.html'), name='password_reset'),
+    path(r'^reset/done/$', auth_views.PasswordResetDoneView.as_view(template_name='registration/auth_password_reset_done.html'), name='password_reset_done'),
+    
+    path(r'^reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path(r'^password/reset/complete/$', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
+    
     path(r'^users/', include('registration.backends.simple.urls')),
 
     path('^social/', include('social.apps.django_app.urls', namespace='social')),
