@@ -53,6 +53,7 @@ urlpatterns = [
     path(r'^users/register/$', RegistrationView.as_view(), name='registration_register'),
     path(r'^users/', include('registration.backends.simple.urls')),
 
+    path('^social/', include('social.apps.django_app.urls', namespace='social')),
 
     path(r'^$', students_list3, name='home'),
     path(r'^students/add$', students_add, name='students_add'),#COMPLETELY MANUAL FORM

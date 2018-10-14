@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'betterforms',
     'students_auth',
     'registration',
+    'social.apps.django_app.default',
+    'social_django',
     'students'
 ]
 
@@ -97,12 +99,22 @@ TEMPLATES = [
                 'students.groups_context.groups_context_processor',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                "social.apps.django_app.context_processors.backends",
+                "social.apps.django_app.context_processors.login_redirect",
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '308498466634897'
+SOCIAL_AUTH_FACEBOOK_SECRET = '3682e8673d3fec6c9770807c6f651d86'
 
 WSGI_APPLICATION = 'studentsdb.wsgi.application'
 

@@ -54,6 +54,7 @@
           </div>
         {% else %}
           <div class="col-xs-2" id="user-toolbar">
+            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">{% trans "via Facebook" %}</a> | 
             <a href="{% url "auth_login" %}">{% trans "Login" %}</a> |
             <a href="{% url "registration_register" %}">{% trans "Register" %}</a>
           </div>
