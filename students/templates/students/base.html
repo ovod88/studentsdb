@@ -49,7 +49,7 @@
             </select>
           </div>
           <div class="col-xs-2" id="user-toolbar">
-            <span>{{ user.username }}</span> |
+            <a href="{% url "profile" %}"">{{ user.get_full_name|default:user.username }}</a> |
             <a href="{% url "auth_logout" %}">{% trans "Logout" %}</a>
           </div>
         {% else %}

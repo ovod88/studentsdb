@@ -32,7 +32,7 @@ from students.views.logsList import *
 from .settings import MEDIA_ROOT, MEDIA_URL, DEBUG
 
 from django.views.generic import TemplateView, RedirectView
-from students_auth.views import RegistrationView
+from students_auth.views import RegistrationView, ProfileUpdateView
 from django.views.i18n import JavaScriptCatalog
 from students.views.contact_admin_forms import ContactFormView
 
@@ -46,13 +46,12 @@ js_info_dict = {
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path(r'^users/profile/edit$', login_required(ProfileUpdateView.as_view()), name='profile_edit'),
+    path(r'^users/profile/$', login_required(TemplateView.as_view(template_name='registration/profile.html')), name='profile'),
     path(r'^users/logout/$', auth_views.logout, kwargs={'next_page': 'home'}, name='auth_logout'),
     path(r'^register/complete/$', RedirectView.as_view(pattern_name='home'), name='registration_complete'),
     path(r'^users/register/$', RegistrationView.as_view(), name='registration_register'),
     path(r'^users/', include('registration.backends.simple.urls')),
-
-
-
 
 
     path(r'^$', students_list3, name='home'),
