@@ -8,6 +8,7 @@
 
 {% block content %}
   <a href="{% url "profile_edit" %}">{% trans "Edit Profile" %}</a>
+  <a href="{% url "auth_password_change" %}">{% trans "Change password" %}</a>
   <table class="table table-striped">
     {% if user.email %}
       <tr>

@@ -59,7 +59,7 @@ urlpatterns = [
     
     path(r'^reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path(r'^password/reset/complete/$', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-
+    path(r'^users/password/change/done/$', RedirectView.as_view(pattern_name='profile'), name='password_change_done'),
     
     path(r'^users/', include('registration.backends.simple.urls')),
 
