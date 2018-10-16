@@ -61,7 +61,8 @@ urlpatterns = [
     path(r'^password/reset/complete/$', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path(r'^users/password/change/done/$', RedirectView.as_view(pattern_name='profile'), name='password_change_done'),
     
-    path(r'^users/', include('registration.backends.simple.urls')),
+    # path(r'^users/', include('registration.backends.simple.urls')),#SIMPLE AUTHENTICATION
+    path(r'^users/', include('registration.backends.default.urls')),#WITH EMAIL ACTIVATION AUTHENTICATION
 
     path('^social/', include('social.apps.django_app.urls', namespace='social')),
 

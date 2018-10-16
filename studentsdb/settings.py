@@ -50,6 +50,10 @@ ALLOWED_HOSTS = []
 
 REGISTRATION_FORM = 'students_auth.forms.RegistrationForm'
 
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+
 LOGIN_URL = 'auth_login'
 LOGOUT_URL = 'auth_logout'
 
@@ -60,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',

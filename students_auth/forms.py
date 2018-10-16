@@ -26,7 +26,7 @@ class RegistrationForm(UserCreationForm):
 
 		self.helper = FormHelper(self)
 
-		self.helper.form_action = reverse("registration_register")
+		# self.helper.form_action = reverse("registration_register")#FOR SIMPLE AUTH
 		self.helper.form_method = 'POST'
 		self.helper.form_class = 'form-horizontal'
 

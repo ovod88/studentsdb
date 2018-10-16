@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from registration.backends.simple.views import RegistrationView as RegistrationBaseView
+# from registration.backends.simple.views import RegistrationView as RegistrationBaseView
+from registration.backends.default.views import RegistrationView as RegistrationBaseView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
