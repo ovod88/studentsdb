@@ -1,6 +1,7 @@
 {% extends "students/base.html" %}
 
 {% load static %}
+{% load str2int %}
 
 {% block meta_title %}- Додати студента{% endblock meta_title %}
 
@@ -74,7 +75,7 @@
 				<option value=''>Виберіть групу</option>
 				{% if groups %}
               		{% for group in groups %}
-                		<option value="{{ group.id }}" {% if group.id == request.POST.student_group|add:0 %}selected{% endif %}>{{ group }}</option>
+                		<option value="{{ group.id }}" {% if group.id == request.POST.student_group|str2int %}selected{% endif %}>{{ group }}</option>
               		{% endfor %}
             	{% endif%} 
 			</select>

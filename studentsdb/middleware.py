@@ -1,6 +1,8 @@
 from datetime import datetime
 from html.parser import HTMLParser
 from django.http import HttpResponse
+import time
+from .settings import DEBUG
 
 
 class MyHTMLParser(HTMLParser):
@@ -56,8 +58,17 @@ class RequestTimeMiddleware:
         if not hasattr(request, 'start_time'):
             return response
 
+        if DEBUG:
+            time.sleep(1)
+
         request.end_time = datetime.now()
-        diff_tag = '<br />Request took: %s' % str(request.end_time - request.start_time)
+        diff = (request.end_time - request.start_time).seconds + \
+                        (request.end_time - request.start_time).microseconds / 1000000
+        # print(diff)
+        if diff > 2:
+            return HttpResponse('Your code is very slow!!!')
+
+        diff_tag = '<span>Request took: %s secs</span>' % str(diff)
 
         if 'text/html' in response.get('Content-Type', ''):
             parser = MyHTMLParser(diff_tag)

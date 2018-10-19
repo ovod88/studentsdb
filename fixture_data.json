@@ -1,0 +1,2670 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "students",
+        "model": "student"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "students",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "students",
+        "model": "journal"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "students",
+        "model": "professor"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "students",
+        "model": "examin"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "students",
+        "model": "examinresult"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "students",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "registration",
+        "model": "registrationprofile"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "registration",
+        "model": "supervisedregistrationprofile"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+        "app_label": "students_auth",
+        "model": "stprofile"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+        "app_label": "social_django",
+        "model": "association"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": {
+        "app_label": "social_django",
+        "model": "code"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 19,
+    "fields": {
+        "app_label": "social_django",
+        "model": "nonce"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": {
+        "app_label": "social_django",
+        "model": "usersocialauth"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 21,
+    "fields": {
+        "app_label": "social_django",
+        "model": "partial"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 22,
+    "fields": {
+        "app_label": "sites",
+        "model": "site"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "dtex8f01kf7uhz8v0rj7hoan2907ggte",
+    "fields": {
+        "session_data": "NmQ0NDEzMGFiODM1N2RiZmEzZTI5MmExY2Y3ZmI5YTQxMWYyY2YwYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NWZkYzBiYzhiMzNlNjZkMmQ0NGIyNjRlNTk5ZDc5ZTdhZTY2ODc1In0=",
+        "expire_date": "2018-09-30T18:05:56.406Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "srnlqekokdkbe27hnex4xjwjpsrbnxfm",
+    "fields": {
+        "session_data": "NmQ0NDEzMGFiODM1N2RiZmEzZTI5MmExY2Y3ZmI5YTQxMWYyY2YwYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NWZkYzBiYzhiMzNlNjZkMmQ0NGIyNjRlNTk5ZDc5ZTdhZTY2ODc1In0=",
+        "expire_date": "2018-07-24T14:56:28.528Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "tkg7h4v4riqwnb9okivygh1ixm2g2vip",
+    "fields": {
+        "session_data": "NmQ0NDEzMGFiODM1N2RiZmEzZTI5MmExY2Y3ZmI5YTQxMWYyY2YwYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NWZkYzBiYzhiMzNlNjZkMmQ0NGIyNjRlNTk5ZDc5ZTdhZTY2ODc1In0=",
+        "expire_date": "2018-09-01T21:20:17.398Z"
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 13,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T19:04:11.984Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 14,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T19:12:40.826Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 15,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T19:15:31.790Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 16,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T19:30:08.952Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 17,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T19:31:29.432Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 18,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T19:38:04.174Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 19,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:26:53.235Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 6"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 20,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:46:33.555Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 21,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:46:38.148Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 22,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:46:42.860Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 23,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:46:46.943Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 24,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:46:50.841Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 25,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:46:54.908Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 26,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:46:58.957Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 27,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:47:02.963Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 28,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:47:07.132Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 29,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:47:11.235Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 30,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:47:15.218Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 31,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:47:19.295Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 32,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:47:23.270Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 33,
+    "fields": {
+        "log_level": "WARNING",
+        "date": "2018-09-21T20:47:28.407Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 4"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 34,
+    "fields": {
+        "log_level": "ERROR",
+        "date": "2018-09-22T16:50:14.580Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 35,
+    "fields": {
+        "log_level": "ERROR",
+        "date": "2018-09-22T16:50:19.642Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 36,
+    "fields": {
+        "log_level": "ERROR",
+        "date": "2018-09-22T16:50:23.503Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 37,
+    "fields": {
+        "log_level": "CRITICAL",
+        "date": "2018-09-22T16:50:57.246Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 38,
+    "fields": {
+        "log_level": "CRITICAL",
+        "date": "2018-09-22T16:51:03.661Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 31"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 39,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-09-22T20:43:44.915Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 20"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 40,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-09-22T20:43:49.197Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 20"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 41,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-09-22T20:43:53.126Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 20"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 42,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-09-22T20:43:57.064Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 20"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 43,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-09-22T20:44:02.382Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 20"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 44,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-09-22T20:44:06.173Z",
+        "module": "students.views.students",
+        "message": "Form was filled incorrectly by student id 20"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 45,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-05T23:09:42.237Z",
+        "module": "students.signals",
+        "message": "Student updated: Axina Uliotova (ID: 17)"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 46,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-07T15:21:56.530Z",
+        "module": "students.signals",
+        "message": "Student updated: Michal Szramowski (ID: 20)"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 47,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-07T10:26:32.183Z",
+        "module": "students.signals",
+        "message": "Student updated: Anatoliy Derkach (ID: 6)"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 48,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-07T15:30:10.910Z",
+        "module": "students.signals",
+        "message": "Student updated: Andrey Bazovkin (ID: 31)"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 49,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-07T15:53:42.887Z",
+        "module": "students.signals",
+        "message": "Student updated: Lina Khrystenko (ID: 4)"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 50,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-07T17:08:12.461Z",
+        "module": "students.receivers",
+        "message": "Student updated: Andrey Bazovkin (ID: 31)"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 51,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-07T17:08:41.837Z",
+        "module": "students.receivers",
+        "message": "Message was sent successfully from test@gmail.com with message: fdsafasd"
+    }
+},
+{
+    "model": "students.logentry",
+    "pk": 52,
+    "fields": {
+        "log_level": "INFO",
+        "date": "2018-10-07T17:10:26.467Z",
+        "module": "students.receivers",
+        "message": "Message was sent successfully from test23@gmail.com with message: fdsaffdasf"
+    }
+},
+{
+    "model": "students.student",
+    "pk": 1,
+    "fields": {
+        "first_name": "Oleg",
+        "last_name": "Khrystenko",
+        "middle_name": "",
+        "birthday": "2018-06-22",
+        "photo": "",
+        "ticket": "111",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 3,
+    "fields": {
+        "first_name": "Roman2",
+        "last_name": "Demo",
+        "middle_name": "",
+        "birthday": "2018-06-23",
+        "photo": "me_GFWB6qe.jpeg",
+        "ticket": "911",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 4,
+    "fields": {
+        "first_name": "Lina",
+        "last_name": "Khrystenko",
+        "middle_name": "Grygorovna",
+        "birthday": "1988-05-10",
+        "photo": "",
+        "ticket": "2",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 5,
+    "fields": {
+        "first_name": "Petro",
+        "last_name": "Tarasenko",
+        "middle_name": "",
+        "birthday": "1988-01-02",
+        "photo": "piv.png",
+        "ticket": "23",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 6,
+    "fields": {
+        "first_name": "Anatoliy",
+        "last_name": "Derkach",
+        "middle_name": "",
+        "birthday": "1987-12-12",
+        "photo": "podoba3.jpg",
+        "ticket": "34",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 7,
+    "fields": {
+        "first_name": "Anat",
+        "last_name": "Kramnich",
+        "middle_name": "",
+        "birthday": "1987-11-12",
+        "photo": "",
+        "ticket": "77",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 8,
+    "fields": {
+        "first_name": "Allana",
+        "last_name": "Kamysh",
+        "middle_name": "",
+        "birthday": "1986-01-12",
+        "photo": "",
+        "ticket": "42",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 11,
+    "fields": {
+        "first_name": "Anton",
+        "last_name": "Huet",
+        "middle_name": "",
+        "birthday": "1991-11-11",
+        "photo": "",
+        "ticket": "69",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 12,
+    "fields": {
+        "first_name": "Pavlo",
+        "last_name": "Chaban",
+        "middle_name": "",
+        "birthday": "1986-03-02",
+        "photo": "",
+        "ticket": "123",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 13,
+    "fields": {
+        "first_name": "Dima",
+        "last_name": "Kuplinov",
+        "middle_name": "",
+        "birthday": "1992-05-05",
+        "photo": "",
+        "ticket": "345",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 14,
+    "fields": {
+        "first_name": "Tamara",
+        "last_name": "Daineko",
+        "middle_name": "",
+        "birthday": "1977-01-28",
+        "photo": "",
+        "ticket": "321",
+        "notes": "",
+        "student_group": 5
+    }
+},
+{
+    "model": "students.student",
+    "pk": 16,
+    "fields": {
+        "first_name": "Teo",
+        "last_name": "Stefanof",
+        "middle_name": "",
+        "birthday": "1988-03-24",
+        "photo": "",
+        "ticket": "8",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 17,
+    "fields": {
+        "first_name": "Alina",
+        "last_name": "Uliotova",
+        "middle_name": "",
+        "birthday": "1990-01-14",
+        "photo": "",
+        "ticket": "13",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 18,
+    "fields": {
+        "first_name": "Sava",
+        "last_name": "Stena",
+        "middle_name": "",
+        "birthday": "1990-02-02",
+        "photo": "",
+        "ticket": "444",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 20,
+    "fields": {
+        "first_name": "Michal",
+        "last_name": "Szramowski",
+        "middle_name": "",
+        "birthday": "1992-11-12",
+        "photo": "",
+        "ticket": "73",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.student",
+    "pk": 21,
+    "fields": {
+        "first_name": "Stepan",
+        "last_name": "Kravchenko",
+        "middle_name": "",
+        "birthday": "2013-06-12",
+        "photo": "",
+        "ticket": "4",
+        "notes": "",
+        "student_group": 6
+    }
+},
+{
+    "model": "students.student",
+    "pk": 28,
+    "fields": {
+        "first_name": "Tata",
+        "last_name": "Amnig",
+        "middle_name": "",
+        "birthday": "1990-04-04",
+        "photo": "",
+        "ticket": "99",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 29,
+    "fields": {
+        "first_name": "Karina",
+        "last_name": "Atabulina",
+        "middle_name": "",
+        "birthday": "1990-08-11",
+        "photo": "",
+        "ticket": "55",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 30,
+    "fields": {
+        "first_name": "Olexiy",
+        "last_name": "Atlant",
+        "middle_name": "",
+        "birthday": "1988-08-08",
+        "photo": "",
+        "ticket": "49",
+        "notes": "",
+        "student_group": 4
+    }
+},
+{
+    "model": "students.student",
+    "pk": 31,
+    "fields": {
+        "first_name": "Andrey",
+        "last_name": "Bazovkin",
+        "middle_name": "",
+        "birthday": "1998-04-04",
+        "photo": "",
+        "ticket": "61",
+        "notes": "",
+        "student_group": 3
+    }
+},
+{
+    "model": "students.group",
+    "pk": 3,
+    "fields": {
+        "title": "MTM-11",
+        "leader": 4,
+        "notes": ""
+    }
+},
+{
+    "model": "students.group",
+    "pk": 4,
+    "fields": {
+        "title": "MTM-12",
+        "leader": 3,
+        "notes": ""
+    }
+},
+{
+    "model": "students.group",
+    "pk": 5,
+    "fields": {
+        "title": "MTM-13",
+        "leader": 11,
+        "notes": "here notes"
+    }
+},
+{
+    "model": "students.group",
+    "pk": 6,
+    "fields": {
+        "title": "MTM-14",
+        "leader": null,
+        "notes": ""
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 6,
+    "fields": {
+        "student": 1,
+        "date": "2018-07-06"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 7,
+    "fields": {
+        "student": 3,
+        "date": "2018-07-06"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 8,
+    "fields": {
+        "student": 4,
+        "date": "2018-07-06"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 9,
+    "fields": {
+        "student": 1,
+        "date": "2017-02-16"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 13,
+    "fields": {
+        "student": 4,
+        "date": "2018-07-23"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 14,
+    "fields": {
+        "student": 5,
+        "date": "2018-07-07"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 15,
+    "fields": {
+        "student": 5,
+        "date": "2018-07-10"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 16,
+    "fields": {
+        "student": 6,
+        "date": "2018-07-21"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 17,
+    "fields": {
+        "student": 6,
+        "date": "2018-07-22"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 18,
+    "fields": {
+        "student": 1,
+        "date": "2018-08-02"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 19,
+    "fields": {
+        "student": 1,
+        "date": "2018-08-03"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 20,
+    "fields": {
+        "student": 7,
+        "date": "2018-08-15"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 21,
+    "fields": {
+        "student": 7,
+        "date": "2018-08-16"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 22,
+    "fields": {
+        "student": 7,
+        "date": "2018-08-17"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 23,
+    "fields": {
+        "student": 6,
+        "date": "2018-06-11"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 24,
+    "fields": {
+        "student": 6,
+        "date": "2018-06-12"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 28,
+    "fields": {
+        "student": 3,
+        "date": "2018-08-09"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 29,
+    "fields": {
+        "student": 3,
+        "date": "2018-08-10"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 30,
+    "fields": {
+        "student": 4,
+        "date": "2018-08-12"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 31,
+    "fields": {
+        "student": 4,
+        "date": "2018-08-13"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 32,
+    "fields": {
+        "student": 4,
+        "date": "2018-08-14"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 33,
+    "fields": {
+        "student": 1,
+        "date": "2018-08-14"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 34,
+    "fields": {
+        "student": 1,
+        "date": "2018-08-15"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 36,
+    "fields": {
+        "student": 1,
+        "date": "2018-07-12"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 37,
+    "fields": {
+        "student": 1,
+        "date": "2018-07-13"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 38,
+    "fields": {
+        "student": 7,
+        "date": "2018-07-01"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 39,
+    "fields": {
+        "student": 7,
+        "date": "2018-07-02"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 40,
+    "fields": {
+        "student": 7,
+        "date": "2018-07-03"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 41,
+    "fields": {
+        "student": 8,
+        "date": "2018-08-22"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 42,
+    "fields": {
+        "student": 8,
+        "date": "2018-08-23"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 43,
+    "fields": {
+        "student": 8,
+        "date": "2018-08-24"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 46,
+    "fields": {
+        "student": 1,
+        "date": "2018-07-01"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 48,
+    "fields": {
+        "student": 1,
+        "date": "2018-07-07"
+    }
+},
+{
+    "model": "students.journal",
+    "pk": 49,
+    "fields": {
+        "student": 4,
+        "date": "2018-09-01"
+    }
+},
+{
+    "model": "students.professor",
+    "pk": 1,
+    "fields": {
+        "first_name": "Ivan",
+        "last_name": "Vatuzkievucz",
+        "email": "krameks@gmail.com"
+    }
+},
+{
+    "model": "students.professor",
+    "pk": 3,
+    "fields": {
+        "first_name": "Tamara",
+        "last_name": "Nahata",
+        "email": "krameks2@gmail.com"
+    }
+},
+{
+    "model": "students.professor",
+    "pk": 4,
+    "fields": {
+        "first_name": "Sava",
+        "last_name": "Maximenko",
+        "email": "krameks3@gmail.com"
+    }
+},
+{
+    "model": "students.professor",
+    "pk": 5,
+    "fields": {
+        "first_name": "Evgeniy",
+        "last_name": "Kalamuta",
+        "email": "krameks4@gmail.com"
+    }
+},
+{
+    "model": "students.examin",
+    "pk": 1,
+    "fields": {
+        "title": "Mathematics",
+        "date": "2018-07-18",
+        "examin_professor": 1,
+        "examin_group": 3
+    }
+},
+{
+    "model": "students.examin",
+    "pk": 2,
+    "fields": {
+        "title": "Mathematics",
+        "date": "2018-07-19",
+        "examin_professor": 3,
+        "examin_group": 4
+    }
+},
+{
+    "model": "students.examin",
+    "pk": 3,
+    "fields": {
+        "title": "History",
+        "date": "2018-07-16",
+        "examin_professor": 4,
+        "examin_group": 5
+    }
+},
+{
+    "model": "students.examin",
+    "pk": 4,
+    "fields": {
+        "title": "Chemistry",
+        "date": "2018-07-25",
+        "examin_professor": 5,
+        "examin_group": 6
+    }
+},
+{
+    "model": "students.examin",
+    "pk": 7,
+    "fields": {
+        "title": "Electronics",
+        "date": "2018-07-27",
+        "examin_professor": 4,
+        "examin_group": 6
+    }
+},
+{
+    "model": "students.examin",
+    "pk": 8,
+    "fields": {
+        "title": "Electronics",
+        "date": "2018-07-24",
+        "examin_professor": 4,
+        "examin_group": 3
+    }
+},
+{
+    "model": "students.examinresult",
+    "pk": 1,
+    "fields": {
+        "student": 1,
+        "examin": 3,
+        "grade": 6
+    }
+},
+{
+    "model": "students.examinresult",
+    "pk": 2,
+    "fields": {
+        "student": 3,
+        "examin": 2,
+        "grade": 4
+    }
+},
+{
+    "model": "students.examinresult",
+    "pk": 4,
+    "fields": {
+        "student": 17,
+        "examin": 1,
+        "grade": 2
+    }
+},
+{
+    "model": "students.examinresult",
+    "pk": 5,
+    "fields": {
+        "student": 11,
+        "examin": 3,
+        "grade": 2
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can add \u0421\u0442\u0443\u0434\u0435\u043d\u0442",
+        "content_type": 7,
+        "codename": "add_student"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can change \u0421\u0442\u0443\u0434\u0435\u043d\u0442",
+        "content_type": 7,
+        "codename": "change_student"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can delete \u0421\u0442\u0443\u0434\u0435\u043d\u0442",
+        "content_type": 7,
+        "codename": "delete_student"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add \u0413\u0440\u0443\u043f\u0430",
+        "content_type": 8,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change \u0413\u0440\u0443\u043f\u0430",
+        "content_type": 8,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete \u0413\u0440\u0443\u043f\u0430",
+        "content_type": 8,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add \u0416\u0443\u0440\u043d\u0430\u043b \u0432\u0456\u0434\u0432\u0456\u0434\u0443\u0432\u0430\u043d\u043d\u044f",
+        "content_type": 9,
+        "codename": "add_journal"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change \u0416\u0443\u0440\u043d\u0430\u043b \u0432\u0456\u0434\u0432\u0456\u0434\u0443\u0432\u0430\u043d\u043d\u044f",
+        "content_type": 9,
+        "codename": "change_journal"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete \u0416\u0443\u0440\u043d\u0430\u043b \u0432\u0456\u0434\u0432\u0456\u0434\u0443\u0432\u0430\u043d\u043d\u044f",
+        "content_type": 9,
+        "codename": "delete_journal"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can add \u0412\u0438\u043a\u043b\u0430\u0434\u0430\u0447",
+        "content_type": 10,
+        "codename": "add_professor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can change \u0412\u0438\u043a\u043b\u0430\u0434\u0430\u0447",
+        "content_type": 10,
+        "codename": "change_professor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can delete \u0412\u0438\u043a\u043b\u0430\u0434\u0430\u0447",
+        "content_type": 10,
+        "codename": "delete_professor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can add \u0415\u043a\u0437\u0430\u043c\u0456\u043d",
+        "content_type": 11,
+        "codename": "add_examin"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can change \u0415\u043a\u0437\u0430\u043c\u0456\u043d",
+        "content_type": 11,
+        "codename": "change_examin"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can delete \u0415\u043a\u0437\u0430\u043c\u0456\u043d",
+        "content_type": 11,
+        "codename": "delete_examin"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can add \u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u0435\u043a\u0437\u0430\u043c\u0456\u043d\u0443",
+        "content_type": 12,
+        "codename": "add_examinresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can change \u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u0435\u043a\u0437\u0430\u043c\u0456\u043d\u0443",
+        "content_type": 12,
+        "codename": "change_examinresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can delete \u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u0435\u043a\u0437\u0430\u043c\u0456\u043d\u0443",
+        "content_type": 12,
+        "codename": "delete_examinresult"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add Log",
+        "content_type": 13,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change Log",
+        "content_type": 13,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete Log",
+        "content_type": 13,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can add registration profile",
+        "content_type": 14,
+        "codename": "add_registrationprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can change registration profile",
+        "content_type": 14,
+        "codename": "change_registrationprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can delete registration profile",
+        "content_type": 14,
+        "codename": "delete_registrationprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can add supervised registration profile",
+        "content_type": 15,
+        "codename": "add_supervisedregistrationprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can change supervised registration profile",
+        "content_type": 15,
+        "codename": "change_supervisedregistrationprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can delete supervised registration profile",
+        "content_type": 15,
+        "codename": "delete_supervisedregistrationprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can add User Profile",
+        "content_type": 16,
+        "codename": "add_stprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can change User Profile",
+        "content_type": 16,
+        "codename": "change_stprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can delete User Profile",
+        "content_type": 16,
+        "codename": "delete_stprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+        "name": "Can add association",
+        "content_type": 17,
+        "codename": "add_association"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+        "name": "Can change association",
+        "content_type": 17,
+        "codename": "change_association"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete association",
+        "content_type": 17,
+        "codename": "delete_association"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can add code",
+        "content_type": 18,
+        "codename": "add_code"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+        "name": "Can change code",
+        "content_type": 18,
+        "codename": "change_code"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+        "name": "Can delete code",
+        "content_type": 18,
+        "codename": "delete_code"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+        "name": "Can add nonce",
+        "content_type": 19,
+        "codename": "add_nonce"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+        "name": "Can change nonce",
+        "content_type": 19,
+        "codename": "change_nonce"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+        "name": "Can delete nonce",
+        "content_type": 19,
+        "codename": "delete_nonce"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+        "name": "Can add user social auth",
+        "content_type": 20,
+        "codename": "add_usersocialauth"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+        "name": "Can change user social auth",
+        "content_type": 20,
+        "codename": "change_usersocialauth"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+        "name": "Can delete user social auth",
+        "content_type": 20,
+        "codename": "delete_usersocialauth"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+        "name": "Can add partial",
+        "content_type": 21,
+        "codename": "add_partial"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+        "name": "Can change partial",
+        "content_type": 21,
+        "codename": "change_partial"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+        "name": "Can delete partial",
+        "content_type": 21,
+        "codename": "delete_partial"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+        "name": "Can add site",
+        "content_type": 22,
+        "codename": "add_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+        "name": "Can change site",
+        "content_type": 22,
+        "codename": "change_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+        "name": "Can delete site",
+        "content_type": 22,
+        "codename": "delete_site"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$XMsNVNABKeGK$kshIjTTv0LzGiNUES7eTw7ud5Jhu1Zh6pMHZg/feEgE=",
+        "last_login": "2018-10-16T19:07:51.719Z",
+        "is_superuser": true,
+        "username": "ovod88",
+        "first_name": "",
+        "last_name": "",
+        "email": "ovod88@bigmir.net",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2018-06-23T12:11:55Z",
+        "groups": [],
+        "user_permissions": [
+            10
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$MXGvQsT9pzQu$ybhMUg067lupbA4a+ge5tBCIireYrzFSdkc1PzXcOSk=",
+        "last_login": "2018-10-13T23:06:50.698Z",
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "",
+        "last_name": "",
+        "email": "ovod88@bigmir.net",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-10-13T12:04:05.169Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$71xjSPgaxgYB$O7Oy+oE0bM1YH5zvZ1JTVRqSmk/j3vpke1ixSP9pmsA=",
+        "last_login": "2018-10-14T23:05:47.878Z",
+        "is_superuser": false,
+        "username": "test2",
+        "first_name": "",
+        "last_name": "",
+        "email": "ovod88@bigmir.net",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-10-13T13:09:36.357Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$0g2Zw9icobdg$JjWVrGcUKTs3YUEM4rHjkhvGul/Yja6w9ZuG0ZoaXas=",
+        "last_login": "2018-10-16T18:31:14.529Z",
+        "is_superuser": false,
+        "username": "test_activ",
+        "first_name": "",
+        "last_name": "",
+        "email": "ovod88@bigmir.net",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-10-16T18:31:14.002Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$bTrNsKW3owfM$u0g/nDurtkvzgipjLzwpRN62KLY82iw3m9CciV4E8yU=",
+        "last_login": "2018-10-16T19:07:41.498Z",
+        "is_superuser": false,
+        "username": "test_activ2",
+        "first_name": "",
+        "last_name": "",
+        "email": "ovod88@bigmir.net",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-10-16T19:03:45.331Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "students_auth.stprofile",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "mobile_phone": "+48694703251"
+    }
+},
+{
+    "model": "registration.registrationprofile",
+    "pk": 1,
+    "fields": {
+        "user": 5,
+        "activation_key": "673664ce9ad9db4fe74743e42ddfa461e140bb44",
+        "activated": true
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2018-07-05T21:29:38.769Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "Journal object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2018-07-05T21:29:54.627Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "2",
+        "object_repr": "Journal object (2)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2018-07-05T21:32:16.223Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "Journal object (3)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2018-07-05T21:43:52.367Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "4",
+        "object_repr": "Journal object (4)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2018-07-05T21:44:11.649Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "5",
+        "object_repr": "Journal object (5)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2018-07-10T11:07:13.106Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "1",
+        "object_repr": "Ivan, Vatuzkievucz",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2018-07-10T11:07:33.338Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "2",
+        "object_repr": "Tamara, Nahata",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2018-07-10T11:08:43.544Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "2",
+        "object_repr": "Tamara, Nahata",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2018-07-10T11:10:15.056Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "Tamara, Nahata",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2018-07-10T11:10:50.619Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "4",
+        "object_repr": "Sava, Maximenko",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2018-07-10T11:11:16.741Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "5",
+        "object_repr": "Evgeniy, Kalamuta",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2018-07-10T14:57:37.463Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "Mathematics, 2018-07-18",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2018-07-10T14:59:57.706Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "2",
+        "object_repr": "Mathematics, 2018-07-19 by Tamara, Nahata for MTM-12 (Roman2 Demo)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2018-07-10T15:00:14.249Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "History, 2018-07-16 by Sava, Maximenko for MTM-13 (Anton Huet)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2018-07-10T15:00:32.442Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "4",
+        "object_repr": "Chemistry, 2018-07-25 by Evgeniy, Kalamuta for MTM-14",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2018-07-10T15:07:31.249Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "7",
+        "object_repr": "Electronics, 2018-07-27 by Sava, Maximenko for MTM-14",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2018-07-10T15:07:50.813Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "8",
+        "object_repr": "Electronics, 2018-07-24 by Sava, Maximenko for MTM-11 (Lina Khrystenko)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2018-07-10T15:11:42.382Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "1",
+        "object_repr": "Oleg,Khrystenko,111,1 in group MTM-13 (Anton Huet) passed History with grade 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2018-07-10T16:03:59.128Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "2",
+        "object_repr": "Roman2,Demo,911,3 in group MTM-12 (Roman2 Demo) passed Mathematics with grade 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2018-07-10T16:04:13.671Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "3",
+        "object_repr": "Tata,Amnig,98,9 in group MTM-11 (Lina Khrystenko) passed Electronics with grade 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2018-07-10T16:04:54.881Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "4",
+        "object_repr": "Alina,Uliotova,13,17 in group MTM-11 (Lina Khrystenko) passed Mathematics with grade 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2018-07-10T16:05:20.504Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "5",
+        "object_repr": "Anton,Huet,69,11 in group MTM-13 (Anton Huet) passed History with grade 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2018-07-10T16:05:43.954Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "6",
+        "object_repr": "Olexiy,Atlant,49,15 in group MTM-12 (Roman2 Demo) passed Mathematics with grade 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2018-08-18T22:39:56.782Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "Tata,Amnig,98,9 in group MTM-11 (Lina Khrystenko)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2018-08-18T22:39:56.790Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "10",
+        "object_repr": "Karina,Atabulina,55,10 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2018-08-18T22:41:07.373Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "22",
+        "object_repr": "Tata,Amnig,98,22 in group MTM-11 (Lina Khrystenko)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2018-08-18T22:41:07.405Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "23",
+        "object_repr": "Karina,Atabulina,55,23 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2018-08-18T22:48:00.033Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "24",
+        "object_repr": "Tata,Amnig,98,24 in group MTM-11 (Lina Khrystenko)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2018-08-18T22:48:00.039Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "25",
+        "object_repr": "Karina,Atabulina,55,25 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2018-08-18T22:48:28.936Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "26",
+        "object_repr": "Tata,Amnig,98,26 in group MTM-11 (Lina Khrystenko)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2018-08-18T22:48:28.942Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "27",
+        "object_repr": "Karina,Atabulina,55,27 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2018-08-18T22:48:28.947Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "15",
+        "object_repr": "Olexiy,Atlant,49,15 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2018-08-18T22:48:28.954Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "19",
+        "object_repr": "Andrey,Bazovkin,61,19 in group MTM-11 (Lina Khrystenko)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2018-08-18T23:38:44.656Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "4",
+        "object_repr": "Lina,Khrystenko,2,4 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"student_group\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2018-08-18T23:39:24.610Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "4",
+        "object_repr": "Lina,Khrystenko,2,4 in group MTM-11 (Lina Khrystenko)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"student_group\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2018-08-18T23:51:02.189Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "MTM-13 (Olexiy Atlant)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"leader\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2018-08-18T23:51:29.118Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "MTM-13 (Anton Huet)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"leader\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2018-08-18T23:58:57.323Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "MTM-13 (Anatoliy Derkach)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"leader\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2018-08-19T00:00:07.620Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "MTM-13 (Anton Huet)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"leader\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2018-08-19T00:01:19.394Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "MTM-13 (Anton Huet)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2018-08-19T00:05:29.891Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "MTM-13 (Anton Huet)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2018-09-16T18:10:05.918Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "28",
+        "object_repr": "Tata,Amnig,999,28 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"ticket\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2018-09-16T18:35:40.093Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "28",
+        "object_repr": "Tata,Amnig,99,28 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"ticket\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2018-09-16T18:37:12.224Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "28",
+        "object_repr": "Tata,Amnig,99,28 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2018-09-16T18:37:48.836Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "29",
+        "object_repr": "Karina,Atabulina,551,29 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"ticket\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2018-09-16T18:39:48.742Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "29",
+        "object_repr": "Karina,Atabulina,55,29 in group MTM-12 (Roman2 Demo)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"ticket\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2018-09-17T13:44:54.805Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "MTM-13 (Anton Huet)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"notes\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2018-10-13T22:33:02.636Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "1",
+        "object_repr": "ovod88",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"user_permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2018-10-14T12:48:07.947Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "1",
+        "object_repr": "ovod88",
+        "action_flag": 2,
+        "change_message": "[{\"added\": {\"name\": \"User Profile\", \"object\": \"ovod88\"}}]"
+    }
+}
+]
