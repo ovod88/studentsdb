@@ -77,7 +77,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'studentsdb.middleware.RequestTimeMiddleware',
+    # 'studentsdb.middleware.RequestTimeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',

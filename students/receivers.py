@@ -28,11 +28,9 @@ def log_student_updated_added_event(sender, **kwargs):
 		group = kwargs['instance']
 
 		if kwargs['created']:
-			logger.info('Group added: %s (leader: %s %s)', group.title, 
-							group.leader.first_name, group.leader.last_name)
+			logger.info('Group added: %s', group.title)
 		else:
-			logger.info('Group updated: %s (leader: %s %s)', group.title, 
-							group.leader.first_name, group.leader.last_name)
+			logger.info('Group updated: %s', group.title)
 
 @receiver(post_delete, sender=Student)
 def log_student_deleted_event(sender, **kwargs):
