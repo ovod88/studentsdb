@@ -45,6 +45,7 @@ def clear_messages(request):
 		pass
 
 def students_list3(request):
+	# print(dir(request))
 	# students = (
 	# 	{'id': 1,
 	# 	'first_name': u'Віталій',
