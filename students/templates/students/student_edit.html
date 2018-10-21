@@ -1,8 +1,9 @@
 {% extends "students/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
-{% block meta_title %}Редагувати Студента{% endblock meta_title %}
+{% block meta_title %}{% trans "Edit Student" %}{% endblock meta_title %}
 
 {% block extra_css %}
 	<link rel="stylesheet" href="{{ PORTAL_URL }}{% static 'css/students_add/main.css' %}">
