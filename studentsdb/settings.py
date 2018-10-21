@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_coverage',
     'crispy_forms',
     'betterforms',
     'students_auth',

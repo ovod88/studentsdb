@@ -1,5 +1,7 @@
 **/__pycache__/*.pyc
 **/*.pyc
+**/htmlcov
+.coverage
 *.pyc
 *∼
 *.egg-info
