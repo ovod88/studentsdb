@@ -10,14 +10,15 @@ class Command(BaseCommand):
 	models = (('student', Student), ('group', Group), ('user', User))
 
 	def add_arguments(self, parser):
-		parser.add_argument('objects_name', nargs='+', type=str)
+		# parser.add_argument('objects_name', nargs='+', type=str)
+		parser.add_argument('student')
 
 	def handle(self, *args, **options):
-		# if options['student']:
-		# 	self.stdout.write('Number of students in database: %d' %
-		# 			Student.students.count())
-		objects_name = options['objects_name']
-		for name, model in self.models:
-			if name in objects_name:
-				self.stdout.write('Number of %ss in database: %d' %
-					(name, model.objects.count()))
+		if options['student']:
+			self.stdout.write('Number of students in database: %d' %
+					Student.students.count())
+		# objects_name = options['objects_name']
+		# for name, model in self.models:
+		# 	if name in objects_name:
+		# 		self.stdout.write('Number of %ss in database: %d' %
+		# 			(name, model.objects.count()))
