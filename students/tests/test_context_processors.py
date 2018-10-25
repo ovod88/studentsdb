@@ -15,5 +15,5 @@ class ContextProcessorsTests(TestCase):
 
         # test data from processor
         self.assertEqual(len(data['GROUPS_ALL']), 4)
-        self.assertEqual(data['GROUPS_ALL'][0]['str'], u'MTM-11 (Lina Khrystenko)')
+        self.assertEqual(data['GROUPS_ALL'][0]['str'], u'MTM-111 (Lina Khrystenko)')
         self.assertEqual(data['GROUPS_ALL'][1]['str'], u'MTM-12 (Roman2 Demo)')
