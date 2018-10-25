@@ -9,3 +9,6 @@ python-social-auth==0.3.6
 social-auth-app-django==2.1.0
 django-coverage==1.2.4
 coverage==4.5.1
+colorama==0.3.9
+django-betterforms==1.2
+python-dateutil==2.7.3
