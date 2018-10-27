@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from .db import DATABASES
+# from .db import DATABASES
 from django.contrib.messages import constants as messages
 from colorama import Fore, Back, Style
+
+from .env_settings import SECRET_KEY, DATABASES, DEBUG, TEMPLATE_DEBUG, STATIC_ROOT
+                            ALLOWED_HOSTS, MEDIA_ROOT, MANAGERS
+
+# print(SECRET_KEY)
 
 ADMIN_EMAIL = 'upworkem@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -23,7 +28,7 @@ EMAIL_HOST_PASSWORD = '0RYD9IC1P4dDLimctL8Y'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-MANAGERS=(('Vova Khrystenko', 'ovod88@bigmir.net'),)
+# MANAGERS=(('Vova Khrystenko', 'ovod88@bigmir.net'),)
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
@@ -41,12 +46,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(jk_lx661t8(-9r60^kz@m$=2rk&c*h5w@mxu&aagqf1^ms(fy'
+# SECRET_KEY = '(jk_lx661t8(-9r60^kz@m$=2rk&c*h5w@mxu&aagqf1^ms(fy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 REGISTRATION_FORM = 'students_auth.forms.RegistrationForm'
 
@@ -172,7 +177,7 @@ REGISTRATION_OPEN = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 LOG_FILE = os.path.join(BASE_DIR, 'studentsdb.log')
 

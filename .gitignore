@@ -4,6 +4,8 @@
 .coverage
 *.pyc
 *∼
+secret.txt
+**/env_settings.py
 *.egg-info
 *.mo
 *.egg
