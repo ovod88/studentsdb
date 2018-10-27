@@ -1,0 +1,11 @@
+Changelog
+=========
+
+[1.0] - (2018-10-27)
+--------------------
+
+* Login bug fixed.
+  [git username]
+
+* Initial functionality in place.
+  [ovod88]
