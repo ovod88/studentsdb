@@ -1,0 +1,2 @@
+recursive-include students* *.py *.html *.js *.css
+include requirements.txt

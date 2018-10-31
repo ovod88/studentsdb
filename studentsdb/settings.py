@@ -15,8 +15,11 @@ import os
 from django.contrib.messages import constants as messages
 from colorama import Fore, Back, Style
 
-from .env_settings import SECRET_KEY, DATABASES, DEBUG, TEMPLATE_DEBUG, STATIC_ROOT
-                            ALLOWED_HOSTS, MEDIA_ROOT, MANAGERS
+from .env_settings import SECRET_KEY, DATABASES, ALLOWED_HOSTS, MANAGERS
+# from .env_settings import MEDIA_ROOT
+# from .env_settings import STATIC_ROOT
+# from .env_settings import TEMPLATE_DEBUG
+# from .env_settings import DEBUG
 
 # print(SECRET_KEY)
 
@@ -49,7 +52,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = '(jk_lx661t8(-9r60^kz@m$=2rk&c*h5w@mxu&aagqf1^ms(fy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 # ALLOWED_HOSTS = []
 
@@ -177,7 +180,7 @@ REGISTRATION_OPEN = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 LOG_FILE = os.path.join(BASE_DIR, 'studentsdb.log')
 
